@@ -1,0 +1,26 @@
+h1 ペット一覧
+
+table
+  thead
+    tr
+      th みため
+      th なまえ
+      th ねんれい
+      th おおきさ
+      th おもさ
+
+  tbody
+    - @pets.each do |pet|
+      tr
+        td.icon = image_tag pet.image.url
+        td = pet.name
+        td = "#{pet.age}さい"
+        td = "#{pet.size}cm"
+        td = "#{pet.weight}kg"
+        td = link_to 'Show', pet
+        td = link_to 'Edit', edit_pet_path(pet)
+        td = link_to 'Destroy', pet, data: { confirm: 'Are you sure?' }, method: :delete
+
+br
+
+= link_to 'New Pet', new_pet_path

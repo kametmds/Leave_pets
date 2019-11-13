@@ -1,0 +1,18 @@
+h1 ペット詳細
+p.icon
+  = image_tag @pet.image.url
+p
+  |なまえ:
+  = @pet.name
+p
+  |ねんれい:
+  = "#{@pet.age}さい"
+p
+  |おおきさ:
+  = "#{@pet.size}cm"
+p
+  |おもさ:
+  = "#{@pet.weight}kg"
+=> link_to '編集', edit_pet_path(@pet)
+'|
+=< link_to '一覧', pets_path
