@@ -1,0 +1,15 @@
+current directory: /Users/kame/workspace/portfolio/leave_pets/vendor/bundle/gems/debug_inspector-0.0.3/ext/debug_inspector
+/Users/kame/.rbenv/versions/2.6.3/bin/ruby -I /Users/kame/.rbenv/versions/2.6.3/lib/ruby/site_ruby/2.6.0 -r ./siteconf20191113-54757-1dtho3g.rb extconf.rb
+creating Makefile
+
+current directory: /Users/kame/workspace/portfolio/leave_pets/vendor/bundle/gems/debug_inspector-0.0.3/ext/debug_inspector
+make "DESTDIR=" clean
+
+current directory: /Users/kame/workspace/portfolio/leave_pets/vendor/bundle/gems/debug_inspector-0.0.3/ext/debug_inspector
+make "DESTDIR="
+compiling debug_inspector.c
+linking shared-object debug_inspector.bundle
+
+current directory: /Users/kame/workspace/portfolio/leave_pets/vendor/bundle/gems/debug_inspector-0.0.3/ext/debug_inspector
+make "DESTDIR=" install
+/usr/bin/install -c -m 0755 debug_inspector.bundle ./.gem.20191113-54757-1flrvxf
