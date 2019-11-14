@@ -1,0 +1,21 @@
+ja:
+  activerecord:
+    models:
+      user: ユーザー
+      pet: ペット
+    attributes:
+      pet:
+        name: 名前
+        age: 年齢
+        size: 大きさ
+        weight: 重さ
+        image: 画像
+        content: 内容
+      user:
+        title: タイトル
+        name: 名前
+        email: メールアドレス
+        current_password: 現在のパスワード
+        password: パスワード
+        password_confirmation: 確認用パスワード
+        remember_me: ログインを記憶

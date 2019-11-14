@@ -39,7 +39,12 @@ group :development, :test do
   gem 'capistrano3-unicorn'
   gem 'ed25519'
   gem 'rspec-rails', '~> 3.8'
+  gem 'spring-commands-rspec'
   gem 'factory_bot_rails'
+  gem 'faker'
+  gem 'database_cleaner'
+  gem 'launchy'
+  gem 'selenium-webdriver'
 end
 
 group :development do
@@ -51,8 +56,6 @@ end
 
 group :test do
   gem 'capybara', '>= 2.15'
-  gem 'selenium-webdriver'
-  gem 'chromedriver-helper'
   gem 'webdrivers'
 end
 

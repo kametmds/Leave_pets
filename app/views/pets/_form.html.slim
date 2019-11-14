@@ -1,10 +1,9 @@
 = form_with(model: @pet, local: true, class: '') do |f|
   - if @pet.errors.any?
-    #error_explanation
-      h2 = pluralize(@pet.errors.count)
-      ul
-        - @pet.errors.full_messages.each do |message|
-          li = message
+    #pet_error_explanation
+      br
+      - @pet.errors.full_messages.each do |message|
+        div = message
 
   .field
     = f.label :name
