@@ -55,7 +55,11 @@
     font-size: 54px;
   }
   h1 {
-    color: rgb(91, 211, 121);
   }
 }
 //------------------------------user/-------------------------------------
+.header_icon {
+  flex-grow: 1;
+  text-align: right;
+  margin-right: 36px;
+}

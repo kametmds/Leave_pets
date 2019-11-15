@@ -10,9 +10,12 @@ html
   body
     header
       - if user_signed_in?
-        => link_to "ペット一覧", pets_path
-        '|
-        =< link_to "ログアウト", destroy_user_session_path, method: :delete
+        navbar
+          => link_to "ペット一覧", pets_path, class: :a_class
+          '|
+          =>< link_to "ログアウト", destroy_user_session_path, method: :delete, class: ''
+        .header_icon
+          =< "ログイン中のユーザ：#{current_user.name}"
       - else
         => link_to "新規登録", new_user_registration_path
         '|

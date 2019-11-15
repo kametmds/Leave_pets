@@ -27,7 +27,7 @@ header {
   display: flex;
   align-items: center;
   font-size: 16px;
-  background-color: rgb(91, 211, 121);
+  background-color: lighten(rgb(72, 189, 6), 35%);
 }
 //------------------------------footer-------------------------------------
 footer {
@@ -36,7 +36,7 @@ footer {
   padding: 4px 0 6px ;
   font-size: 16px;
   margin-top: auto;
-  background-color: rgb(91, 211, 121);
+  background-color: rgb(140, 207, 104);
   color: #fff;
 }
 //------------------------------others-------------------------------------
