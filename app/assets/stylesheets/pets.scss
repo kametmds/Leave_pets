@@ -1,12 +1,47 @@
-@import "application.scss";
+@import "font-awesome";
 //------------------------------@mixin-------------------------------------
 @mixin user_img_design {
   border: 1px solid darken(rgb(249, 249, 249), 5%);
   border-radius: 50%;
 }
+
+@mixin container_design {
+  display: flex;
+  flex-direction: column;
+  border-radius: 4px;
+}
 //------------------------------general-------------------------------------
+body {
+  min-height: 100vh;
+  font: 100%/1.5 'Avenir Next', 'Hiragino Sans', sans-serif;
+  line-height: 18px;
+  display: flex;
+  text-align: center;
+  flex-direction: column;
+  align-items: center;
+  margin: 0;
+}
+
+header {
+  height: 64px;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  font-size: 16px;
+  background-color: rgb(111, 207, 58);
+}
+footer {
+  height: 44px;
+  width: 100%;
+  padding: 4px 0 6px ;
+  font-size: 16px;
+  margin-top: auto;
+  background-color: rgb(111, 207, 58);
+  color: #fff;
+}
+
 .container {
-  @include container_design;
+  // @include container_design;
   width: 350px;
   margin-top: 42px;
   background-color: rgba(0,0,0,0.4);
@@ -32,7 +67,7 @@
   }
 }
 
-//------------------------------user/new-------------------------------------
+//------------------------------user-------------------------------------
 .enterpage {
   background-image: url("topimage.png");
   width: 100%;
@@ -54,12 +89,26 @@
     margin: 36px 0 18px ;
     font-size: 54px;
   }
-  h1 {
-  }
 }
 //------------------------------user/-------------------------------------
 .header_icon {
   flex-grow: 1;
   text-align: right;
   margin-right: 36px;
+}
+
+
+// ------------------------------others-------------------------------------
+
+#error_explanation {
+  color: #000;
+  div {
+    margin: 4px;
+  }
+}
+
+#pet_error_explanation {
+  div {
+    margin: 4px;
+  }
 }
