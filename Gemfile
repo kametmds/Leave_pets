@@ -14,6 +14,8 @@ gem 'bootsnap', '>= 1.1.0', require: false
 
 gem 'bcrypt', '3.1.11'
 gem 'devise'
+gem 'rails_admin', '~> 2.0'
+gem 'cancancan'
 gem 'slim-rails', '3.1.3'
 gem 'html2slim'
 gem 'pry-rails'
