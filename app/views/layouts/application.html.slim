@@ -13,6 +13,8 @@ html
         navbar
           => link_to "ペット一覧", pets_path, class: :a_class
           '|
+          => link_to "マイページ編集", edit_user_registration_path(current_user.id), class: :a_class
+          '|
           =>< link_to "ログアウト", destroy_user_session_path, method: :delete, class: ''
         .header_icon
           =< "ログイン中のユーザ：#{current_user.name}"
