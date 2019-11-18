@@ -4,9 +4,11 @@
   <%= render "devise/shared/error_messages", resource: resource %>
 
   <div class="field icon">
-    <%= image_tag(resource.icon.url) if resource.icon && resource.icon.url %>
-    <%= f.file_field :icon %>
-    <%= f.hidden_field :icon_cache %>
+    <%# <%= f.label :icon, class: "form-icon" do %>
+      <%= image_tag(@user.icon.url) if @user.icon && @user.icon.url %>
+      <%= f.file_field :icon, autocomplete: "icon" %>
+      <%= f.hidden_field :icon_cache %>
+    <%# <% end %>
   </div>
 
   <div class="field">
@@ -43,7 +45,7 @@
   </div>
 
   <div class="actions">
-    <%= f.submit "Update" %>
+    <%= f.submit "上記内容で更新する" %>
   </div>
 <% end %>
 

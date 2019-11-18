@@ -17,6 +17,7 @@ html
           '|
           =>< link_to "ログアウト", destroy_user_session_path, method: :delete, class: ''
         .header_icon
+          = image_tag(current_user.icon.url) if current_user.icon && current_user.icon.url
           =< "ログイン中のユーザ：#{current_user.name}"
       - else
         => link_to "新規登録", new_user_registration_path
