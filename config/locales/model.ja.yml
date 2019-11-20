@@ -19,3 +19,11 @@ ja:
         password: パスワード
         password_confirmation: 確認用パスワード
         remember_me: ログインを記憶
+      space:
+        title: 名前
+        postal: 郵便番号
+        address: 住所
+        capacity: 受け入れ上限
+        tel: 電話番号
+        picture: 画像
+        content: その他情報

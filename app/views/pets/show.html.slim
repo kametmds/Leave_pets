@@ -1,6 +1,6 @@
 h1 ペット詳細
 p.icon
-  = image_tag @pet.image.url
+  = image_tag @pet.image.url, class: 'icon'
 p
   |なまえ:
   = @pet.name
@@ -16,6 +16,9 @@ p
 p
   |ペットについて:
   = "#{@pet.content}kg"
+p
+  |オーナーユーザー:
+  = @pet.user.name
 => link_to '編集', edit_pet_path(@pet)
 '|
 =< link_to '一覧', pets_path

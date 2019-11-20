@@ -3,8 +3,8 @@
 <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
   <%= render "devise/shared/error_messages", resource: resource %>
 
-  <div class="field icon">
-    <%= f.label :icon, class: "form-icon" do %>
+  <div class="field edit_icon">
+    <%= f.label :icon, class: "form_icon" do %>
       <%= image_tag(@user.icon.url) if @user.icon && @user.icon.url %>
       <%= f.file_field :icon, autocomplete: "icon" %>
       <%= f.hidden_field :icon_cache %>

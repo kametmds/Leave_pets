@@ -1,14 +1,17 @@
 @import "font-awesome";
 //------------------------------@mixin-------------------------------------
-@mixin user_img_design {
-  border: 1px solid darken(rgb(249, 249, 249), 5%);
-  border-radius: 50%;
-}
 
 @mixin container_design {
   display: flex;
   flex-direction: column;
   border-radius: 4px;
+}
+
+@mixin icon {
+  width: 100px;
+  height: 100px;
+  border: 1px solid darken(rgb(249, 249, 249), 5%);
+  border-radius: 50%;
 }
 //------------------------------general-------------------------------------
 body {
@@ -29,6 +32,10 @@ header {
   align-items: center;
   font-size: 16px;
   background-color: rgb(111, 207, 58);
+  color: #fff;
+    &:visited {
+    color: #fff;
+  }
 }
 footer {
   height: 44px;
@@ -53,10 +60,12 @@ footer {
 }
 
 .icon {
+  @include icon;
+}
+
+.edit_icon {
   img {
-    @include user_img_design;
-    width: 100px;
-    height: 100px;
+    @include icon;
     &:hover {
       background-color: rgba(255, 255, 255, 0.445);
       box-shadow: 1px 1px 5px 1px #999;
@@ -99,7 +108,7 @@ footer {
   justify-content: flex-end;
   align-items: center;
   img {
-    @include user_img_design;
+    @include icon;
     margin-right: 6px;
     width: 40px;
     height: 40px;

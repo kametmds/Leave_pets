@@ -1,0 +1,39 @@
+= form_with(model: @space, local: true, class: '') do |f|
+  - if @space.errors.any?
+    #space_error_explanation
+      br
+      - @space.errors.full_messages.each do |message|
+        div = message
+
+  .field
+    = f.label :title
+    = f.text_field :title
+  .field
+    = f.label :postal
+    = f.text_field :postal
+  .field
+    = f.label :address
+    = f.text_field :address
+  .field
+    = f.label :tel
+    = f.text_field :tel
+  .field
+    = f.label :capacity
+    = f.text_field :capacity
+  .field
+    = f.label :content
+    = f.text_area :content
+  .field.edit_picture
+    br
+    p メイン画像(必須)
+    = f.file_field :picture
+    = f.hidden_field :picture_cache
+    p サブ画像(５枚)
+  = f.fields_for :subphotos do |sub|
+    div = "サブ画像#{sub.index + 1}"
+    = sub.file_field :subpicture
+    = sub.hidden_field :subpicture_cache
+    br
+    br
+  .actions = f.submit
+

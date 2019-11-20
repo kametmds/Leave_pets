@@ -4,5 +4,6 @@ class Pet < ApplicationRecord
   validates :size, presence: true, numericality: { only_integer: true, greater_than_or_equal_to: 0 }
   validates :weight, presence: true, numericality: { only_integer: true, greater_than_or_equal_to: 0 }
 
+  belongs_to :user
   mount_uploader :image, ImageUploader
 end

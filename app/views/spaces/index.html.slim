@@ -1,0 +1,32 @@
+h1 スペース一覧
+
+table
+  thead
+    tr
+      th ホストユーザー
+      th 画像
+      th 名前
+      th 郵便番号
+      th 住所
+      th 電話番号
+      th 受け入れ上限
+      th その他情報
+
+  tbody
+    - @spaces.each do |space|
+      tr
+        td = space.user.name
+        td = image_tag space.picture.url, class: 'icon'
+        td = space.title
+        td = space.postal
+        td = space.address
+        td = space.tel
+        td = space.capacity
+        td = space.content
+        td = link_to 'Show', space
+        td = link_to 'Edit', edit_space_path(space)
+        td = link_to 'Destroy', space, method: :delete
+
+br
+
+= link_to 'New space', new_space_path

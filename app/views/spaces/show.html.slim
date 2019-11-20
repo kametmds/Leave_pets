@@ -1,0 +1,30 @@
+h1 スペース詳細
+div = image_tag @space.picture.url, class: 'main_picture'
+p
+  |名前:
+  = @space.title
+p
+  |郵便番号:
+  = @space.postal
+p
+  |住所:
+  = @space.address
+p
+  |電話番号:
+  = @space.tel
+p
+  |受け入れ上限:
+  = @space.capacity
+p
+  |ホストユーザー:
+  = @space.user.name
+p
+  |このスペースについて:
+  = @space.content
+p サブ画像一覧
+.sub_picture
+  - @space.subphotos.each.with_index(1) do |photo, i|
+    = image_tag photo.subpicture.url, class: "sub#{i}"
+=> link_to '編集', edit_space_path(@space)
+'|
+=< link_to '一覧', spaces_path

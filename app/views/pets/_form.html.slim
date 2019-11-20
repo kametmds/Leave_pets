@@ -20,7 +20,7 @@
   .field
     = f.label :content
     = f.text_area :content
-  .field.icon
+  .field.edit_icon
     = f.label :image, class: "form-image" do
       = image_tag(@pet.image.url) if @pet.image && @pet.image.url
       = f.file_field :image
