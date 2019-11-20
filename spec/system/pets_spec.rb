@@ -2,11 +2,17 @@ require 'rails_helper'
 # bundle exec rspec spec/system/pets_spec.rb
 # bin/rspec spec/system/pets_spec.rb
 RSpec.describe 'Pets', type: :system do
-  before do
+  before do #事前ログイン
     @pet = FactoryBot.create(:pet)
     @pet2 = FactoryBot.create(:second_pet)
     @pet3 = FactoryBot.create(:third_pet)
+    @pet4 = FactoryBot.create(:fourth_pet)
+    visit new_user_session_path
+    fill_in 'user_email', with: 'user1@test.com'
+    fill_in 'user_password', with: 'password1'
+    click_on 'Log in'
   end
+
   describe 'ペット管理機能' do
     it 'ペット一覧のテスト' do
       visit pets_path
