@@ -1,0 +1,67 @@
+@import "pets.scss";
+
+@mixin user_show_field {
+  @include container_design;
+}
+
+@mixin general_border {
+  border: 1px solid #a39f9f;
+  background-color: #ddd8d8;
+}
+
+.user_show_field {
+  @include user_show_field;
+  display: flex;
+}
+
+.user_show_pet_field {
+  @include user_show_field;
+  @include general_border;
+  width: 25vw;
+}
+
+.user_show_space_field {
+  @include user_show_field;
+  @include general_border;
+  width: 90vw;
+
+}
+
+//------------------------------user-------------------------------------
+.enterpage {
+  background-image: url("topimage.png");
+  width: 100%;
+  height: 100vh;
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-attachment: fixed;
+  background-size: cover;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.sign_up {
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  .title_tag {
+    padding: 18px;
+    margin: 36px 0 18px ;
+    font-size: 54px;
+  }
+}
+//------------------------------user/-------------------------------------
+.header_icon {
+  flex-grow: 1;
+  margin-right: 36px;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  img {
+    @include icon;
+    margin-right: 6px;
+    width: 40px;
+    height: 40px;
+  }
+}
+

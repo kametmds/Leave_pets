@@ -1,6 +1,7 @@
 Rails.application.routes.draw do
-  mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
   devise_for :users
+  get 'users/show'
+  mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
   resources :pets
   resources :spaces
   root 'spaces#index'

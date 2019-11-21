@@ -1,6 +1,5 @@
 class SpacesController < ApplicationController
   before_action :set_space, only: [:show, :edit, :update, :destroy]
-  before_action :authenticate_user!
 
   def index
     @spaces = Space.all
@@ -45,7 +44,8 @@ class SpacesController < ApplicationController
   end
 
   def space_params
-    params.require(:space).permit(:title, :picture, :picture_cache, :postal, :address, :tel, :content, :capacity,
+    params.require(:space).permit(:title, :picture, :picture_cache, :postal, :address,
+                                  :tel, :content, :capacity, :tag_list,
                                   subphotos_attributes: [:id, :subpicture, :subpicture_cache, :space_id, :_destroy])
   end
 end

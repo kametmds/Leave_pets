@@ -23,6 +23,9 @@
   .field
     = f.label :content
     = f.text_area :content
+  .field
+    = f.label :tag_list, '受け入れペットタグ(カンマ区切り)'
+    div = text_field_tag 'space[tag_list]', @space.tag_list.join(',')
   .field.edit_picture
     br
     p メイン画像(必須)

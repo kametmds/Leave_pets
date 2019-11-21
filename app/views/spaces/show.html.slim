@@ -13,6 +13,11 @@ p
   |電話番号:
   = @space.tel
 p
+  |受け入れ可能なペット:
+  / - @space.tag_list.each do |tag|
+  /   div  = tag
+  = @space.tag_list
+p
   |受け入れ上限:
   = @space.capacity
 p
