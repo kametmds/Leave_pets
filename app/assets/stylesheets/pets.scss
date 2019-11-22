@@ -11,10 +11,17 @@
   border: 1px solid darken(rgb(249, 249, 249), 5%);
   border-radius: 50%;
 }
+
+// @font-face {
+//   font-family: "yasasisa";
+//   src: font-url('yasasisa.ttf') format('truetype');
+// }
+
 //------------------------------general-------------------------------------
 body {
   min-height: 100vh;
-  font: 100%/1.5 'Avenir Next', 'Hiragino Sans', sans-serif;
+  // font: 100%/1.5 'Avenir Next', 'Hiragino Sans', sans-serif;
+  font-family: "メイリオ", "Meiryo","游ゴシック", "Yu Gothic", "YuGothic", "Hiragino Kaku Gothic ProN", "Hiragino Kaku Gothic Pro", "ＭＳ ゴシック", sans-serif;
   line-height: 18px;
   display: flex;
   text-align: center;
@@ -30,13 +37,33 @@ header {
   align-items: center;
   font-size: 16px;
   background-color: rgb(111, 207, 58);
-  color: rgb(180, 160, 160);
+  color: #fff;
+
   a {
+    margin: 0 10px;
     &:visited {
-      color: rgb(255, 255, 255);
+      color: rgb(201, 158, 158);
+    }
+  }
+
+  .header_title {
+    margin-left: 26px;
+    font-size: 32px;
+  }
+  .header_icon {
+    flex-grow: 1;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    img {
+      @include icon;
+      margin-right: 6px;
+      width: 40px;
+      height: 40px;
     }
   }
 }
+
 footer {
   height: 44px;
   width: 100%;
@@ -79,10 +106,7 @@ footer {
 
 a {
   text-decoration: none;
-  &:visited {
-    background-color: rgba(255, 255, 255, 0.445);
-    color: #000;
-  }
+  color: #000;
 }
 // ------------------------------others-------------------------------------
 
