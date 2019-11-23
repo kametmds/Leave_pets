@@ -12,17 +12,16 @@ html
       - if user_signed_in?
         =<> link_to fa_icon('paw',text: 'Leave Pets!'), spaces_path, class: :header_title
         navbar
-          => link_to "ペット一覧", pets_path, class: ""
-          => link_to "マイページ", users_show_path(current_user.id), class: ""
-          => link_to "マイページ編集", edit_user_registration_path(current_user.id), class: ""
-          =>< link_to "ログアウト", destroy_user_session_path, method: :delete, class: ""
+          => link_to "ペット一覧", pets_path, class: "btn-s btn-shadow"
+          => link_to "マイページ", users_show_path(current_user.id), class: "btn-s btn-shadow"
+          =>< link_to "ログアウト", destroy_user_session_path, method: :delete, class: "btn-s btn-shadow"
         .header_icon
           = image_tag(current_user.icon.url) if current_user.icon && current_user.icon.url
           =< "#{current_user.name}"
       - else
-        => link_to "新規登録", new_user_registration_path
+        => link_to "新規登録", new_user_registration_path, class: "btn-s btn-shadow"
         '|
-        =< link_to "ログイン", new_user_session_path
+        =< link_to "ログイン", new_user_session_path, class: "btn-s btn-shadow"
     - if notice
       p.alert.alert-notice
         = notice
