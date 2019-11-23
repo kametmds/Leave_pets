@@ -1,5 +1,6 @@
 h1 スペース一覧
-
+= link_to 'New space', new_space_path, class: 'btn btn-green'
+br
 table
   thead
     tr
@@ -27,10 +28,6 @@ table
           /   div = tag
         td = space.capacity
         td = space.content
-        td = link_to 'Show', space
-        td = link_to 'Edit', edit_space_path(space)
-        td = link_to 'Destroy', space, method: :delete
-
-br
-
-= link_to 'New space', new_space_path
+        td = link_to fa_icon('info lg'), space, class: "btn-s btn-blue"
+        td = link_to fa_icon('edit lg'), edit_space_path(space), class: "btn-s btn-yellow"
+        td = link_to fa_icon('trash lg'), space, data: { confirm: 'スペース情報削除しますか？' }, method: :delete, class: "btn-s btn-red"

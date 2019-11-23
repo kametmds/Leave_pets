@@ -1,5 +1,6 @@
 h1 ペット一覧
-
+= link_to 'New Pet', new_pet_path, class: "btn btn-green"
+br
 table
   thead
     tr
@@ -19,10 +20,7 @@ table
         td = "#{pet.size}cm"
         td = "#{pet.weight}kg"
         td = pet.user.name
-        td = link_to 'Show', pet
-        td = link_to 'Edit', edit_pet_path(pet)
-        td = link_to 'Destroy', pet, data: { confirm: 'Are you sure?' }, method: :delete
+        td = link_to fa_icon('info lg'), pet, class: "btn-s btn-blue"
+        td = link_to fa_icon('edit lg'), edit_pet_path(pet), class: "btn-s btn-yellow"
+        td = link_to fa_icon('trash lg'), pet, data: { confirm: 'ペット情報削除しますか？' }, method: :delete, class: "btn-s btn-red"
 
-br
-
-= link_to 'New Pet', new_pet_path

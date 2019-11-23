@@ -1,8 +1,7 @@
 h1 ペット情報更新
 
 == render 'form'
-
-=> link_to '詳細', @pet
-'|
-=< link_to '一覧', pets_path
-
+br
+.choices
+  => link_to '詳細', @pet, class: "btn-s btn-blue"
+  =< link_to '戻る', pets_path, class: "btn-s btn-red"

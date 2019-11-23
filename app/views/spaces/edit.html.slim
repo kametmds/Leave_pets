@@ -1,8 +1,7 @@
 h1 スペース情報更新
 
 == render 'form'
-
-=> link_to '詳細', @space
-'|
-=< link_to '一覧', spaces_path
+.choices
+  => link_to '詳細', @space, class: "btn-s btn-blue"
+  =< link_to '一覧', spaces_path, class: "btn-s btn-red"
 

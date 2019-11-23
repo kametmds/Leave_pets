@@ -25,5 +25,5 @@
       = image_tag(@pet.image.url) if @pet.image && @pet.image.url
       = f.file_field :image
       = f.hidden_field :image_cache
-  .actions = f.submit
+  .actions = f.submit class: "btn-s btn-green"
 

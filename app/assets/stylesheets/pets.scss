@@ -12,16 +12,22 @@
   border-radius: 50%;
 }
 
-// @font-face {
-//   font-family: "yasasisa";
-//   src: font-url('yasasisa.ttf') format('truetype');
-// }
+@mixin btn {
+  border-radius: 4px;
+  margin: 0 6px;
+  text-decoration:none;
+  display: inline-block;
+  text-align: center;
+  transition: .4s;
+}
 
 //------------------------------general-------------------------------------
+
 body {
   min-height: 100vh;
   // font: 100%/1.5 'Avenir Next', 'Hiragino Sans', sans-serif;
-  font-family: "メイリオ", "Meiryo","游ゴシック", "Yu Gothic", "YuGothic", "Hiragino Kaku Gothic ProN", "Hiragino Kaku Gothic Pro", "ＭＳ ゴシック", sans-serif;
+  font-family: "メイリオ", "Meiryo","游ゴシック", "Yu Gothic", "YuGothic","Hiragino Kaku Gothic ProN",
+               "Hiragino Kaku Gothic Pro", "ＭＳ ゴシック", sans-serif;
   line-height: 18px;
   display: flex;
   text-align: center;
@@ -42,7 +48,7 @@ header {
   a {
     margin: 0 10px;
     &:visited {
-      color: rgb(201, 158, 158);
+      color: #fff;
     }
   }
 
@@ -50,11 +56,15 @@ header {
     margin-left: 26px;
     font-size: 32px;
   }
+  navbar {
+    display: flex;
+  }
   .header_icon {
     flex-grow: 1;
     display: flex;
     justify-content: flex-end;
     align-items: center;
+    margin-right: 20px;
     img {
       @include icon;
       margin-right: 6px;
@@ -121,4 +131,76 @@ a {
   div {
     margin: 4px;
   }
+}
+// ------------------------------btns-------------------------------------
+.btn {
+  @include btn;
+  padding: 12px;
+  font-size: 22px;
+  min-width: 100px;
+}
+
+.btn-s {
+  @include btn;
+  padding: 6px;
+  font-size: 16px;
+  min-width: 40px;
+}
+.btn-xs {
+  @include btn;
+  padding: 3px;
+  font-size: 12px;
+  min-width: 30px;
+}
+
+.btn-green {
+  border: 2px solid rgb(111, 207, 58);
+  background-color: rgb(111, 207, 58) !important;
+  color: #fff !important;
+  &:hover {
+    background-color: rgb(255, 255, 255) !important;
+    color: #000 !important;
+    border: 2px solid rgb(111, 207, 58);
+  }
+}
+
+.btn-red {
+  border: 2px solid rgb(234, 44, 86);
+  background-color: rgb(234, 44, 86) !important;
+  color: #fff !important;
+  &:hover {
+    background-color: rgb(255, 255, 255) !important;
+    color: #000 !important;
+    border: 2px solid rgb(234, 44, 86);
+  }
+}
+
+.btn-blue {
+  border: 2px solid rgb(34, 127, 209);
+  background-color: rgb(34, 127, 209) !important;
+  color: #fff !important;
+  &:hover {
+    background-color: rgb(255, 255, 255) !important;
+    color: #000 !important;
+    border: 2px solid rgb(34, 127, 209);
+  }
+}
+
+.btn-yellow {
+  border: 2px solid rgb(253, 181, 13);
+  background-color: rgb(253, 181, 13) !important;
+  color: #fff !important;
+  &:hover {
+    background-color: rgb(255, 255, 255) !important;
+    color: #000 !important;
+    border: 2px solid rgb(253, 181, 13);
+  }
+}
+
+// ------------------------------others-------------------------------------
+input[type="submit" i] {
+  // box-sizing: content-box !important;
+  // height: auto;
+  // width: auto;
+  line-height: 115%;
 }

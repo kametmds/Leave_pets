@@ -11,7 +11,7 @@ div = link_to 'ユーザー情報編集', edit_user_registration_path(@user)
 p
   h2
     |マイペット情報
-    = link_to 'New Pet', new_pet_path
+    = link_to 'New Pet', new_pet_path, class: "btn-xs btn-green"
   .user_show_field
     - @user.pets.each do |pet|
       .user_show_pet_field
@@ -21,12 +21,12 @@ p
         div = "#{pet.size}cm"
         div = "#{pet.weight}kg"
         .choices
-          = link_to '詳細', pet, class: "choice"
-          = link_to '編集', edit_pet_path(pet), class: "choice"
-          = link_to '削除', pet, data: { confirm: 'ペット情報削除しますか？' }, method: :delete, class: "choice"
+          = link_to fa_icon('info lg'), pet, class: "btn-s btn-blue choice"
+          = link_to fa_icon('edit lg'), edit_pet_path(pet), class: "btn-s btn-yellow choice"
+          = link_to fa_icon('trash lg'), pet, data: { confirm: 'ペット情報削除しますか？' }, method: :delete, class: "btn-s btn-red choice"
   h2
     |ホストスペース情報
-    = link_to 'New Space', new_space_path
+    = link_to 'New Space', new_space_path, class: "btn-xs btn-green"
   .user_show_field
     - @user.spaces.each do |space|
       .user_show_space_field
@@ -42,6 +42,6 @@ p
         div = space.capacity
         div = space.content
         .choices
-          = link_to '詳細', space, class: "choice"
-          = link_to '編集', edit_space_path(space), class: "choice"
-          = link_to '削除', space, data: { confirm: 'スペース情報削除しますか？' }, method: :delete, class: "choice"
+          = link_to fa_icon('info lg'), space, class: "btn-s btn-blue choice"
+          = link_to fa_icon('edit lg'), edit_space_path(space), class: "btn-s btn-yellow choice"
+          = link_to fa_icon('trash lg'), space, data: { confirm: 'スペース情報削除しますか？' }, method: :delete, method: :delete, class: "btn-s btn-red choice"

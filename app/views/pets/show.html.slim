@@ -19,6 +19,6 @@ p
 p
   |オーナーユーザー:
   = @pet.user.name
-=> link_to '編集', edit_pet_path(@pet)
-'|
-=< link_to '一覧', pets_path
+.choices
+  => link_to '編集', edit_pet_path(@pet), class: "btn-s btn-yellow"
+  =< link_to '戻る', pets_path, class: "btn-s btn-red"
