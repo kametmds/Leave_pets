@@ -87,9 +87,16 @@ footer {
 // ------------------------------btns-------------------------------------
 .btn {
   @include btn;
-  padding: 9px ;
-  font-size: 20px ;
+  padding: 9px;
+  font-size: 20px;
   min-width: 50px;
+}
+
+.btn-l {
+  @include btn;
+  padding: 12px;
+  font-size: 22px;
+  min-width: 70px;
 }
 
 .btn-s {

@@ -5,7 +5,7 @@ html
       | LeavePets
     = csrf_meta_tags
     = csp_meta_tag
-    = stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload'
+    = stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload',  :debug => true
     = javascript_include_tag 'application', 'data-turbolinks-track': 'reload'
   body
     header
@@ -20,7 +20,6 @@ html
           =< "#{current_user.name}"
       - else
         => link_to "新規登録", new_user_registration_path, class: "btn-s btn-shadow"
-        '|
         =< link_to "ログイン", new_user_session_path, class: "btn-s btn-shadow"
     - if notice
       p.alert.alert-notice
