@@ -6,4 +6,7 @@ class User < ApplicationRecord
   has_many :spaces, dependent: :destroy
 
   mount_uploader :icon, IconUploader
+  has_many    :joins, dependent: :destroy
+  has_many    :talks, class_name: "Talk", through: :joins
+  has_many    :messages, dependent: :destroy
 end

@@ -6,7 +6,12 @@ Rails.application.routes.draw do
   resources :spaces
   root 'spaces#index'
   # mount LetterOpenerWeb::Engine, at: "/letter_opener" if Rails.env.development?
-  resources :conversations do
-    resources :messages
+
+  resources :talks, only: [:show, :create] do
+    member do
+      post  :memberships, :messages
+    end
   end
+  resources :memberships, only: :destroy
+  resources :messages, only: :destroy
 end
