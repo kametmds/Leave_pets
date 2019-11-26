@@ -22,7 +22,7 @@ p
   = @space.capacity
 p
   |ホストユーザー:
-  = @space.user.name
+  => link_to @space.user.name, users_show_path(@space.user.id), class: "btn-s btn-shadow"
 p
   |このスペースについて:
   = @space.content
@@ -33,3 +33,18 @@ p サブ画像一覧
 .choices
   => link_to '編集', edit_space_path(@space), class: "btn-s btn-yellow"
   =< link_to '一覧', spaces_path, class: "btn-s btn-green"
+
+/ - unless @space.user.id == current_user.id
+/   - if @isRoom == true
+/     p class="user-show-room"
+/       = link_to 'メッセージ', /rooms/@roomId, class: "btn-s btn-red"
+/       / <p class="user-show-room"><a href="/rooms/<%= @roomId %>" class="btn btn-primary btn-lg">チャットへ</a>
+/   - else
+/     / レコードには、親モデルのRoomsテーブルと、子モデルのEntriesテーブル両方に保存する必要があるので、
+/     / 親モデルにform_forインスタンス変数、子モデルにfields_forインスタンス変数とする。。
+/     = form_for @room do |f|
+/       = fields_for @join do |e|
+/         / Joinsテーブルのレコードにはuser_idを送る必要があるので、hidden_fieldで@user.idをvalueにおく。
+/         = e.hidden_field :user_id, value: @space.user.id
+/       = f.submit "ホストにメッセージを送る", class:"btn btn-red"
+
