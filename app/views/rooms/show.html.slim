@@ -1,27 +1,26 @@
-.left-button
-  = link_to "ユーザ詳細に戻る", "/users/#{e.user.id}", class:"btn btn-red"
-h4.rooms-title
-  メッセージ一覧
-- @joins.each do |e|
-  .user-name
-    strong
-      = image_tag e.user.icon, class:"icon"
-        = link_to e.user.name, "/users/#{e.user.id}"
-hr
+p
+.rooms-title
+  - @joins.each_with_index do |e, i|
+    .user-subhead
+    = link_to image_tag( e.user.icon.url, class:"icon-xs"), users_show_path(e.user.id)
+    = link_to e.user.name, users_show_path(e.user.id), class: "btn-s btn-yellow"
+    - next if i == 1
+    |と
+  |のメッセージ一覧
 .chats
+  .posts
+    = form_for @message do |f|
+      = f.text_area :body, placeholder: "メッセージを入力して下さい", class:"message-textarea"
+      = f.hidden_field :room_id, value: @room.id
+      br
+      = f.submit "投稿",class: 'btn-s btn-green'
   .chat
     - if @messages.present?
       - @messages.each do |m|
         .chat-box
           .chat-face
-            = image_tag m.user.icon, class:"icon"
-          .chat-hukidashi
+            = image_tag m.user.icon.url, class:"icon-s"
+          .chat-voice
             strong = m.body
             br
             = m.created_at.strftime("%Y-%m-%d %H:%M")
-
-  .posts
-    = form_for @message do |f|
-      = f.text_area :body, placeholder: "メッセージを入力して下さい" , size: 70, class:""
-        = f.hidden_field :room_id, value: @room.id
-          = f.submit "投稿",class: 'form-submit'

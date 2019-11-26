@@ -1,13 +1,12 @@
 @import "font-awesome";
 
 //------------------------------@mixin-------------------------------------
-@mixin container_design {
-  border-radius: 4px;
+@mixin container {
+  border: 2px solid rgb(108, 118, 134);
+  background-color: #fff;
 }
 
 @mixin icon {
-  width: 100px;
-  height: 100px;
   border: 1px solid darken(rgb(249, 249, 249), 5%);
   border-radius: 50%;
 }
@@ -179,4 +178,7 @@ input[type="submit" i] {
   // height: auto;
   // width: auto;
   line-height: 115%;
+  &:hover {
+    cursor: pointer;
+    }
 }

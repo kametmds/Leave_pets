@@ -1,0 +1,16 @@
+@import "application.scss";
+.rooms-title {
+  display: flex;
+  text-align: center;
+}
+.chat-box {
+  border-bottom: 2px solid darken(rgb(235, 237, 240), 10%);
+  margin: 6px;
+  width: 60vw;
+  min-height: 15vh;
+}
+
+.message-textarea {
+  width: 60vw;
+  min-height: 14vh;
+}

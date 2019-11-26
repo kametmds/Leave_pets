@@ -7,49 +7,10 @@ p
 p
   |メールアドレス:
   = @user.email
-div = link_to 'ユーザー情報編集', edit_user_registration_path(@user), class: "btn-s btn-green"
-p
-  h2
-    |マイペット情報
-    = link_to 'New Pet', new_pet_path, class: "btn-xs btn-green"
-  .user_show_field
-    - @user.pets.each do |pet|
-      .user_show_pet_field
-        div = image_tag pet.image.url, class: 'icon'
-        div = pet.name
-        div = "#{pet.age}さい"
-        div = "#{pet.size}cm"
-        div = "#{pet.weight}kg"
-        .choices
-          = link_to fa_icon('info lg'), pet, class: "btn-s btn-blue choice"
-          = link_to fa_icon('edit lg'), edit_pet_path(pet), class: "btn-s btn-yellow choice"
-          = link_to fa_icon('trash lg'), pet, data: { confirm: 'ペット情報削除しますか？' }, method: :delete, class: "btn-s btn-red choice"
-  h2
-    |ホストスペース情報
-    = link_to 'New Space', new_space_path, class: "btn-xs btn-green"
-  .user_show_field
-    - @user.spaces.each do |space|
-      .user_show_space_field
-        div = image_tag space.picture.url, class: 'icon'
-        div = space.title
-        div = space.postal
-        div = space.address
-        div = space.tel
-        / td = render 'spaces/tag_list', tag_list: space.tag_list
-        td
-          - space.tag_list.each do |tag|
-            = tag
-        div = space.capacity
-        div = space.content
-        .choices
-          = link_to fa_icon('info lg'), space, class: "btn-s btn-blue choice"
-          = link_to fa_icon('edit lg'), edit_space_path(space), class: "btn-s btn-yellow choice"
-          = link_to fa_icon('trash lg'), space, data: { confirm: 'スペース情報削除しますか？' }, method: :delete, method: :delete, class: "btn-s btn-red choice"
-
 - unless @user.id == current_user.id
   - if @isRoom == true
     p class="user-show-room"
-      = link_to 'メッセージ', /rooms/@roomId, class: "btn-s btn-red"
+      = link_to 'メッセージ', room_path(@roomId), class: "btn-s btn-red"
   - else
     / レコードには、親モデルのRoomsテーブルと、子モデルのEntriesテーブル両方に保存する必要があるので、
     / 親モデルにform_forインスタンス変数、子モデルにfields_forインスタンス変数とする。。
@@ -58,3 +19,41 @@ p
         / Joinsテーブルのレコードにはuser_idを送る必要があるので、hidden_fieldで@user.idをvalueにおく。
         = e.hidden_field :user_id, value: @user.id
       = f.submit "ホストにメッセージを送る", class:"btn btn-red"
+- else
+  div = link_to 'ユーザー情報編集', edit_user_registration_path(@user), class: "btn-s btn-green"
+h2
+  |マイペット情報
+  = link_to 'New Pet', new_pet_path, class: "btn-xs btn-green"
+.user_show_field
+  - @user.pets.each do |pet|
+    .user_show_pet_field
+      div = image_tag pet.image.url, class: 'icon'
+      div = pet.name
+      div = "#{pet.age}さい"
+      div = "#{pet.size}cm"
+      div = "#{pet.weight}kg"
+      .choices
+        = link_to fa_icon('info lg'), pet, class: "btn-s btn-blue choice"
+        = link_to fa_icon('edit lg'), edit_pet_path(pet), class: "btn-s btn-yellow choice"
+        = link_to fa_icon('trash lg'), pet, data: { confirm: 'ペット情報削除しますか？' }, method: :delete, class: "btn-s btn-red choice"
+h2
+  |ホストスペース情報
+  = link_to 'New Space', new_space_path, class: "btn-xs btn-green"
+.user_show_field
+  - @user.spaces.each do |space|
+    .user_show_space_field
+      div = image_tag space.picture.url, class: 'icon'
+      div = space.title
+      div = space.postal
+      div = space.address
+      div = space.tel
+      / td = render 'spaces/tag_list', tag_list: space.tag_list
+      td
+        - space.tag_list.each do |tag|
+          = tag
+      div = space.capacity
+      div = space.content
+      .choices
+        = link_to fa_icon('info lg'), space, class: "btn-s btn-blue choice"
+        = link_to fa_icon('edit lg'), edit_space_path(space), class: "btn-s btn-yellow choice"
+        = link_to fa_icon('trash lg'), space, data: { confirm: 'スペース情報削除しますか？' }, method: :delete, method: :delete, class: "btn-s btn-red choice"

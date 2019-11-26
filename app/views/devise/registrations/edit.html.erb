@@ -4,8 +4,8 @@
   <%= render "devise/shared/error_messages", resource: resource %>
 
   <div class="field edit_icon">
-    <%= f.label :icon, class: "form_icon" do %>
-      <%= image_tag(@user.icon.url) if @user.icon && @user.icon.url %>
+    <%= f.label :icon, class: "icon" do %>
+      <%= image_tag @user.icon.url, class: "icon" if @user.icon && @user.icon.url %>
       <%= f.file_field :icon, autocomplete: "icon" %>
       <%= f.hidden_field :icon_cache %>
     <% end %>

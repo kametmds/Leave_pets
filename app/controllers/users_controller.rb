@@ -20,6 +20,7 @@ class UsersController < ApplicationController
           end
         end
       end
+    end
       #@isRoomがfalse（ルームが作成されていない）ならRoomインスタンスとJoinインスタンスを作成する。
       unless @isRoom
         @room = Room.new

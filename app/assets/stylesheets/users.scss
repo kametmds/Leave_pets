@@ -1,7 +1,7 @@
 @import "application.scss";
 
 @mixin user_show_field {
-  @include container_design;
+  @include container;
 }
 
 @mixin general_border {
@@ -62,4 +62,8 @@ h2 {
   display: flex;
   justify-content: center;
   align-items: center;
+}
+
+.user-subhead {
+  display: flex;
 }
