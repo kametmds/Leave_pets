@@ -1,0 +1,7 @@
+h1 メッセージ一覧
+- @rooms.each do |room|
+  / .room-head = link_to 'メッセージ', room_path(room.id)
+  - room.members.each do |m|
+    = link_to image_tag( m.icon.url, class:"icon-xs"), users_show_path(m.id)
+    = link_to m.name, users_show_path(m.id), class: "btn-s btn-yellow"
+    |とのメッセージ

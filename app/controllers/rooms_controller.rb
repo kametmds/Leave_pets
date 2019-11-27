@@ -1,6 +1,8 @@
 class RoomsController < ApplicationController
   def index
-    @rooms = Room.where(user_id: current_user.id, room_id: @room.id)
+    @rooms = Room.all
+    # @rooms = Room.where(user_id: current_user.id)
+    # @rooms = Room.where(user_id: current_user.id, room_id: @room.id)
   end
 
   def create
@@ -18,7 +20,7 @@ class RoomsController < ApplicationController
     #ログインユーザーのidとそれにひもづいたRoomのidがJoinテーブルにあったら条件文⬇︎
     if Join.where(user_id: current_user.id, room_id: @room.id).present?
       #MessageテーブルにRoomのidと紐づいたメッセージを表示させる為、アソシエーションを利用した記述。
-      @messages = @room.messages
+      @messages = @room.messages.order(created_at: :desc)
       #新しくメッセージを作成する。
       @message = Message.new
       #rooms/showでユーザー情報を表示させる。
@@ -27,5 +29,8 @@ class RoomsController < ApplicationController
       #なかったら条件文⬇︎前のページに戻る。
       redirect_back(fallback_location: root_path)
     end
+  end
+
+  def destroy
   end
 end

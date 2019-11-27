@@ -1,26 +1,35 @@
-p
-.rooms-title
-  - @joins.each_with_index do |e, i|
-    .user-subhead
-    = link_to image_tag( e.user.icon.url, class:"icon-xs"), users_show_path(e.user.id)
-    = link_to e.user.name, users_show_path(e.user.id), class: "btn-s btn-yellow"
-    - next if i == 1
-    |と
-  |のメッセージ一覧
+/ .room-title
+/   - @joins.each_with_index do |e, i|
+/     .user-subhead
+/     = link_to image_tag( e.user.icon.url, class:"icon-xs"), users_show_path(e.user.id)
+/     = link_to e.user.name, users_show_path(e.user.id), class: "btn-s btn-yellow"
+/     - next if i == 1
+/     |と
+/   |のメッセージ一覧
+h2 メッセージ
 .chats
   .posts
     = form_for @message do |f|
       = f.text_area :body, placeholder: "メッセージを入力して下さい", class:"message-textarea"
       = f.hidden_field :room_id, value: @room.id
       br
-      = f.submit "投稿",class: 'btn-s btn-green'
+      .post-btn = f.submit "メッセージ送信",class: 'btn btn-red'
   .chat
     - if @messages.present?
       - @messages.each do |m|
-        .chat-box
-          .chat-face
-            = image_tag m.user.icon.url, class:"icon-s"
-          .chat-voice
-            strong = m.body
-            br
-            = m.created_at.strftime("%Y-%m-%d %H:%M")
+        - if m.user == current_user
+          .chat-box.my-chat-box
+            .my-chat-face
+              div = link_to image_tag( m.user.icon.url, class:"icon-s"), users_show_path(m.user.id)
+              strong = link_to m.user.name, users_show_path(m.user.id)
+              .chat-day = m.created_at.strftime("%Y/%m/%d")
+              .chat-time = m.created_at.strftime("%H:%M:%S")
+            .chat-voice.my-chat-voice = m.body
+        - else
+          .chat-box
+            .chat-face
+              div = link_to image_tag( m.user.icon.url, class:"icon-s"), users_show_path(m.user.id)
+              strong = link_to m.user.name, users_show_path(m.user.id)
+              .chat-day = m.created_at.strftime("%Y/%m/%d")
+              .chat-time = m.created_at.strftime("%H:%M:%S")
+            .chat-voice = m.body

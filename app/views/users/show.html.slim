@@ -9,8 +9,7 @@ p
   = @user.email
 - unless @user.id == current_user.id
   - if @isRoom == true
-    p class="user-show-room"
-      = link_to 'メッセージ', room_path(@roomId), class: "btn-s btn-red"
+    p = link_to 'ホストとのメッセージ', room_path(@roomId), class: "btn-s btn-red"
   - else
     / レコードには、親モデルのRoomsテーブルと、子モデルのEntriesテーブル両方に保存する必要があるので、
     / 親モデルにform_forインスタンス変数、子モデルにfields_forインスタンス変数とする。。
