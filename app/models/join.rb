@@ -1,5 +1,5 @@
 class Join < ApplicationRecord
-  after_destroy :destroy_empty_talk
+  after_destroy :destroy_empty_room
 
   belongs_to :room
   belongs_to :user
@@ -7,7 +7,7 @@ class Join < ApplicationRecord
   validates :user_id, uniqueness: { scope: :room_id }
 
   private
-  # def destroy_empty_room
-  #   room.destroy if room.reload.joins.empty?
-  # end
+  def destroy_empty_room
+    room.destroy if room.reload.joins.empty?
+  end
 end

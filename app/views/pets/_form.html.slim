@@ -22,7 +22,7 @@
     = f.text_area :content
   .field.edit_icon
     = f.label :image, class: "form-image" do
-      = image_tag(@pet.image.url) if @pet.image && @pet.image.url
+      = image_tag @pet.image.url, class: "icon" if @pet.image && @pet.image.url
       = f.file_field :image
       = f.hidden_field :image_cache
   br

@@ -7,6 +7,7 @@ class Space < ApplicationRecord
                   numericality: { only_integer: true, greater_than_or_equal_to: 0 },
                   format: { with: /\A\d{10}$|^\d{11}\z/ }
   validates :capacity, presence: true
+
   belongs_to :user
 
   mount_uploader :picture, PictureUploader

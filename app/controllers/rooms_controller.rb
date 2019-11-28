@@ -1,8 +1,11 @@
 class RoomsController < ApplicationController
   def index
-    @rooms = Room.all
-    # @rooms = Room.where(user_id: current_user.id)
-    # @rooms = Room.where(user_id: current_user.id, room_id: @room.id)
+    @currentJoins = current_user.joins
+    myRoomIds = []
+    @currentJoins.each do |join|
+      myRoomIds << join.room.id
+    end
+    @anotherJoins = Join.where(room_id: myRoomIds).where.not(user_id: current_user)
   end
 
   def create
@@ -31,6 +34,4 @@ class RoomsController < ApplicationController
     end
   end
 
-  def destroy
-  end
 end

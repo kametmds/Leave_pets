@@ -10,18 +10,15 @@
 }
 
 .user_show_field {
-  @include user_show_field;
   display: flex;
 }
 
 .user_show_pet_field {
-  @include user_show_field;
   @include general_border;
   width: 25vw;
 }
 
 .user_show_space_field {
-  @include user_show_field;
   @include general_border;
   width: 75vw;
 }
@@ -31,6 +28,14 @@
   .choice {
     margin: 0 4px;
   }
+}
+
+.choices-vertical {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  border-right: 1px solid darken(rgb(235, 237, 240), 10%);
+  padding-right: 2px;
 }
 
 //------------------------------user-------------------------------------

@@ -22,10 +22,6 @@ html
       - else
         => link_to "新規登録", new_user_registration_path, class: "btn-s btn-bright"
         =< link_to "ログイン", new_user_session_path, class: "btn-s btn-bright"
-    - if notice
-      p.alert.alert-notice
-        = notice
-    - if alert
-      p.alert.alert-error
-        = alert
+    - flash.each do |key, value|
+      = content_tag(:div, value, class: "#{key}")
     = yield
