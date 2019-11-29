@@ -1,8 +1,50 @@
+@import "application.scss";
+
 .room-topic {
   width: 60vw;
-  min-height: 15vh;
+  min-height: 14vh;
   border: 1px solid darken(rgb(235, 237, 240), 10%);
-  box-shadow: 0px 0px 4px 1px rgb(212, 217, 224);
-  border-radius: 8px;
   margin-bottom: 12px;
+  padding: 12px;
+  display: flex;
+  background-color: rgb(255, 255, 255) !important;
+  .user-tip {
+    display: flex;
+    align-items: center;
+    padding-right: 14px;
+    border-right: 1px solid darken(rgb(235, 237, 240), 10%);
+    width: 30%;
+    .icon {
+      margin-right: 14px;
+    }
+  }
+  .room-tip {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    padding-left: 14px;
+    .room-tip-space {
+      display: flex;
+      align-items: center;
+      .space-title {
+        @include label;
+        padding: 3px 5px;
+        margin: 0 4px;
+      }
+    }
+    .room-tip-body {
+      height: 80%;
+      display: flex;
+      align-items: center;
+      color: gray;
+      p {
+        margin: 0;
+      }
+    }
+    .room-tip-time {
+      color: gray;
+      display: flex;
+      justify-content: flex-end;
+    }
+  }
 }

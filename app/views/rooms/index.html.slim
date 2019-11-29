@@ -1,5 +1,15 @@
-h1 メッセージ一覧
-- @anotherJoins.each do |j|
-    = link_to room_path(j.room.id), class: "room-topic" do
-      = image_tag j.user.icon.url, class:"icon-xs"
-      = j.user.name
+.content
+  h1 スレッド一覧
+  - @anotherJoins.each do |j|
+      .room-topic
+        = link_to users_show_path(j.user.id), class: "user-tip shadow" do
+          = image_tag j.user.icon.url, class:"icon"
+          = j.user.name
+        = link_to room_path(j.room.id), class: "room-tip shadow" do
+          .room-tip-space
+            |スペース:
+            - j.user.spaces.each_with_index do |s, i|
+              .space-title =>< s.title
+          .room-tip-body
+            p = j.room.messages.last.body
+          .room-tip-time = j.room.messages.last.created_at.strftime("%m月%d日-%H:%M:%S")
