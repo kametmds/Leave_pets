@@ -17,8 +17,9 @@ html
           = link_to "メッセージ", rooms_path, class: "btn-s btn-bright"
           = link_to "ログアウト", destroy_user_session_path, method: :delete, class: "btn-s btn-bright"
         .header_icon
-          = image_tag(current_user.icon.url) if current_user.icon && current_user.icon.url
-          = "#{current_user.name}"
+          - if current_user.icon && current_user.icon.url
+            = link_to image_tag(current_user.icon.url, class: "btn-bright"), users_show_path(current_user.id)
+            = current_user.name
       - else
         => link_to "新規登録", new_user_registration_path, class: "btn-s btn-bright"
         =< link_to "ログイン", new_user_session_path, class: "btn-s btn-bright"

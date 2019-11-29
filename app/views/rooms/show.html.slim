@@ -18,7 +18,7 @@ h2 メッセージ
               .chat-time = m.created_at.strftime("%H:%M:%S")
             .chat-voice.my-chat-voice = m.body
             .choices-vertical
-              = link_to fa_icon('trash lg'), room_message_path(@room, m), method: :delete, class: "btn-s btn-red"
+              = link_to fa_icon('trash lg'), message_path(m.id), method: :delete, class: "btn-s btn-red"
         - else
           .chat-box
             .chat-face

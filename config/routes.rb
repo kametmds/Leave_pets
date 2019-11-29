@@ -7,12 +7,7 @@ Rails.application.routes.draw do
   root 'spaces#index'
   # mount LetterOpenerWeb::Engine, at: "/letter_opener" if Rails.env.development?
 
-  resources :rooms, only: [:show, :create, :index, :destroy] do
-    resources :messages, only: [:create, :destroy]
-    member do
-      post  :joins, :messages
-    end
-  end
+  resources :rooms, only: [:show, :create, :index, :destroy]
   resources :joins, only: :destroy
   resources :messages, only: [:create, :destroy]
 end
