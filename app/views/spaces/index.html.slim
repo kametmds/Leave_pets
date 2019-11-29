@@ -10,7 +10,8 @@ table
       th 郵便番号
       th 住所
       th 電話番号
-      th 受け入れ可能ペット
+      th style="width: 100px;"
+        |受け入れ可能ペット
       th 受け入れ上限
       th その他情報
 
@@ -24,8 +25,6 @@ table
         td = space.address
         td = space.tel
         td = render 'spaces/tag_list', tag_list: space.tag_list
-          / - space.tag_list.each do |tag|
-          /   div = tag
         td = space.capacity
         td = space.content
         td = link_to fa_icon('info lg'), space, class: "btn-s btn-blue"

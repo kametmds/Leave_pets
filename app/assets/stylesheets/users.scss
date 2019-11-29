@@ -78,3 +78,8 @@ h2 {
 .user-subhead {
   display: flex;
 }
+
+.label {
+  @include label;
+  padding: 3px 4px;
+}

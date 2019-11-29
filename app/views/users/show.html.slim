@@ -28,13 +28,14 @@ h2
     .user_show_pet_field
       div = image_tag pet.image.url, class: 'icon'
       div = pet.name
-      div = "#{pet.age}さい"
-      div = "#{pet.size}cm"
-      div = "#{pet.weight}kg"
-      .choices
-        = link_to fa_icon('info lg'), pet, class: "btn-s btn-blue choice"
-        = link_to fa_icon('edit lg'), edit_pet_path(pet), class: "btn-s btn-yellow choice"
-        = link_to fa_icon('trash lg'), pet, data: { confirm: 'ペット情報削除しますか？' }, method: :delete, class: "btn-s btn-red choice"
+      div = "年齢：#{pet.age}さい"
+      div = "大きさ：#{pet.size}cm"
+      div = "重さ：#{pet.weight}kg"
+      - if user_check(@user)
+        .choices
+          = link_to fa_icon('info lg'), pet, class: "btn-s btn-blue choice"
+          = link_to fa_icon('edit lg'), edit_pet_path(pet), class: "btn-s btn-yellow choice"
+          = link_to fa_icon('trash lg'), pet, data: { confirm: 'ペット情報削除しますか？' }, method: :delete, class: "btn-s btn-red choice"
 h2
   |ホストスペース情報
   = link_to 'New Space', new_space_path, class: "btn-xs btn-green"
@@ -42,19 +43,19 @@ h2
   - @user.spaces.each do |space|
     .user_show_space_field
       div = image_tag space.picture.url, class: 'icon'
-      div = space.title
-      div = space.postal
-      div = space.address
-      div = space.tel
-      / td = render 'spaces/tag_list', tag_list: space.tag_list
+      div = "#{space.title}"
+      div = "郵便番号：#{space.postal}"
+      div = "住所：#{space.address}"
+      div = "電話番号：#{space.tel}"
       td
-        - space.tag_list.each do |tag|
-          = tag
-      div = space.capacity
-      div = space.content
-      .choices
-        = link_to fa_icon('info lg'), space, class: "btn-s btn-blue choice"
-        = link_to fa_icon('edit lg'), edit_space_path(space), class: "btn-s btn-yellow choice"
-        = link_to fa_icon('trash lg'), space, data: { confirm: 'スペース情報削除しますか？' }, method: :delete, method: :delete, class: "btn-s btn-red choice"
+        |受け入れ可能なペット：
+        = render 'spaces/tag_list', tag_list: space.tag_list
+      div = "受け入れ上限数：#{space.capacity}"
+      div = "備考：#{space.content}"
+      - if user_check(@user)
+        .choices
+          = link_to fa_icon('info lg'), space, class: "btn-s btn-blue choice"
+          = link_to fa_icon('edit lg'), edit_space_path(space), class: "btn-s btn-yellow choice"
+          = link_to fa_icon('trash lg'), space, data: { confirm: 'スペース情報削除しますか？' }, method: :delete, method: :delete, class: "btn-s btn-red choice"
 h2
   |予約履歴
