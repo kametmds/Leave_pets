@@ -1,5 +1,13 @@
 h1 スペース詳細
 div = image_tag @space.picture.url, class: 'main_picture'
+- unless user_check(@space.user)
+  - if @isRoom == true
+    p = link_to 'ホストとのメッセージ', room_path(@roomId), class: "btn-s btn-red"
+  - else
+    = form_for @room do |f|
+      = fields_for @join do |e|
+        = e.hidden_field :user_id, value: @space.user.id
+      = f.submit "ホストにメッセージを送る", class:"btn btn-red"
 p
   |名前:
   = @space.title

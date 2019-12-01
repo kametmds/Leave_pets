@@ -6,6 +6,7 @@ class SpacesController < ApplicationController
   end
 
   def show
+    connect_room#UsersHelper
   end
 
   def new
