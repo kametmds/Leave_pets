@@ -22,8 +22,6 @@ p
   = @space.tel
 p
   |受け入れ可能なペット:
-  / - @space.tag_list.each do |tag|
-  /   div  = tag
   = @space.tag_list
 p
   |受け入れ上限:
@@ -38,21 +36,11 @@ p サブ画像一覧
 .sub_picture
   - @space.subphotos.each.with_index(1) do |photo, i|
     = image_tag photo.subpicture.url, class: "sub#{i}"
+
+p このスペースについてのレビュー
+= render partial: 'reviews/form', locals: { review: @review, space: @space, user: current_user }
+#comments_area
+  = render partial: 'reviews/index', locals: { reviews: @reviews, space: @space, user: current_user }
 .choices
   => link_to '編集', edit_space_path(@space), class: "btn-s btn-yellow"
   =< link_to '一覧', spaces_path, class: "btn-s btn-green"
-
-/ - unless @space.user.id == current_user.id
-/   - if @isRoom == true
-/     p class="user-show-room"
-/       = link_to 'メッセージ', /rooms/@roomId, class: "btn-s btn-red"
-/       / <p class="user-show-room"><a href="/rooms/<%= @roomId %>" class="btn btn-primary btn-lg">チャットへ</a>
-/   - else
-/     / レコードには、親モデルのRoomsテーブルと、子モデルのEntriesテーブル両方に保存する必要があるので、
-/     / 親モデルにform_forインスタンス変数、子モデルにfields_forインスタンス変数とする。。
-/     = form_for @room do |f|
-/       = fields_for @join do |e|
-/         / Joinsテーブルのレコードにはuser_idを送る必要があるので、hidden_fieldで@user.idをvalueにおく。
-/         = e.hidden_field :user_id, value: @space.user.id
-/       = f.submit "ホストにメッセージを送る", class:"btn btn-red"
-

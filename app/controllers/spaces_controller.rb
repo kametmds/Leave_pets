@@ -7,6 +7,8 @@ class SpacesController < ApplicationController
 
   def show
     connect_room#UsersHelper
+    @reviews = @space.reviews.includes(:user).all
+    @review = @space.reviews.build(user_id: current_user.id) if current_user
   end
 
   def new

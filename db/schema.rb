@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_11_26_043214) do
+ActiveRecord::Schema.define(version: 2019_12_02_060056) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -47,6 +47,18 @@ ActiveRecord::Schema.define(version: 2019_11_26_043214) do
     t.datetime "updated_at", null: false
     t.bigint "user_id"
     t.index ["user_id"], name: "index_pets_on_user_id"
+  end
+
+  create_table "reviews", force: :cascade do |t|
+    t.bigint "user_id"
+    t.bigint "space_id"
+    t.text "comment"
+    t.string "title", null: false
+    t.integer "rate", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["space_id"], name: "index_reviews_on_space_id"
+    t.index ["user_id"], name: "index_reviews_on_user_id"
   end
 
   create_table "rooms", force: :cascade do |t|
@@ -129,6 +141,8 @@ ActiveRecord::Schema.define(version: 2019_11_26_043214) do
   add_foreign_key "messages", "rooms"
   add_foreign_key "messages", "users"
   add_foreign_key "pets", "users"
+  add_foreign_key "reviews", "spaces"
+  add_foreign_key "reviews", "users"
   add_foreign_key "spaces", "users"
   add_foreign_key "subphotos", "spaces"
   add_foreign_key "taggings", "tags"

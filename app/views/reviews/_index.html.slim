@@ -1,0 +1,14 @@
+.review_container
+  - reviews.each do |review|
+    - if review.id.present?
+      .review_content
+        .review-face
+          = link_to image_tag( review.user.icon.url, class:"icon-s"), users_show_path(review.user.id)
+          .reviewer
+            = link_to review.user.name, users_show_path(review.user.id)
+            = review.created_at.strftime("%Y/%m/%d")
+        .review_title= "#{review.title}"
+        .review_rate= "#{review.rate}"
+        .comment_area = "コメント:#{review.comment}"
+        - if review.user == current_user
+          .choice = link_to fa_icon('trash lg'), space_review_path(review.space_id, review.id), method: :delete, remote: true,class: "btn-xs btn-red"

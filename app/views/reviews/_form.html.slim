@@ -1,0 +1,16 @@
+= form_with(model: [space, review]) do |form|
+  - if review.errors.any?
+    - review.errors.full_messages.each do |message|
+      li = message
+  .field
+    = form.label :title
+    = form.text_field :title
+  .field
+    = form.label :rate
+    = form.select :rate, [1,2,3,4,5]
+  .field
+    = form.label :comment
+    = form.text_area :comment
+  .actions
+    = form.hidden_field :user_id
+    = form.submit

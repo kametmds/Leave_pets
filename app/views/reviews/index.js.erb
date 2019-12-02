@@ -1,0 +1,2 @@
+$("#comments_area").html("<%= j(render 'reviews/index', { reviews: @review.space.reviews, space: @review.space }) %>")
+$("textarea").val('')

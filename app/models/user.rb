@@ -9,4 +9,5 @@ class User < ApplicationRecord
   has_many :rooms, class_name: "Room", through: :joins
   has_many :messages, dependent: :destroy
   has_many :joins, dependent: :destroy
+  has_many :reviews, dependent: :destroy
 end
