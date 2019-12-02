@@ -1,5 +1,7 @@
 {
   "name": "leave_pets",
   "private": true,
-  "dependencies": {}
+  "dependencies": {
+    "jquery": "^3.4.1"
+  }
 }
