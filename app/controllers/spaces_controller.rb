@@ -7,7 +7,7 @@ class SpacesController < ApplicationController
 
   def show
     connect_room#UsersHelper
-    @reviews = @space.reviews.includes(:user).all
+    @reviews = @space.reviews.includes(:user).all.order(created_at: :desc)
     @review = @space.reviews.build(user_id: current_user.id) if current_user
   end
 

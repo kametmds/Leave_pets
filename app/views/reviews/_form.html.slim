@@ -2,15 +2,11 @@
   - if review.errors.any?
     - review.errors.full_messages.each do |message|
       li = message
-  .field
-    = form.label :title
-    = form.text_field :title
-  .field
+  #star.field
     = form.label :rate
     = form.select :rate, [1,2,3,4,5]
   .field
-    = form.label :comment
-    = form.text_area :comment
+    = form.text_area :comment, class: "review-textarea"
   .actions
     = form.hidden_field :user_id
-    = form.submit
+    = form.submit class: "btn-s btn-green"

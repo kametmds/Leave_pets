@@ -32,15 +32,15 @@ p
 p
   |このスペースについて:
   = @space.content
-p サブ画像一覧
 .sub_picture
   - @space.subphotos.each.with_index(1) do |photo, i|
     = image_tag photo.subpicture.url, class: "sub#{i}"
-
-p このスペースについてのレビュー
-= render partial: 'reviews/form', locals: { review: @review, space: @space, user: current_user }
-#comments_area
-  = render partial: 'reviews/index', locals: { reviews: @reviews, space: @space, user: current_user }
+.review_container
+  .review-title = "#{@reviews.count}件のレビュー"
+  #review_area
+    = render partial: 'reviews/form', locals: { review: @review, space: @space, user: current_user }
+  #comments_area
+    = render partial: 'reviews/index', locals: { reviews: @reviews, space: @space, user: current_user }
 .choices
   => link_to '編集', edit_space_path(@space), class: "btn-s btn-yellow"
   =< link_to '一覧', spaces_path, class: "btn-s btn-green"
