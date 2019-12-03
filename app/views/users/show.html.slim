@@ -11,18 +11,15 @@ p
   - if @isRoom == true
     p = link_to 'ホストとのメッセージ', room_path(@roomId), class: "btn-s btn-red"
   - else
-    / レコードには、親モデルのRoomsテーブルと、子モデルのEntriesテーブル両方に保存する必要があるので、
-    / 親モデルにform_forインスタンス変数、子モデルにfields_forインスタンス変数とする。。
     = form_for @room do |f|
       = fields_for @join do |e|
-        / Joinsテーブルのレコードにはuser_idを送る必要があるので、hidden_fieldで@user.idをvalueにおく。
         = e.hidden_field :user_id, value: @user.id
       = f.submit "ホストにメッセージを送る", class:"btn btn-red"
 - else
   = link_to 'ユーザー情報編集', edit_user_registration_path(@user), class: "btn-s btn-green"
 h2
   |マイペット情報
-  = link_to 'New Pet', new_pet_path, class: "btn-xs btn-green"
+  = link_to 'New Pet', new_pet_path, class: "btn-xs btn-green" if user_check(@user)
 .user_show_field
   - @user.pets.each do |pet|
     .user_show_pet_field
@@ -38,7 +35,7 @@ h2
           = link_to fa_icon('trash lg'), pet, data: { confirm: 'ペット情報削除しますか？' }, method: :delete, class: "btn-s btn-red choice"
 h2
   |ホストスペース情報
-  = link_to 'New Space', new_space_path, class: "btn-xs btn-green"
+  = link_to 'New Space', new_space_path, class: "btn-xs btn-green" if user_check(@user)
 .user_show_field
   - @user.spaces.each do |space|
     .user_show_space_field

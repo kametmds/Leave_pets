@@ -28,6 +28,25 @@
   margin: 6px;
 }
 
+@mixin textinput {
+  border: 1px solid darken(rgb(235, 237, 240), 10%);
+  border-radius: 6px;
+  padding: 0.5em;
+  width: 50vw;
+  box-sizing: border-box;
+  font-size: 1em;
+}
+
+@mixin textarea {
+  border: 1px solid darken(rgb(235, 237, 240), 10%);
+  border-radius: 6px;
+  padding: 0.5em;
+  width: 50vw;
+  box-sizing: border-box;
+  height: 100px;
+  font-size: 1em;
+}
+
 //------------------------------general-------------------------------------
 
 body {
@@ -202,4 +221,16 @@ input[type="submit" i] {
   padding: 20px 0;
   box-shadow: 0 2px 6px #c1ced7;
   border-radius: 10px;
+}
+
+.textinput {
+  @include textinput;
+}
+
+.textarea {
+  @include textarea;
+}
+
+.textlabel {
+  text-align: left;
 }
