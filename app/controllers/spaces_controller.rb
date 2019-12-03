@@ -7,8 +7,9 @@ class SpacesController < ApplicationController
 
   def show
     connect_room#UsersHelper
-    @reviews = @space.reviews.includes(:user).all.order(created_at: :desc)
+    @reviews = @space.reviews.includes(:user).all
     @review = @space.reviews.build(user_id: current_user.id) if current_user
+    @reviewsRate = @space.reviews.average(:rate).floor(2) if @reviews.present?
   end
 
   def new

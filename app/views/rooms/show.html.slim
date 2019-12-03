@@ -27,3 +27,5 @@ h2 メッセージ
               .chat-day = m.created_at.strftime("%Y/%m/%d")
               .chat-time = m.created_at.strftime("%H:%M:%S")
             .chat-voice = m.body
+    - else
+      h2 style="color: gray;" 下にメッセージが表示されます

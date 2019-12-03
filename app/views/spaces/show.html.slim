@@ -36,7 +36,9 @@ p
   - @space.subphotos.each.with_index(1) do |photo, i|
     = image_tag photo.subpicture.url, class: "sub#{i}"
 .review_container
-  .review-title = "#{@reviews.count}件のレビュー"
+  .review-title
+    span = fa_icon("star", text: "#{@reviewsRate}", left: true)
+    span = " (#{@reviews.count}件のレビュー)"
   #review_area
     = render partial: 'reviews/form', locals: { review: @review, space: @space, user: current_user }
   #comments_area

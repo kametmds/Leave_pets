@@ -6,12 +6,21 @@
 
   #review_area {
     display: flex;
+    #star {
+      margin: 12px;
+      font-size: 18px;
+      img {
+        width: 16px;
+        height: 16px;
+      }
+    }
     .review-textarea {
+      border: 1px solid darken(rgb(235, 237, 240), 10%);
       border-radius: 6px;
       padding: 0.5em;
       width: 50vw;
       box-sizing: border-box;
-      height: 90px;
+      height: 100px;
       font-size: 1em;
     }
     .actions {
@@ -36,8 +45,6 @@
           display: flex;
           flex-direction: column;
           color: gray;
-          font-style: italic;
-          width: 100%;
         }
         .review_rate {
           // width: 100%;
@@ -54,7 +61,26 @@
 
 .review-title {
   width: 100%;
-  font-size: 28px;
+  font-size: 24px;
   font-weight: bold;
   margin-bottom: 14px;
+}
+
+.star {
+  margin: 12px;
+  font-size: 18px;
+  min-width: 120px;
+  label {
+    margin-right: 12px;
+    font-size: 20px;
+    font-weight: bold;
+  }
+  img {
+    width: 16px;
+    height: 16px;
+  }
+}
+
+.fa-star {
+  color: rgb(253, 105, 9);
 }

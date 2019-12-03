@@ -1,4 +1,4 @@
-- reviews.each do |review|
+- reviews.order(created_at: :desc).each do |review|
   - if review.id.present?
     .review_content
       .review-face
@@ -6,7 +6,16 @@
         .reviewer
           = link_to review.user.name, users_show_path(review.user.id)
           = review.created_at.strftime("%y/%m/%d-%H:%M:%S")
-        .review_rate = "#{review.rate}"
+        .star id="rate-#{review.id}"
+          label = review.rate
+          javascript:
+            $("#rate-#{review.id}").raty({
+              starOff: '/assets/graystar.png' ,
+              starOn : '/assets/orangestar.png' ,
+              readOnly: true,
+              score: "#{review.rate}",
+            });
       .comment_area = "コメント:#{review.comment}"
       - if review.user == current_user
         .choice = link_to fa_icon('trash lg'), space_review_path(review.space_id, review.id), method: :delete, remote: true,class: "btn-xs btn-red"
+

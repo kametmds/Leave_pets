@@ -2,11 +2,19 @@
   - if review.errors.any?
     - review.errors.full_messages.each do |message|
       li = message
-  #star.field
-    = form.label :rate
-    = form.select :rate, [1,2,3,4,5]
+  #star
+    = form.label :rate, '評価 '
+    = form.hidden_field :rate, id: "review-star"
   .field
-    = form.text_area :comment, class: "review-textarea"
+    = form.text_area :comment, class: "review-textarea", placeholder:'まずは投稿してみましょう！投稿してから削除もできますよ！'
   .actions
     = form.hidden_field :user_id
     = form.submit class: "btn-s btn-green"
+
+javascript:
+  $('#star').raty({
+    starOff: '/assets/graystar.png' ,
+    starOn : '/assets/orangestar.png' ,
+    scoreName: 'review[rate]',
+    score: 5
+  });
