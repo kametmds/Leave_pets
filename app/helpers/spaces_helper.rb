@@ -1,6 +1,5 @@
 module SpacesHelper
-  # def average
-  #   self.inject(:+) / self.count
-  #   self.inject{ |sum, el| sum + el }.to_f / self.size
-  # end
+  def rating_average(space)
+    space.reviews.average(:rate).floor(2)
+  end
 end

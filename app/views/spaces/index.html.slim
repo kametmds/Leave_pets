@@ -1,32 +1,13 @@
-h1 スペース一覧
-= link_to 'New space', new_space_path, class: 'btn btn-green'
-br
-table
-  thead
-    tr
-      th ホストユーザー
-      th 画像
-      th 名前
-      th 郵便番号
-      th 住所
-      th 電話番号
-      th style="width: 100px;"
-        |受け入れ可能ペット
-      th 受け入れ上限
-      th その他情報
-
-  tbody
-    - @spaces.each do |space|
-      tr
-        td = space.user.name
-        td = image_tag space.picture.url, class: 'icon'
-        td = space.title
-        td = space.postal
-        td = space.address
-        td = space.tel
-        td = render 'spaces/tag_list', tag_list: space.tag_list
-        td = space.capacity
-        td = space.content
-        td = link_to fa_icon('info lg'), space, class: "btn-s btn-blue"
-        td = link_to fa_icon('edit lg'), edit_space_path(space), class: "btn-s btn-yellow"
-        td = link_to fa_icon('trash lg'), space, data: { confirm: 'スペース情報削除しますか？' }, method: :delete, class: "btn-s btn-red"
+.space-head-zone
+  h3 登録スペースのスライドショー&検索フォーム
+.space-topic-container
+  - @spaces.each do |space|
+    = link_to space, class: "space-topic" do
+      = image_tag space.picture.url, class: 'box-radius-image'
+      .space-topic-tip = space.title
+      .space-topic-tip = space.user.name
+      .space-topic-tip = render 'spaces/tag_list', tag_list: space.tag_list
+      .space-topic-tip
+        - if space.reviews.present?
+          span = fa_icon("star", text: space.reviews.average(:rate).round(2))
+          span = "(#{space.reviews.count})"

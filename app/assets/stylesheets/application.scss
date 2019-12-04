@@ -54,11 +54,10 @@ body {
   //              "Hiragino Kaku Gothic Pro", "ＭＳ ゴシック", sans-serif;
   font-family: "Circular","-apple-system","BlinkMacSystemFont","Roboto","Helvetica Neue","sans-serif" !important;
   line-height: 18px;
-  // display: flex;
-  // flex-direction: column;
-  // align-items: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
   margin: 0;
-  background-color: rgb(245, 248, 225);
 }
 
 header {
@@ -220,6 +219,8 @@ input[type="submit" i] {
   border-radius: 10px;
 }
 
+// ------------------------------入力フォーム-------------------------------------
+
 .textinput {
   @include textinput;
   width: 720px;
@@ -238,4 +239,15 @@ input[type="submit" i] {
 .textlabel {
   text-align: left;
   margin: 14px 0;
+}
+
+// ------------------------------画像-------------------------------------
+
+.box-radius-image {
+  width: 400px;
+  border-radius: 4px;
+}
+.box-image {
+  width: 400px;
+  border-radius: 4px;
 }

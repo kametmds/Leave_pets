@@ -1,9 +1,36 @@
 @import "application.scss";
 
-.main_picture {
-    width: 50vw;
-    height: 50vh;
+.space-head-zone {
+  background-color: rgb(219, 189, 189);
+  width: 100vw;
+  height: 420px;
+  color: rgb(255, 255, 255);
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
+.space-topic-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  .space-topic {
+    width: 400px;
+    height: 400px;
+    margin: 20px;
+    background-color: #fff;
+    display: flex;
+    flex-direction: column;
+    .space-topic-tip {
+      text-align: left;
+    }
+  }
+}
+
+.main_picture {
+  width: 50vw;
+  height: 50vh;
+}
+
 .sub_picture {
   width: 62vw;
   img {
@@ -37,6 +64,8 @@
   //   display: none;
   // }
 }
+
+//-------------------------------others--------------------------------------
 .textinput {
   @include textinput;
   border-radius: 3px;

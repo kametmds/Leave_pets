@@ -16,4 +16,6 @@ class Space < ApplicationRecord
   accepts_nested_attributes_for :subphotos, allow_destroy: true
   has_many :reviews, dependent: :destroy
   acts_as_taggable # acts_as_taggable_on :tags のエイリアス
+
+
 end
