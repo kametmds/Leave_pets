@@ -24,6 +24,7 @@
 }
 
 .edit_picture {
+  text-align: left;
   img {
     @include icon;
     &:hover {
@@ -38,12 +39,21 @@
 }
 .textinput {
   @include textinput;
+  border-radius: 3px;
+}
+
+.s-textinput {
+  @include textinput;
+  width: 360px;
 }
 
 .textarea {
   @include textarea;
+  border-radius: 3px;
 }
+
 .textlabel {
   text-align: left;
+  margin: 14px 0;
   padding-left: 16px;
 }

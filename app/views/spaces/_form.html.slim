@@ -24,19 +24,19 @@
     h4.textlabel = f.label :content
     = f.text_area :content, class: "textarea", placeholder: "  3日間連続可能、1LDK、ペットのエサは事前に準備をお願いします。"
   .field
-    h4.textlabel = f.label :tag_list, '受け入れペットタグ(カンマ区切り)'
+    h4.textlabel = f.label :tag_list, '受け入れ可能ペットタグ(カンマ区切り)'
     = text_field_tag 'space[tag_list]', @space.tag_list.join(','), class: "textinput", placeholder: "  ネコ,イヌ,ハムスター"
   .field.edit_picture
-    br
+    h4.textlabel スペースの表示画像
     p メイン画像(必須)
     = f.file_field :picture
     = f.hidden_field :picture_cache
     p サブ画像(５枚)
-  = f.fields_for :subphotos do |sub|
-    div = "サブ画像#{sub.index + 1}"
-    = sub.file_field :subpicture
-    = sub.hidden_field :subpicture_cache
-    br
-    br
+    = f.fields_for :subphotos do |sub|
+      div = "サブ画像#{sub.index + 1}"
+      = sub.file_field :subpicture
+      = sub.hidden_field :subpicture_cache
+      br
+      br
   .actions = f.submit class: "btn-s btn-green"
 

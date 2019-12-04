@@ -30,18 +30,16 @@
 
 @mixin textinput {
   border: 1px solid darken(rgb(235, 237, 240), 10%);
-  border-radius: 6px;
+  border-radius: 3px;
   padding: 0.5em;
-  width: 50vw;
   box-sizing: border-box;
   font-size: 1em;
 }
 
 @mixin textarea {
   border: 1px solid darken(rgb(235, 237, 240), 10%);
-  border-radius: 6px;
+  border-radius: 3px;
   padding: 0.5em;
-  width: 50vw;
   box-sizing: border-box;
   height: 100px;
   font-size: 1em;
@@ -59,7 +57,6 @@ body {
   // display: flex;
   // flex-direction: column;
   // align-items: center;
-  text-align: center;
   margin: 0;
   background-color: rgb(245, 248, 225);
 }
@@ -225,12 +222,20 @@ input[type="submit" i] {
 
 .textinput {
   @include textinput;
+  width: 720px;
+}
+
+.s-textinput {
+  @include textinput;
+  width: 360px;
 }
 
 .textarea {
   @include textarea;
+  width: 720px;
 }
 
 .textlabel {
   text-align: left;
+  margin: 14px 0;
 }

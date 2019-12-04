@@ -6,21 +6,22 @@
         div = message
 
   .field
-    = f.label :name
-    = f.text_field :name
+    h4.textlabel = f.label :name
+    = f.text_field :name, class: "textinput", placeholder: "  ペット名"
   .field
-    = f.label :age
-    = f.text_field :age
+    h4.textlabel = f.label :age
+    = f.text_field :age, class: "textinput", placeholder: "  ペットの年齢"
   .field
-    = f.label :size
-    = f.text_field :size
+    h4.textlabel = f.label :size
+    = f.text_field :size, class: "textinput", placeholder: "  ペットの大きさ(cm)"
   .field
-    = f.label :weight
-    = f.text_field :weight
+    h4.textlabel = f.label :weight
+    = f.text_field :weight, class: "textinput", placeholder: "  ペットの重さ(kg)"
   .field
-    = f.label :content
-    = f.text_area :content
+    h4.textlabel = f.label :content
+    = f.text_area :content, class: "textarea", placeholder: " アレルギー情報、重大な疾患、エサの量etc..."
   .field.edit_icon
+    h4.textlabel = f.label "ペットの画像"
     = f.label :image, class: "form-image" do
       = image_tag @pet.image.url, class: "icon" if @pet.image && @pet.image.url
       = f.file_field :image
