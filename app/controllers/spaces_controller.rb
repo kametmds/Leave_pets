@@ -5,11 +5,15 @@ class SpacesController < ApplicationController
   def index
     @spaces = Space.all
     @tags = ActsAsTaggableOn::Tag.most_used(20)
+  end
+
+  def search
+    @spaces = Space.all
     if params[:tag_name]
       @spaces = @spaces.tagged_with(params[:tag_name])
     end
-  end
 
+  end
 
   def show
     connect_room#UsersHelper

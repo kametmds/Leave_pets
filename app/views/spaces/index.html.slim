@@ -1,11 +1,14 @@
 .container
   .space-head-zone
-    h3 登録スペースのスライドショー&検索フォーム
+    = form_tag :search_spaces, method: :get do
+      h3
+        = text_field_tag "tag_name",params[:tag_name], class: "xs-textinput"
+        = submit_tag "探す", class: "btn-s btn-blue"
   .parent
     h2.textlabel 上位タグ一覧
     .tag-list-container
       - @tags.each do |tag|
-        = link_to "#{tag.name}(#{tag.taggings.count})", spaces_path(tag_name: tag.name), class: "radius-tag"
+        = link_to "#{tag.name}(#{tag.taggings.count})", search_spaces_path(tag_name: tag.name), class: "radius-tag"
   .parent
     h2.textlabel オススメスペース一覧
     .space-topic-container
