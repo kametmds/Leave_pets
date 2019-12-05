@@ -9,7 +9,7 @@ h2 メッセージ
   .chat
     - if @messages.present?
       - @messages.each do |m|
-        - if m.user == current_user
+        - if user_check(m.user)
           .chat-box.my-chat-box
             .my-chat-face
               div = link_to image_tag( m.user.icon.url, class:"icon-s"), users_show_path(m.user.id)

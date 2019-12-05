@@ -13,9 +13,9 @@ class Space < ApplicationRecord
   mount_uploader :picture, PictureUploader
 
   has_many :subphotos, dependent: :destroy
-  accepts_nested_attributes_for :subphotos, allow_destroy: true
   has_many :reviews, dependent: :destroy
-  acts_as_taggable # acts_as_taggable_on :tags のエイリアス
 
+  accepts_nested_attributes_for :subphotos, allow_destroy: true
+  acts_as_taggable
 
 end

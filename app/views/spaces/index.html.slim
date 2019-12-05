@@ -1,13 +1,25 @@
-.space-head-zone
-  h3 登録スペースのスライドショー&検索フォーム
-.space-topic-container
-  - @spaces.each do |space|
-    = link_to space, class: "space-topic" do
-      = image_tag space.picture.url, class: 'box-radius-image'
-      .space-topic-tip = space.title
-      .space-topic-tip = space.user.name
-      .space-topic-tip = render 'spaces/tag_list', tag_list: space.tag_list
-      .space-topic-tip
-        - if space.reviews.present?
-          span = fa_icon("star", text: space.reviews.average(:rate).round(2))
-          span = "(#{space.reviews.count})"
+.container
+  .space-head-zone
+    h3 登録スペースのスライドショー&検索フォーム
+  .parent
+    h2.textlabel 上位タグ一覧
+    .tag-list-container
+      - @tags.each do |tag|
+        = link_to "#{tag.name}(#{tag.taggings.count})", spaces_path(tag_name: tag.name), class: "radius-tag"
+  .parent
+    h2.textlabel オススメスペース一覧
+    .space-topic-container
+      - @spaces.each do |space|
+        = link_to space, class: "space-topic" do
+          / = link_to image_tag(space.picture.url, class: "box-radius-image"), space
+          = image_tag space.picture.url, class: 'box-radius-image'
+          .space-topic-tip
+            div style="color: gray;" = "ホスト名｜#{space.user.name}"
+            span.review-tip
+              - if space.reviews.present?
+                span = fa_icon("star", text: space.reviews.average(:rate).round(2))
+                span = "(#{space.reviews.count})"
+          .space-topic-tip = "スペース名｜#{space.title}"
+          .space-topic-tip
+            - space.tag_list.each do |tag|
+              span.label.label-primary = tag

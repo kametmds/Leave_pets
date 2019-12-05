@@ -1,2 +1,5 @@
+/ - tags.each do |tag|
+/   = link_to "#{tag.name}(#{tag.taggings.count})", spaces_path(tag_name: tag.name), class: "radius-tag"
 - tag_list.each do |tag|
-  .label.label-primary = tag
+  / span.label.label-primary = tag
+  = link_to tag, spaces_path(tag_name: tag), class: "label label-primary"

@@ -1,5 +1,6 @@
 class PetsController < ApplicationController
   before_action :set_pet, only: [:show, :edit, :update, :destroy]
+  before_action -> {forbid_wrong_user(@pet)}, only: [:edit, :update, :destroy]
 
   def index
     @pets = Pet.all

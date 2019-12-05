@@ -20,5 +20,6 @@ p
   |オーナーユーザー:
   = @pet.user.name
 .choices
-  => link_to '編集', edit_pet_path(@pet), class: "btn-s btn-yellow"
-  =< link_to '戻る', pets_path, class: "btn-s btn-red"
+  - if user_check(@pet.user)
+    => link_to '編集', edit_pet_path(@pet), class: "btn-s btn-yellow"
+    =< link_to '戻る', pets_path, class: "btn-s btn-red"

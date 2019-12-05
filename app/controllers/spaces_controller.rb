@@ -1,9 +1,15 @@
 class SpacesController < ApplicationController
   before_action :set_space, only: [:show, :edit, :update, :destroy]
+  before_action -> {forbid_wrong_user(@space)}, only: [:edit, :update, :destroy]
 
   def index
     @spaces = Space.all
+    @tags = ActsAsTaggableOn::Tag.most_used(20)
+    if params[:tag_name]
+      @spaces = @spaces.tagged_with(params[:tag_name])
+    end
   end
+
 
   def show
     connect_room#UsersHelper

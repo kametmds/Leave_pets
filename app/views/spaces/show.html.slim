@@ -22,9 +22,7 @@ p
   = @space.tel
 p
   |受け入れ可能なペット:
-  - @space.tag_list.each do |tag|
-    span.label.label-primary = tag
-    / = render 'spaces/tag_list', tag_list: space.tag_list
+  = render 'spaces/tag_list', tag_list: @space.tag_list
 p
   |受け入れ上限:
   = @space.capacity
@@ -46,5 +44,7 @@ p
   #comments_area
     = render partial: 'reviews/index', locals: { reviews: @reviews, space: @space, user: current_user }
 .choices
-  => link_to '編集', edit_space_path(@space), class: "btn-s btn-yellow"
-  =< link_to '一覧', spaces_path, class: "btn-s btn-green"
+  - if user_check(@space.user)
+    => link_to '編集', edit_space_path(@space), class: "btn-s btn-yellow"
+    =< link_to '一覧', spaces_path, class: "btn-s btn-green"
+    = link_to fa_icon('trash lg'), @space, data: { confirm: '削除しますか？' }, method: :delete, class: "btn-s btn-red"

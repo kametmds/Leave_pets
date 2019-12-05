@@ -1,5 +1,6 @@
 module UsersHelper
 
+  #ログインユーザーと編集しようとしているユーザーのidが一致しない場合にアクセスを拒否
   def ensure_correct_user
     if current_user.id != params[:id].to_i
       flash[:notice] = "権限がありません"
@@ -7,8 +8,24 @@ module UsersHelper
     end
   end
 
-  def user_check(user)
-    current_user.id == user.id
+  # ログインユーザーと編集しようとしている投稿のユーザーidが一致しない場合にアクセスを拒否
+  # def forbid_wrong_user
+  #   if current_user.id != @space.user.id
+  #     flash[:notice] = "編集権限がありません"
+  #     redirect_to @space
+  #   end
+  # end
+
+  # ログインユーザーと編集しようとしている投稿のユーザーidが一致しない場合にアクセスを拒否(引数指定共通版)
+  def forbid_wrong_user(arg)
+    if current_user.id != arg.user.id
+      flash[:notice] = "権限がありません"
+      redirect_to arg
+    end
+  end
+
+  def user_check(arg)
+    current_user.id == arg.id
   end
 
   def connect_room
