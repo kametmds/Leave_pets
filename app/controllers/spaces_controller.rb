@@ -9,10 +9,9 @@ class SpacesController < ApplicationController
 
   def search
     @spaces = Space.all
-    if params[:tag_name]
+    if params[:tag_name].present?
       @spaces = @spaces.tagged_with(params[:tag_name])
     end
-
   end
 
   def show

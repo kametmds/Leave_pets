@@ -1,9 +1,11 @@
 .container
   .space-head-zone
-    = form_tag :search_spaces, method: :get do
-      h3
-        = text_field_tag "tag_name",params[:tag_name], class: "xs-textinput"
-        = submit_tag "探す", class: "btn-s btn-blue"
+    h1.headtext LeavePetsでペットの預け先を探そう
+    p.headsentence 複数指定する場合は(,)カンマを入力してください
+    = form_with(method: :get, url: search_spaces_path, local: true, class: "search-form") do |f|
+      = f.text_field :tag_name, placeholder: " 預けるペット", class: "search-input"
+      = button_tag type: 'submit', class: "search-btn" do
+        = fa_icon('search lg')
   .parent
     h2.textlabel 上位タグ一覧
     .tag-list-container

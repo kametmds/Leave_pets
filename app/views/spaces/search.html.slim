@@ -1,21 +1,24 @@
 .search-container
   .search-topic-area
     h2.search-result = "#{@spaces.count}件の宿泊先"
-    .search-topic-container
-      - @spaces.each do |space|
-        = link_to space, class: "search-topic" do
-          = image_tag space.picture.url, class: 'box-topic-image'
-          .search-topic-tips
-            .search-topic-tip
-              div style="color: gray;" = "ホスト名｜#{space.user.name}"
-              span.review-tip
-                - if space.reviews.present?
-                  span = fa_icon("star", text: space.reviews.average(:rate).round(2))
-                - else
-                  span = fa_icon("star", text: 0.0)
-                span = "(#{space.reviews.count})"
-            .search-topic-tip = "スペース名｜#{space.title}"
-            .search-topic-tip
-              - space.tag_list.each do |tag|
-                span.label.label-primary = tag
+    - if @spaces.count > 0
+      .search-topic-container
+        - @spaces.each do |space|
+          = link_to space, class: "search-topic" do
+            = image_tag space.picture.url, class: 'box-topic-image'
+            .search-topic-tips
+              .search-topic-tip
+                div style="color: gray;" = "ホスト名｜#{space.user.name}"
+                span.review-tip
+                  - if space.reviews.present?
+                    span = fa_icon("star", text: space.reviews.average(:rate).round(2))
+                  - else
+                    span = fa_icon("star", text: 0.0)
+                  span = "(#{space.reviews.count})"
+              .search-topic-tip = "スペース名｜#{space.title}"
+              .search-topic-tip
+                - space.tag_list.each do |tag|
+                  span.label.label-primary = tag
+    - else
+      h2.textlabel 検索結果はありません
   .search-map-area

@@ -111,8 +111,6 @@ footer {
   color: #fff;
 }
 
-
-
 // ------------------------------btns-------------------------------------
 
 .btn {
@@ -142,6 +140,15 @@ footer {
   font-size: 12px;
   min-width: 30px;
 }
+
+// .search-btn {
+//   @include btn;
+//   border: 1px;
+//   border-radius: 0;
+//   padding: 9px;
+//   font-size: 15px;
+//   min-width: 30px;
+// }
 
 .btn-green {
   border: 2px solid rgb(111, 207, 58);
@@ -224,12 +231,9 @@ input[type="submit" i] {
 
 .notice {
   background-color: rgb(207, 242, 241);
-  width: 65vw;
+  width: 100vw;
   text-align: center;
-  margin: 5px 0 ;
-  padding: 20px 0;
-  box-shadow: 0 2px 6px #c1ced7;
-  border-radius: 10px;
+  padding: 20px;
 }
 
 // ------------------------------入力フォーム-------------------------------------
@@ -280,3 +284,35 @@ input[type="submit" i] {
   border-radius: 4px;
 }
 
+// ------------------------------検索フォーム-------------------------------------
+
+.search-form {
+  .search-input {
+    margin-bottom: 20px;
+    padding: 10px;
+    width: 260px;
+    height: 40px;
+    font-size: 100%;
+    box-sizing: border-box;
+    border-radius: 5px 0 0 5px;
+    border: 1px solid rgb(240, 181, 55);
+    border-right: none;
+  }
+  .search-btn {
+    padding: 0 10px;
+    color: #fff;
+    width: 60px;
+    height: 40px;
+    font-size: 100%;
+    vertical-align: top;
+    border: 2px solid rgb(240, 181, 55);
+    border-radius: 0 5px 5px 0;
+    background: rgb(240, 181, 55);
+    &:hover {
+      background-color: rgb(223, 169, 53);
+      color: #000 !important;
+      border: 2px solid rgb(223, 169, 53);
+      cursor: pointer;
+    }
+  }
+}

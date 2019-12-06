@@ -8,16 +8,23 @@
 
 //-------------------------index--------------------------------------
 .space-head-zone {
-  background-color: rgb(219, 189, 189);
+  background-image: url(dog-8.jpg);
+  background-size: cover;
+  background-position: bottom;
   width: 100vw;
-  height: 420px;
-  color: rgb(255, 255, 255);
+  height: 560px;
+  color: rgb(170, 247, 108);
   display: flex;
   align-items: center;
   justify-content: center;
-  margin-bottom: 24px;
-  .btn-s {
-    margin: 0;
+  flex-direction: column;
+  margin-bottom: 14px;
+  .headtext {
+    margin-bottom: 78px;
+    font-size: 58px;
+  }
+  .headsentence {
+    margin: 0 0 18px -38px;
   }
 }
 .space-topic-container {
@@ -149,8 +156,8 @@
   background-color: rgb(238, 238, 238);
   border-radius: 18px / 50%;
   display: flex;
+  align-items: center;
   justify-content: center;
-  flex-direction: column;
   margin: 6px;
   padding: 0 4px;
   min-width: 108px;
@@ -212,6 +219,9 @@
   object-fit: cover;
   border-radius: 4px;
 }
+
+
+
 
 header {
   height: 54px;
