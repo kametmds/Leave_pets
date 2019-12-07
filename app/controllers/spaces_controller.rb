@@ -15,7 +15,7 @@ class SpacesController < ApplicationController
   end
 
   def show
-    @user = User.find(params[:id])
+    @user = User.find(@space.user.id)
     connect_room#UsersHelper
     @reviews = @space.reviews.includes(:user).all
     @review = @space.reviews.build(user_id: current_user.id) if current_user
