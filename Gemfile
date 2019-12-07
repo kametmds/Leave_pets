@@ -35,6 +35,8 @@ gem 'letter_opener_web'
 gem 'devise-i18n'
 gem 'devise-i18n-views'
 gem 'acts-as-taggable-on', '~> 6.0'
+gem "gmaps4rails"
+gem "geocoder"
 
 group :development, :test do
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]

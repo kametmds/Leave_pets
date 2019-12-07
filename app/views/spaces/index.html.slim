@@ -23,7 +23,9 @@
             span.review-tip
               - if space.reviews.present?
                 span = fa_icon("star", text: space.reviews.average(:rate).round(2))
-                span = "(#{space.reviews.count})"
+              - else
+                span = fa_icon("star", text: 0.0)
+              span = "(#{space.reviews.count})"
           .space-topic-tip = "スペース名｜#{space.title}"
           .space-topic-tip
             - space.tag_list.each do |tag|

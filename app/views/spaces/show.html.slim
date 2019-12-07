@@ -15,6 +15,12 @@ p
   |郵便番号:
   = @space.postal
 p
+  |latitude:
+  = @space.latitude
+p
+  |longitude:
+  = @space.longitude
+p
   |住所:
   = @space.address
 p
@@ -43,6 +49,7 @@ p
     = render partial: 'reviews/form', locals: { review: @review, space: @space, user: current_user }
   #comments_area
     = render partial: 'reviews/index', locals: { reviews: @reviews, space: @space, user: current_user }
+#map
 .choices
   - if user_check(@space.user)
     => link_to '編集', edit_space_path(@space), class: "btn-s btn-yellow"

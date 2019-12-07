@@ -59,7 +59,7 @@ class SpacesController < ApplicationController
 
   def space_params
     params.require(:space).permit(:title, :picture, :picture_cache, :postal, :address,
-                                  :tel, :content, :capacity, :tag_list, :user_id,
+                                  :tel, :content, :capacity, :tag_list, :user_id, :latitude, :longitude,
                                   subphotos_attributes: [:id, :subpicture, :subpicture_cache, :space_id, :_destroy])
   end
 end

@@ -17,4 +17,7 @@ class Space < ApplicationRecord
 
   accepts_nested_attributes_for :subphotos, allow_destroy: true
   acts_as_taggable
+
+  geocoded_by :address
+  after_validation :geocode, if: :address_changed?
 end
