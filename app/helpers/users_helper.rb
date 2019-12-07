@@ -29,11 +29,11 @@ module UsersHelper
   end
 
   def connect_room
-    if params[:format]
-      @user = User.find(params[:format])
-    elsif params[:id]
-      @user = User.find(params[:id])
-    end
+    # if params[:format]
+    #   @user = User.find(params[:format])
+    # elsif params[:id]
+    #   @user = User.find(params[:id])
+    # end
     #現在ログインしているユーザがRoomに参加している情報
     @currentUserJoin = Join.where(user_id: current_user.id)
     #指定したユーザがRoomに参加している情報
