@@ -75,8 +75,8 @@
     .search-topic {
       display: flex;
       border-bottom: 1px solid rgb(221, 221, 221);
-      margin: 16px;
-      padding-bottom: 16px;
+      // margin: 8px;
+      padding: 16px;
       .search-topic-tips {
         padding: 18px;
         width: 100%;
@@ -261,4 +261,9 @@ header {
   @include textinput;
   width: 240px;
   height: 36px;
+}
+
+.highlight {
+  background-color: rgba(147, 255, 59, 0.171);
+  box-shadow: 0 0 7px 7px rgba(147, 255, 59, 0.171);
 }
