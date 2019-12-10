@@ -3,7 +3,7 @@
     h2.search-result = "#{@spaces.count}件の宿泊先"
     - if @spaces.count > 0
       .search-topic-container
-        - @spaces.each do |space|
+        - @spaces.each_with_index do |space, i|
           = link_to space, class: "search-topic" do
             = image_tag space.picture.url, class: 'box-topic-image'
             .search-topic-tips
@@ -17,8 +17,67 @@
                   span = "(#{space.reviews.count})"
               .search-topic-tip = "スペース名｜#{space.title}"
               .search-topic-tip
+                h2 style="color: red;" = i + 1
+              .search-topic-tip
                 - space.tag_list.each do |tag|
                   span.label.label-primary = tag
     - else
       h2.textlabel 検索結果はありません
   .search-map-area
+    .search-map-zone#gmap
+
+javascript:
+  function initMap() {
+    //マップ表示
+    var target = document.getElementById('gmap');
+    var map = new google.maps.Map(document.getElementById('gmap'), {
+      center: {lat: 35.681167, lng: 139.767052},
+      zoom: 11
+    });
+
+    //現在地マーカー
+    var infoWindow = new google.maps.InfoWindow;
+    if(!navigator.geolocation){
+      infoWindow.setPosition(map.getCenter());
+      infoWindow.setContent('Geolocation に対応していません。');
+      infoWindow.open(map);
+    }
+
+    navigator.geolocation.getCurrentPosition(function(position) {
+      var pos = { lat: position.coords.latitude, lng: position.coords.longitude };
+      var marker = new google.maps.Marker({
+        animation: google.maps.Animation.DROP,
+        position: pos,
+        map: map
+      });
+    }, function() {
+      infoWindow.setPosition(map.getCenter());
+      infoWindow.setContent('Error: Geolocation が無効です。');
+      infoWindow.open(map);
+    });
+    //複数マーカー
+    var spaces = #{raw @spaces.to_json};
+    for(var i = 0; i < spaces.length; ++i) {
+      spot = new google.maps.LatLng({lat: spaces[i].latitude, lng: spaces[i].longitude});
+      marker = new google.maps.Marker({
+        position: spot,
+        map: map,
+      	animation: google.maps.Animation.DROP,
+        icon: {
+        	fillColor: "#FF0000",
+        	fillOpacity: 0.8,
+        	path: google.maps.SymbolPath.CIRCLE,
+        	scale: 12,
+        	strokeColor: "#FF0000",
+        	strokeWeight: 1.0
+        },
+        label: {
+        	text: String(i+1),
+        	color: '#FFFFFF',
+        	fontSize: '14px'
+        }
+      });
+    }
+    //-------------------------------------------------------------
+  }
+script src="https://maps.googleapis.com/maps/api/js?key=#{ENV["COMPANY"]}&callback=initMap" async defer
