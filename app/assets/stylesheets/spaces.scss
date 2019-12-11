@@ -54,6 +54,32 @@
     }
   }
 }
+
+.service-intro {
+  width: 95%;
+  height: 460px;
+  border-radius: 14px;
+  margin: 18px 0;
+  background-image: url(dog-5.jpg);
+  background-size: cover;
+  background-position: center ;
+  color: #fff;
+  .intro-head {
+    position: relative;
+    right: 78px;
+    top: 130px;
+    text-align: right;
+    font-size: 42px;
+  }
+
+  .intro-tip {
+    position: relative;
+    right: 168px;
+    top: 150px;
+    text-align: right;
+    font-size: 42px;
+  }
+}
 //-------------------------search--------------------------------------
 .search-container {
   display: flex;
@@ -105,9 +131,23 @@
   // bottom: 0;
   right: 0;
 }
-.main_picture {
-  width: 50vw;
-  height: 50vh;
+
+
+
+//-------------------------show--------------------------------------
+
+.show-container {
+  .show-space-picture-area {
+    width: 100vw;
+    height: 540px;
+    border-top: 1px solid rgb(134, 134, 134);
+    border-bottom: 1px solid rgb(134, 134, 134);
+    .main_picture {
+      object-fit: cover;
+      width: 100%;
+      height: 540px;
+    }
+  }
 }
 
 .sub_picture {
@@ -118,11 +158,21 @@
     border: 1px solid #fff;
   }
   .sub1, .sub2 {
+    object-fit: cover;
     flex-basis: 50%;
     width: 30vw;
     height: 30vh;
   }
 }
+
+
+
+
+
+
+
+
+
 
 .tip-picture {
   width: 160px;
@@ -170,7 +220,8 @@
   display: flex;
   flex-wrap: wrap;
   align-content: flex-start;
-  height: 250px;
+  height: auto;
+  margin-bottom: 30px;
 }
 .radius-tag {
   border: 2px solid rgb(0, 0, 0);
@@ -224,7 +275,7 @@
   }
 }
 
-.box-radius-image {
+.space-index-picture {
   width: 100%;
   height: 170px;
   border-radius: 4px;
@@ -234,14 +285,12 @@
   height: auto;
 }
 
-.box-topic-image {
+.space-search-topic-picture {
   width: 320px;
-  height: 200px;
+  height: 100%;
   object-fit: cover;
   border-radius: 4px;
 }
-
-
 
 
 header {
@@ -263,7 +312,3 @@ header {
   height: 36px;
 }
 
-.highlight {
-  background-color: rgba(147, 255, 59, 0.171);
-  box-shadow: 0 0 7px 7px rgba(147, 255, 59, 0.171);
-}

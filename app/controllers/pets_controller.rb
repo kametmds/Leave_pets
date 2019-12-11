@@ -2,10 +2,6 @@ class PetsController < ApplicationController
   before_action :set_pet, only: [:show, :edit, :update, :destroy]
   before_action -> {forbid_wrong_user(@pet)}, only: [:edit, :update, :destroy]
 
-  def index
-    @pets = Pet.all
-  end
-
   def show
   end
 
@@ -35,7 +31,7 @@ class PetsController < ApplicationController
 
   def destroy
     @pet.destroy
-    redirect_to pets_url, notice: 'ペット情報削除しました'
+    redirect_to users_show_path(current_user), notice: 'ペット情報削除しました'
   end
 
   private

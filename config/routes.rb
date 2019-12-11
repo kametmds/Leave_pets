@@ -6,6 +6,7 @@ Rails.application.routes.draw do
   resources :spaces do
     resources :reviews
     collection { get "search" }
+    collection { get "intro" }
   end
   root 'spaces#index'
   # mount LetterOpenerWeb::Engine, at: "/letter_opener" if Rails.env.development?

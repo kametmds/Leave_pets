@@ -6,28 +6,74 @@
 
 @mixin general_border {
   border: 1px solid #a39f9f;
-  // background-color: #ddd8d8;
-  background-color: #fff;
 }
-
-.user_show_field {
+.user-show-container {
   display: flex;
-  justify-content: center;
-  width: 75vw;
-  flex-wrap: wrap;
+  .user-info-area {
+    width: 40vw;
+    .user-info-zone {
+      padding: 24px;
+      height: auto;
+      border: 1px solid #d8d8d8;
+      position: fixed;
+      top: 20vh;
+      left: 15vw;
+      width: 290px;
+      .user-icon-tip{
+        display: flex;
+        justify-content: center;
+        padding: 12px;
+      }
+      .user-info-tip {
+        border-top: 1px solid #e9e6e6;
+        padding: 12px;
+        display: flex;
+        flex-direction: column;
+      }
+    }
+  }
+  .user_show_area {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 50vw;
+    .caption-head {
+      // width: 100%;
+      // display: flex;
+      font-size: 48px;
+    }
+    h2 {
+      border-bottom: 1px solid #d8d8d8;
+      width: 100%;
+      margin: 18px;
+      padding: 14px 0;
+      display: flex;
+      .caption-btn {
+        flex-grow: 2;
+        text-align: right;
+      }
+    }
+    .user_show_field {
+      display: flex;
+      justify-content: center;
+      width: 100%;
+      flex-wrap: wrap;
+    }
+
+    .user_show_pet_field {
+      width: 24vw;
+      margin: 0 4px 8px;
+      // display: flex;
+    }
+  
+    .user_show_space_field {
+      width: 75vw;
+      margin-bottom: 16px;
+      display: flex;
+    }
+  }
 }
 
-.user_show_pet_field {
-  @include general_border;
-  width: 24vw;
-  margin: 0 4px 8px;
-}
-
-.user_show_space_field {
-  @include general_border;
-  width: 75vw;
-  margin-bottom: 16px;
-}
 
 .choices {
   padding: 4px;
@@ -83,4 +129,14 @@
 .label {
   @include label;
   padding: 3px 4px;
+}
+
+.fa-thumbs-up {
+  color: orange;
+}
+.fa-user-circle {
+  color: rgb(226, 78, 78);
+}
+.fa-envelope {
+  color: rgb(37, 175, 37);
 }

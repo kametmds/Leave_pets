@@ -5,7 +5,7 @@
       .search-topic-container
         - @spaces.each_with_index do |space, i|
           = link_to space, class: "search-topic #{i+1}", id: "#{i+1}" do
-            = image_tag space.picture.url, class: 'box-topic-image'
+            = image_tag space.picture.url, class: 'space-search-topic-picture'
             .search-topic-tips
               .search-topic-tip
                 div style="color: gray;" = "ホスト名｜#{space.user.name}"
@@ -91,7 +91,7 @@ javascript:
     }
     //---------------------複数マーカーのイベント---------------------
     function markerEvent(i) {
-      marker[i].addListener('click', function() {
+      marker[i].addListener('mouseover', function() {
         var target = $('#' + (i + 1));
         $(".highlight").removeClass("highlight");
         target.addClass("highlight");

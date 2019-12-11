@@ -7,17 +7,20 @@
       = button_tag type: 'submit', class: "search-btn" do
         = fa_icon('search lg')
   .parent
-    h2.textlabel 上位タグ一覧
+    h2.textlabel 上位のタグ
     .tag-list-container
       - @tags.each do |tag|
         = link_to "#{tag.name}(#{tag.taggings.count})", search_spaces_path(tag_name: tag.name), class: "radius-tag"
   .parent
-    h2.textlabel オススメスペース一覧
+    .service-intro
+      h1.intro-head LeavePetの使い方
+      .intro-tip = link_to 'もっと詳しく', intro_spaces_path, class: 'btn-l btn-yellow'
+  .parent
+    h2.textlabel 人気のスペース
     .space-topic-container
       - @spaces.each do |space|
         = link_to space, class: "space-topic" do
-          / = link_to image_tag(space.picture.url, class: "box-radius-image"), space
-          = image_tag space.picture.url, class: 'box-radius-image'
+          = image_tag space.picture.url, class: 'space-index-picture'
           .space-topic-tip
             div style="color: gray;" = "ホスト名｜#{space.user.name}"
             span.review-tip

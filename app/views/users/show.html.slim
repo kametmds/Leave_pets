@@ -1,58 +1,54 @@
-h1 ユーザー詳細
-p.icon
-  = image_tag @user.icon.url, class: 'icon'
-p
-  |名前:
-  = @user.name
-p
-  |メールアドレス:
-  = @user.email
-- unless user_check(@user)
-  - if @isRoom == true
-    p = link_to 'ホストとのメッセージ', room_path(@roomId), class: "btn-s btn-red"
-  - else
-    = form_for @room do |f|
-      = fields_for @join do |e|
-        = e.hidden_field :user_id, value: @user.id
-      = f.submit "ホストにメッセージを送る", class:"btn btn-red"
-- else
-  = link_to 'ユーザー情報編集', edit_user_registration_path(@user), class: "btn-s btn-green"
-h2
-  |マイペット情報
-  = link_to 'マイペット作成', new_pet_path, class: "btn-xs btn-green" if user_check(@user)
-.user_show_field
-  - @user.pets.each do |pet|
-    .user_show_pet_field
-      div = image_tag pet.image.url, class: 'icon'
-      div = pet.name
-      div = "年齢：#{pet.age}さい"
-      div = "大きさ：#{pet.size}cm"
-      div = "重さ：#{pet.weight}kg"
-      - if user_check(@user)
-        .choices
-          = link_to fa_icon('info lg'), pet, class: "btn-s btn-blue choice"
-          = link_to fa_icon('edit lg'), edit_pet_path(pet), class: "btn-s btn-yellow choice"
-          = link_to fa_icon('trash lg'), pet, data: { confirm: 'ペット情報削除しますか？' }, method: :delete, class: "btn-s btn-red choice"
-h2
-  |ホストスペース情報
-  = link_to 'スペース作成', new_space_path, class: "btn-xs btn-green" if user_check(@user)
-.user_show_field
-  - @user.spaces.each do |space|
-    .user_show_space_field
-      div = image_tag space.picture.url, class: 'icon'
-      div = "#{space.title}"
-      div = "郵便番号：#{space.postal}"
-      div = "住所：#{space.address}"
-      div = "電話番号：#{space.tel}"
-      td
-        |受け入れ可能なペット：
-        = render 'spaces/tag_list', tag_list: space.tag_list
-      div = "受け入れ上限数：#{space.capacity}"
-      div = "備考：#{space.content}"
-      - if user_check(@user)
-        .choices
-          = link_to fa_icon('info lg'), space, class: "btn-s btn-blue choice"
-          = link_to fa_icon('edit lg'), edit_space_path(space), class: "btn-s btn-yellow choice"
-          = link_to fa_icon('trash lg'), space, data: { confirm: 'スペース情報削除しますか？' }, method: :delete, method: :delete, class: "btn-s btn-red choice"
-h2
-  |予約履歴
+.user-show-container
+  .user-info-area
+    .user-info-zone
+      .user-icon-tip
+        = image_tag @user.icon.url, class: 'icon'
+      .user-info-tip
+        p = fa_icon("user-circle lg", text: "#{@user.name}")
+        p = fa_icon("envelope lg", text: @user.email)
+      .user-info-tip
+        p = fa_icon("thumbs-up lg", text: "ホストスペースへのレビュー#{@userReviews.count}件")
+        p = fa_icon("home lg", text: "登録スペース数#{@user.spaces.count}件")
+        p = fa_icon("paw lg", text: "登録ペット数#{@user.pets.count}匹")
+      .user-info-tip
+        - unless user_check(@user)
+          - if @isRoom == true
+            = link_to 'ホストとのメッセージ', room_path(@roomId), class: "btn-s btn-red"
+          - else
+            = form_for @room do |f|
+              = fields_for @join do |e|
+                = e.hidden_field :user_id, value: @user.id
+              = f.submit "ホストにメッセージを送る", class:"btn btn-red"
+        - else
+          = link_to 'ユーザー情報編集', edit_user_registration_path(@user), class: "btn-s btn-green"
+  .user_show_area
+    p.caption-head = "#{@user.name}のページ"
+    h2
+      span マイペット情報
+      span.caption-btn = link_to '＋', new_pet_path, class: "btn-xs btn-red" if user_check(@user)
+    .user_show_field
+      - @user.pets.each do |pet|
+        = link_to pet, class: "user_show_pet_field"
+          div = image_tag pet.image.url, class: 'icon'
+          div = pet.name
+          div = "年齢：#{pet.age}さい"
+          div = "大きさ：#{pet.size}cm"
+          div = "重さ：#{pet.weight}kg"
+    h2
+      span ホストスペース情報
+      span.caption-btn = link_to '＋', new_space_path, class: "btn-xs btn-red" if user_check(@user)
+    .user_show_field
+      - @user.spaces.each do |space|
+        .user_show_space_field
+          .user_show_space_iamge
+            = link_to image_tag(space.picture.url, class: 'space-search-topic-picture'), space, class: ''
+          .user_show_space_info
+            .user_show_space_tip = "#{space.title}"
+            .user_show_space_tip = "郵便番号：#{space.postal}"
+            .user_show_space_tip = "住所：#{space.address}"
+            .user_show_space_tip = "電話番号：#{space.tel}"
+            .user_show_space_tip = render 'spaces/tag_list', tag_list: space.tag_list
+            .user_show_space_tip = "受け入れ上限数：#{space.capacity}"
+            .user_show_space_tip = "備考：#{space.content}"
+    h2
+      |予約履歴

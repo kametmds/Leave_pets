@@ -52,6 +52,9 @@ class SpacesController < ApplicationController
     redirect_to spaces_url, notice: 'スペース情報削除しました'
   end
 
+  def intro
+  end
+
   private
   def set_space
     @space = Space.find(params[:id])
