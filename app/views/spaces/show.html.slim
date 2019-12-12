@@ -1,44 +1,58 @@
+.show-space-picture-area
+  = image_tag @space.picture.url, class: 'main_picture'
 .show-container
-  .show-space-picture-area
-    = image_tag @space.picture.url, class: 'main_picture'
-  .show-topic-area
-    h1 スペース詳細
-    - unless user_check(@space.user)
-      - if @isRoom == true
-        p = link_to 'ホストとのメッセージ', room_path(@roomId), class: "btn-s btn-red"
-      - else
-        = form_for @room do |f|
-          = fields_for @join do |e|
-            = e.hidden_field :user_id, value: @space.user.id
-          = f.submit "ホストにメッセージを送る", class:"btn btn-red"
-    p = @space.title
-    p = @space.postal
-    p = @space.latitude
-    p = @space.longitude
-    p = @space.address
-    p = @space.tel
-    p = render 'spaces/tag_list', tag_list: @space.tag_list
-    p = @space.capacity
-    p = link_to @space.user.name, users_show_path(@space.user.id), class: "btn-s btn-yellow"
-    p = @space.content
-    .sub_picture
-      - @space.subphotos.each.with_index(1) do |photo, i|
-        div class="sub#{i}area" = image_tag photo.subpicture.url, class: "sub#{i}"
-    .review_container
-      .review-title
-        span = fa_icon("star", text: "#{@reviewsRate}", left: true)
-        span = " (#{@reviews.count}件のレビュー)"
-      #review_area
-        = render partial: 'reviews/form', locals: { review: @review, space: @space, user: current_user }
-      #comments_area
-        = render partial: 'reviews/index', locals: { reviews: @reviews, space: @space, user: current_user }
-    .show-map-zone#map
-    .choices
-      - if user_check(@space.user)
-        = link_to '編集', edit_space_path(@space), class: "btn-s btn-yellow"
-        = link_to '一覧', spaces_path, class: "btn-s btn-green"
-        = link_to '削除', @space, data: { confirm: '削除しますか？' }, method: :delete, class: "btn-s btn-red"
+  .show-space-topic-area
+    .show-space-topic
+      p.show-space-title = @space.title
+      p = "〒#{@space.postal}　#{@space.address}"
+      p = format_phone(@space.tel)
+    .show-space-topic
+      h2 このスペースについて
+      h3 受け入れ可能なペット
+      = render 'spaces/tag_list', tag_list: @space.tag_list
+      h3 = "受け入れ上限：#{@space.capacity}"
+      h3 スペースの内容
+      p = @space.content
+    .show-space-topic
+      h2 スペース画像
+      .sub_picture
+        - @space.subphotos.each.with_index(1) do |photo, i|
+          = image_tag photo.subpicture.url, class: "sub#{i}"
+    .show-space-topic
+      h2 レビュー
+      .review_container
+        .review-title
+          span = fa_icon("star", text: "#{@reviewsRate}", left: true)
+          span = " (#{@reviews.count}件のレビュー)"
+        #review_area
+          = render partial: 'reviews/form', locals: { review: @review, space: @space, user: current_user }
+        #comments_area
+          = render partial: 'reviews/index', locals: { reviews: @reviews, space: @space, user: current_user }
+    .show-space-topic
+      h2 マップ
+  .show-space-action-area
+    .space-action-zone
+      .space-user-tip
+        = link_to image_tag(@space.user.icon.url, class: 'icon'), users_show_path(@space.user)
+        h3 = link_to @space.user.name, users_show_path(@space.user)
+      - unless user_check(@space.user)
+        .space-action-tip
+          .btn-s.btn-red このスペースを予約する
+        .space-action-tip
+          - if @isRoom == true
+            = link_to 'ホストとのメッセージ', room_path(@roomId), class: "btn-s btn-green"
+          - else
+            = form_for @room do |f|
+              = fields_for @join do |e|
+                = e.hidden_field :user_id, value: @space.user.id
+              = f.submit "ホストにメッセージを送る", class:"btn btn-green"
 
+      - else
+        .space-action-tip
+          .choices
+            = link_to '編集', edit_space_path(@space), class: "btn-s btn-yellow"
+            = link_to '削除', @space, data: { confirm: '削除しますか？' }, method: :delete, class: "btn-s btn-red"
+.show-map-zone#map
 javascript:
   function initMap(){
   var coordinate = {lat: #{@space.latitude}, lng: #{@space.longitude}};

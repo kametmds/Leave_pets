@@ -135,44 +135,86 @@
 
 
 //-------------------------show--------------------------------------
+.show-space-picture-area {
+  width: 100vw;
+  height: 540px;
+  border-top: 1px solid rgb(134, 134, 134);
+  border-bottom: 1px solid rgb(134, 134, 134);
+  .main_picture {
+    object-fit: cover;
+    width: 100%;
+    height: 540px;
+  }
+}
 
 .show-container {
-  .show-space-picture-area {
-    width: 100vw;
-    height: 540px;
-    border-top: 1px solid rgb(134, 134, 134);
-    border-bottom: 1px solid rgb(134, 134, 134);
-    .main_picture {
-      object-fit: cover;
-      width: 100%;
-      height: 540px;
+  display: flex;
+  width: 80%;
+  .show-space-topic-area {
+    width: 60%;
+    .show-space-topic{
+      margin-bottom: 38px;
+    }
+    .show-space-title {
+      font-size: 46px;
+      font-weight: 600;
+    }
+    h2 {
+      font-size: 32px;
+      border-bottom: 1px solid #d8d8d8;
+      padding: 14px 0;
+      margin: 18px 18px 18px 0;
+    }
+  }
+  .show-space-action-area {
+    width: 40%;
+    background-color: rgb(255, 252, 244);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    .space-action-zone {
+      padding: 6px 24px;
+      border: 1px solid #d8d8d8;
+      border-radius: 6px;
+      position: sticky;
+      top: 15vh;
+      // right: 10vw;
+      width: 70%;
+      background-color: #fff;
+      .space-user-tip {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        padding: 20px 12px;
+      }
+      .space-action-tip {
+        // border-top: 1px solid #e9e6e6;
+        padding: 12px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        .btn-s {
+          min-width: 80%;
+        }
+      }
     }
   }
 }
 
 .sub_picture {
-  width: 62vw;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  margin: 38px 0;
+  padding-left: 34px;
   img {
-    width: 20vw;
-    height: 20vh;
-    border: 1px solid #fff;
-  }
-  .sub1, .sub2 {
+    width: 80%;
+    // height: 250px;
+    border-radius: 6px;
     object-fit: cover;
-    flex-basis: 50%;
-    width: 30vw;
-    height: 30vh;
+    margin-bottom: 6px;
   }
 }
-
-
-
-
-
-
-
-
-
 
 .tip-picture {
   width: 160px;
@@ -203,6 +245,7 @@
 .show-map-zone {
   height: 580px;
   width: 75vw;
+  margin-bottom: 72px;
 }
 .search-map-zone {
   z-index: 3;
@@ -290,20 +333,6 @@
   height: 100%;
   object-fit: cover;
   border-radius: 4px;
-}
-
-
-header {
-  height: 54px;
-  width: 100%;
-  display: flex;
-  align-items: center;
-  font-size: 16px;
-  background-color: rgb(111, 207, 58);
-  color: #fff;
-  position: sticky;
-  top: 0;
-  z-index: 3;
 }
 
 .xs-textinput {

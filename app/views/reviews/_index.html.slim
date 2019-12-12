@@ -4,9 +4,9 @@
       .review-face
         = link_to image_tag( review.user.icon.url, class:"icon-s"), users_show_path(review.user.id)
         .reviewer
-          = link_to review.user.name, users_show_path(review.user.id)
-          = review.created_at.strftime("%y/%m/%d-%H:%M:%S")
-        .star id="rate-#{review.id}"
+          = link_to review.user.name, users_show_path(review.user.id), class: "review-user-name"
+          = review.created_at.strftime("20%y年%m月%d日")
+        .star.review_rate id="rate-#{review.id}"
           label = review.rate
           javascript:
             $("#rate-#{review.id}").raty({
