@@ -1,0 +1,19 @@
+h1 予約作成画面
+h2 = "#{@reserveSpace.title}の物件です"
+h2 = "#{current_user.name}が預けられるペットは以下の#{@userPets.count}匹です"
+- @userPets.each do |pet|
+  = pet.name
+  = image_tag pet.image.url, class: "icon"
+
+= form_with(model: @reservation, local: true, class: '') do |f|
+  = f.collection_select(:pet, @userPets, :name, :name)
+  .field
+    h4.textlabel = f.label :start_date
+    = date_select :date, Date.today, use_month_numbers: true
+  .field
+    h4.textlabel = f.label :end_date
+    = date_select :date, Date.today, use_month_numbers: true
+  .field
+    = f.hidden_field :@space
+  .actions = f.submit class: "btn-s btn-green"
+

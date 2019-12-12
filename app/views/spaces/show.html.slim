@@ -37,7 +37,7 @@
         h3 = link_to @space.user.name, users_show_path(@space.user)
       - unless user_check(@space.user)
         .space-action-tip
-          .btn-s.btn-red このスペースを予約する
+          = link_to '予約する', new_reservation_path(space_id: @space.id), class: "btn-s btn-red"
         .space-action-tip
           - if @isRoom == true
             = link_to 'ホストとのメッセージ', room_path(@roomId), class: "btn-s btn-green"

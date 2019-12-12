@@ -10,4 +10,5 @@ class User < ApplicationRecord
   has_many :messages, dependent: :destroy
   has_many :joins, dependent: :destroy
   has_many :reviews, dependent: :destroy
+  has_many :reservations, dependent: :destroy
 end
