@@ -6,7 +6,7 @@
     = form.label :rate, '評価 '
     = form.hidden_field :rate, id: "review-star"
   .review-inputzone
-    = form.text_area :comment, class: "review-textarea", placeholder:'まずは投稿してみましょう！投稿してから削除もできますよ！'
+    = form.text_area :comment, class: "review-textarea", placeholder:'利用者は投稿してみましょう！投稿してから削除もできますよ！'
   .actions
     = form.hidden_field :user_id
     = form.submit class: "btn-s btn-green"

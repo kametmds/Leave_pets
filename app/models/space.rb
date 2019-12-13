@@ -14,7 +14,7 @@ class Space < ApplicationRecord
 
   has_many :subphotos, dependent: :destroy
   has_many :reviews, dependent: :destroy
-  has_many :reservations, dependent: :destroy
+  has_many :reservations, dependent: :destroy, foreign_key: 'space_id'
 
   accepts_nested_attributes_for :subphotos, allow_destroy: true
   acts_as_taggable

@@ -1,19 +1,28 @@
 h1 予約作成画面
-h2 = "#{@reserveSpace.title}の物件です"
-h2 = "#{current_user.name}が預けられるペットは以下の#{@userPets.count}匹です"
-- @userPets.each do |pet|
-  = pet.name
-  = image_tag pet.image.url, class: "icon"
+/ h2 = "#{@reserveSpace.title}の物件です"
+/ h2 = "#{current_user.name}が預けられるペットは以下の#{@userPets.count}匹です"
+/ - @userPets.each do |pet|
+/   = pet.name
+/   = image_tag pet.image.url, class: "icon"
 
 = form_with(model: @reservation, local: true, class: '') do |f|
-  = f.collection_select(:pet, @userPets, :name, :name)
+  = f.collection_select(:pet, current_user.pets, :id, :name)
+  / = f.select :name, @userPets, {include_blank: '選択ボックス'}
   .field
     h4.textlabel = f.label :start_date
     = date_select :date, Date.today, use_month_numbers: true
   .field
     h4.textlabel = f.label :end_date
     = date_select :date, Date.today, use_month_numbers: true
+
   .field
-    = f.hidden_field :@space
+    = f.hidden_field :space_id, value: @reserveSpace.id
+
+  / - @userPets.each do |pet|
+  /   .field
+  /   = f.check_box :pet_id, { multiple: true, checked: pet[:checked], disabled: pet[:disabled], include_hidden: false }, pet[:id]
+  /   = image_tag pet.image.url, class: "icon"
+  /   = pet.name
+
   .actions = f.submit class: "btn-s btn-green"
 

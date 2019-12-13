@@ -14,8 +14,13 @@ class ReservationsController < ApplicationController
   end
 
   def create
-    reservation = current_user.reservations.create(reservation_params)
-    redirect_to spaces_path
+    @reservation = current_user.reservations.build(reservation_params)
+    if @reservation.save
+      flash[:notice] = "作成しました"
+      redirect_to spaces_path
+    else
+      render :new
+    end
   end
 
 
@@ -35,7 +40,7 @@ class ReservationsController < ApplicationController
   end
 
   def reservation_params
-    params.require(:reservation).permit(:end_date, :start_date, :status, :user_id, :space_id, :pet_id)
+    params.require(:reservation).permit(:end_date, :start_date, :status, :user_id, :space_id, :pet_id, pet_ids: [])
   end
 
 end
