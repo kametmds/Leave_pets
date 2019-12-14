@@ -55,9 +55,8 @@
     }
     .user_show_field {
       display: flex;
-      justify-content: center;
+      flex-direction: column;
       width: 100%;
-      flex-wrap: wrap;
     }
 
     .user_show_pet_field {
@@ -65,11 +64,17 @@
       margin: 0 4px 8px;
       // display: flex;
     }
-  
+
     .user_show_space_field {
       width: 75vw;
       margin-bottom: 16px;
       display: flex;
+    }
+    .user_show_reservation_field {
+      .user_show_reservation_info {
+        display: flex;
+        flex-direction: column;
+      }
     }
   }
 }

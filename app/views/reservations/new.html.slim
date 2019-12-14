@@ -6,14 +6,15 @@ h1 予約作成画面
 /   = image_tag pet.image.url, class: "icon"
 
 = form_with(model: @reservation, local: true, class: '') do |f|
-  = f.collection_select(:pet, current_user.pets, :id, :name)
+  - binding.pry
+  = f.collection_select(:pet_id, current_user.pets, :id, :name)
   / = f.select :name, @userPets, {include_blank: '選択ボックス'}
   .field
     h4.textlabel = f.label :start_date
-    = date_select :date, Date.today, use_month_numbers: true
+    = date_field_tag "reservation[start_date]", Date.today, type: "date"
   .field
     h4.textlabel = f.label :end_date
-    = date_select :date, Date.today, use_month_numbers: true
+    = date_field_tag "reservation[end_date]", Date.today, type: "date"
 
   .field
     = f.hidden_field :space_id, value: @reserveSpace.id

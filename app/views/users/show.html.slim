@@ -51,4 +51,17 @@
             .user_show_space_tip = "受け入れ上限数：#{space.capacity}"
             .user_show_space_tip = "備考：#{space.content}"
     h2
-      |予約履歴
+      span 予約履歴
+    .user_show_field
+      - @user.reservations.each do |reservation|
+        .user_show_reservation_field
+          / .user_show_space_iamge
+          /   = link_to image_tag(space.picture.url, class: 'space-search-topic-picture'), space, class: ''
+          .user_show_reservation_info
+            .user_show_reservation_tip = reservation.space.title
+            .user_show_reservation_tip = reservation.space.address
+            / .user_show_reservation_tip = 
+            / .user_show_reservation_tip = 
+            / .user_show_reservation_tip = 
+            / .user_show_reservation_tip = 
+            / .user_show_reservation_tip = 
