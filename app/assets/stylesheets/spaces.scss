@@ -224,12 +224,14 @@
 .tip-picture {
   width: 160px;
   height: 110px;
+  object-fit: cover;
 }
 
 .edit_picture {
   text-align: left;
   img {
     @include icon;
+    // object-fit: cover;
     &:hover {
       background-color: rgba(255, 255, 255, 0.445);
       box-shadow: 1px 1px 5px 1px #999;

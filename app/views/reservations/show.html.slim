@@ -1,36 +1,37 @@
 h1 予約詳細画面
+p.btn.btn-blue = "現在ホストによる#{@reservation.status}です"
 p
-  = image_tag @reservation.space.picture.url, class: 'icon'
+  = image_tag @reservation.space.picture.url, class: 'space-search-topic-picture'
 p
   |スペース名:
   = @reservation.space.title
 p
-  |住所:
+  |予約した日:
+  = @reservation.created_at.strftime("%Y年%-m月%-d日")
+p
+  |預け先住所:
   = @reservation.space.address
 p
   |連絡先:
-  = @reservation.space.tel
+  = format_phone(@reservation.space.tel)
 p
-  |ペットタグ:
+  |預け先ペットタグ:
   = render 'spaces/tag_list', tag_list: @reservation.space.tag_list
 p
-  |内容:
+  |預け先の備考:
   = @reservation.space.content
 p
-  |オーナーユーザー:
+  |ホストユーザー:
   = @reservation.space.user.name
 p
-  |お世話になったペット:
+  |お世話になる(なった)ペット:
   = @reservation.pet.name
 p
-  |チェックイン:
+  |チェックイン日:
   = @reservation.start_date.strftime("%Y年%-m月%-d日")
 p
-  |チェックアウト:
+  |チェックアウト日:
   = @reservation.end_date.strftime("%Y年%-m月%-d日")
-p
-  |予約の状況:
-  = @reservation.status
 
 br
 =< link_to '戻る', users_show_path(@reservation.user), class: "btn-s btn-red"

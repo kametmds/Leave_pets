@@ -9,6 +9,7 @@
 }
 .user-show-container {
   display: flex;
+  overflow:hidden;
   .user-info-area {
     width: 40vw;
     .user-info-zone {
@@ -55,25 +56,41 @@
     }
     .user_show_field {
       display: flex;
-      flex-direction: column;
+      // flex-direction: column;
       width: 100%;
+      flex-wrap: wrap;
     }
 
     .user_show_pet_field {
-      width: 24vw;
-      margin: 0 4px 8px;
-      // display: flex;
+      width: 50%;
+      a {
+        margin-bottom: 16px;
+        display: flex;
+      }
+      .user_show_pet_info {
+        padding: 12px 0 0 24px;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+      }
     }
 
     .user_show_space_field {
-      width: 75vw;
+      width: 100%;
       margin-bottom: 16px;
       display: flex;
+      .user_show_space_info {
+        padding: 12px 0 0 24px;
+      }
     }
     .user_show_reservation_field {
-      .user_show_reservation_info {
+      a {
+        width: 100%;
+        margin-bottom: 16px;
         display: flex;
-        flex-direction: column;
+      }
+      .user_show_reservation_info {
+        padding-left: 24px;
       }
     }
   }

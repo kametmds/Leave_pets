@@ -29,40 +29,40 @@
       span.caption-btn = link_to '＋', new_pet_path, class: "btn-xs btn-red" if user_check(@user)
     .user_show_field
       - @user.pets.each do |pet|
-        = link_to pet, class: "user_show_pet_field"
-          div = image_tag pet.image.url, class: 'icon'
-          div = pet.name
-          div = "年齢：#{pet.age}さい"
-          div = "大きさ：#{pet.size}cm"
-          div = "重さ：#{pet.weight}kg"
+        .user_show_pet_field = link_to pet do
+          .user_show_pet_iamge
+            = image_tag pet.image.url, class: 'box-icon-l'
+          .user_show_pet_info
+            = pet.name
+            p = "年齢：#{pet.age}さい"
+            = "大きさ：#{pet.size}cm"
+            p = "重さ：#{pet.weight}kg"
     h2
       span ホストスペース情報
       span.caption-btn = link_to '＋', new_space_path, class: "btn-xs btn-red" if user_check(@user)
     .user_show_field
       - @user.spaces.each do |space|
-        .user_show_space_field
+        .user_show_space_field = link_to space do
           .user_show_space_iamge
-            = link_to image_tag(space.picture.url, class: 'space-search-topic-picture'), space, class: ''
+            = image_tag(space.picture.url, class: 'space-search-topic-picture')
           .user_show_space_info
-            .user_show_space_tip = "#{space.title}"
-            .user_show_space_tip = "郵便番号：#{space.postal}"
-            .user_show_space_tip = "住所：#{space.address}"
-            .user_show_space_tip = "電話番号：#{space.tel}"
-            .user_show_space_tip = render 'spaces/tag_list', tag_list: space.tag_list
-            .user_show_space_tip = "受け入れ上限数：#{space.capacity}"
-            .user_show_space_tip = "備考：#{space.content}"
-    h2
-      span 予約履歴
-    .user_show_field
-      - @user.reservations.each do |reservation|
-        .user_show_reservation_field
-          .user_show_reservation_iamge
-            = link_to image_tag(reservation.space.picture.url, class: 'space-search-topic-picture'), reservation, class: 'icon'
-          .user_show_reservation_info
-            .user_show_reservation_tip = reservation.space.title
-            .user_show_reservation_tip = reservation.space.address
-            / .user_show_reservation_tip = 
-            / .user_show_reservation_tip = 
-            / .user_show_reservation_tip = 
-            / .user_show_reservation_tip = 
-            / .user_show_reservation_tip = 
+            p.user_show_space_tip = "#{space.title}"
+            p.user_show_space_tip = "郵便番号：#{space.postal}"
+            p.user_show_space_tip = "住所：#{space.address}"
+            p.user_show_space_tip = render 'spaces/tag_list', tag_list: space.tag_list
+    - if user_check(@user)
+      h2
+        span 予約履歴
+      .user_show_field
+        - @user.reservations.each do |reservation|
+          .user_show_reservation_field = link_to reservation do
+            .user_show_reservation_iamge
+              = image_tag(reservation.space.picture.url, class: 'space-search-topic-picture')
+            .user_show_reservation_info
+              .user_show_reservation_tip = reservation.space.title
+              p.user_show_reservation_tip = "場所：#{reservation.space.address}"
+              .user_show_reservation_tip= "予約申請日:#{reservation.created_at.strftime("%Y年%-m月%-d日")}"
+              p.user_show_reservation_tip = "預けたペット：#{reservation.pet.name}"
+              p.user_show_reservation_tip = "#{reservation.start_date.strftime("%Y年%-m月%-d日")}から#{reservation.end_date.strftime("%Y年%-m月%-d日")}まで"
+              .btn-xs.btn-blue = reservation.status
+

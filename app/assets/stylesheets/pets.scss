@@ -1,5 +1,15 @@
 @import "application.scss";
 
+.icon-xl {
+  @include icon;
+  width: 200px;
+  height: 200px;
+}
+.icon-l {
+  @include icon;
+  width: 150px;
+  height: 150px;
+}
 .icon {
   @include icon;
   width: 100px;
@@ -30,6 +40,12 @@
   }
 }
 
+.box-icon-l {
+  @include icon;
+  border-radius: 4px;
+  width: 150px;
+  height: 150px;
+}
 a {
   text-decoration: none;
   color: #000;
