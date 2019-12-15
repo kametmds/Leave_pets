@@ -4,5 +4,5 @@ class Reservation < ApplicationRecord
   # accepts_nested_attributes_for :pet
   belongs_to :space
   # accepts_nested_attributes_for :space
-  enum priority: { 未予約: 0, 予約中: 1, 予約完了: 2, 引取り済: 3}
+  enum status: { ホストによる予約確認中: 0, 予約完了: 1, 引取り済: 2}
 end

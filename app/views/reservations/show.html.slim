@@ -1,0 +1,37 @@
+h1 予約詳細画面
+p
+  = image_tag @reservation.space.picture.url, class: 'icon'
+p
+  |スペース名:
+  = @reservation.space.title
+p
+  |住所:
+  = @reservation.space.address
+p
+  |連絡先:
+  = @reservation.space.tel
+p
+  |ペットタグ:
+  = render 'spaces/tag_list', tag_list: @reservation.space.tag_list
+p
+  |内容:
+  = @reservation.space.content
+p
+  |オーナーユーザー:
+  = @reservation.space.user.name
+p
+  |お世話になったペット:
+  = @reservation.pet.name
+p
+  |チェックイン:
+  = @reservation.start_date.strftime("%Y年%-m月%-d日")
+p
+  |チェックアウト:
+  = @reservation.end_date.strftime("%Y年%-m月%-d日")
+p
+  |予約の状況:
+  = @reservation.status
+
+br
+=< link_to '戻る', users_show_path(@reservation.user), class: "btn-s btn-red"
+br

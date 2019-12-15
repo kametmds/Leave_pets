@@ -5,7 +5,9 @@ class ReservationsController < ApplicationController
     @reservations = current_user.reservations
   end
 
-  # def show ;end
+  def show
+
+  end
 
   def new
     @userPets = current_user.pets
@@ -16,7 +18,7 @@ class ReservationsController < ApplicationController
   def create
     @reservation = current_user.reservations.build(reservation_params)
     if @reservation.save
-      flash[:notice] = "作成しました"
+      flash[:notice] = "予約申請しました"
       redirect_to spaces_path
     else
       render :new
@@ -29,8 +31,8 @@ class ReservationsController < ApplicationController
   # def update ;end
 
   # def destroy
-  #   favorite = current_user.favorites.find_by(id: params[:id]).destroy
-  #   redirect_to spaces_path
+  #   resercation = current_user.resercations.find_by(id: params[:id]).destroy
+  #   redirect_to users_show_path(current_user)
   # end
 
   private

@@ -6,7 +6,6 @@ h1 予約作成画面
 /   = image_tag pet.image.url, class: "icon"
 
 = form_with(model: @reservation, local: true, class: '') do |f|
-  - binding.pry
   = f.collection_select(:pet_id, current_user.pets, :id, :name)
   / = f.select :name, @userPets, {include_blank: '選択ボックス'}
   .field
@@ -18,6 +17,7 @@ h1 予約作成画面
 
   .field
     = f.hidden_field :space_id, value: @reserveSpace.id
+    / = f.hidden_field :status, value: "予約完了"
 
   / - @userPets.each do |pet|
   /   .field
