@@ -1,5 +1,5 @@
 h1 予約詳細画面
-p.btn.btn-blue = "現在ホストによる#{@reservation.status}です"
+p.btn.btn-blue = "#{@reservation.status}です"
 p
   = image_tag @reservation.space.picture.url, class: 'space-search-topic-picture'
 p
@@ -33,6 +33,8 @@ p
   |チェックアウト日:
   = @reservation.end_date.strftime("%Y年%-m月%-d日")
 
+- if current_user == @reservation.space.user
+  = link_to '予約状況更新', edit_reservation_path(@reservation), class: "btn-s btn-yellow"
 br
-=< link_to '戻る', users_show_path(@reservation.user), class: "btn-s btn-red"
+=< link_to '戻る', users_show_path(current_user), class: "btn-s btn-red"
 br

@@ -27,3 +27,7 @@ ja:
         tel: 電話番号
         picture: 画像
         content: その他情報
+      reservation:
+        start_date: チェックイン
+        end_date: チェックアウト
+        status: 予約状況

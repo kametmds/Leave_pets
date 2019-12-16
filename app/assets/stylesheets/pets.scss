@@ -46,6 +46,19 @@
   width: 150px;
   height: 150px;
 }
+
+.box-icon {
+  @include icon;
+  border-radius: 4px;
+  width: 100px;
+  height: 100px;
+}
+.box-icon-s {
+  @include icon;
+  border-radius: 4px;
+  width: 50px;
+  height: 50px;
+}
 a {
   text-decoration: none;
   color: #000;

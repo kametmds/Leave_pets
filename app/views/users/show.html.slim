@@ -9,6 +9,7 @@
         p = fa_icon("envelope lg", text: @user.email)
       .user-info-tip
         p = fa_icon("thumbs-up lg", text: "ホストスペースへのレビュー#{@userReviews.count}件")
+        p = fa_icon("book lg", text: "ホストスペースへの予約依頼#{@userReservations.count}件")
         p = fa_icon("home lg", text: "登録スペース数#{@user.spaces.count}件")
         p = fa_icon("paw lg", text: "登録ペット数#{@user.pets.count}匹")
       .user-info-tip
@@ -65,4 +66,21 @@
               p.user_show_reservation_tip = "預けたペット：#{reservation.pet.name}"
               p.user_show_reservation_tip = "#{reservation.start_date.strftime("%Y年%-m月%-d日")}から#{reservation.end_date.strftime("%Y年%-m月%-d日")}まで"
               .btn-xs.btn-blue = reservation.status
-
+    - if user_check(@user)
+      h2
+        span ホストスペースへの予約依頼
+      .user_show_field
+        - @user.spaces.each do |space|
+          - space.reservations.each do |reservation|
+            .user_show_reserved_field
+              .user_show_reserved_image
+                = link_to image_tag(reservation.space.picture.url, class: 'box-icon'), reservation
+              .user_show_reserved_info = link_to reservation do
+                .user_show_reserved_tip = "予約申請日:#{reservation.created_at.strftime("%Y年%-m月%-d日")}"
+                .user_show_reserved_tip = "予約ペット：#{reservation.pet.name}"
+                .user_show_reserved_tip = "#{reservation.start_date.strftime("%Y年%-m月%-d日")}から#{reservation.end_date.strftime("%Y年%-m月%-d日")}まで"
+                .btn-xs.btn-red = reservation.status
+              .user_show_reserved_info
+                .user_show_reserved_tip = link_to image_tag(reservation.user.icon.url, class: 'box-icon-s'), users_show_path(reservation.user)
+              .user_show_reserved_info
+                .user_show_reserved_tip = link_to image_tag(reservation.pet.image.url, class: 'box-icon-s'), reservation.pet
