@@ -35,7 +35,7 @@ end
                 content: "#{i}番目の物件です", user_id: User.first.id)
 end
 9.upto(10) do |i|
-  Space.create!(title: "space#{i}", postal: "333-3333",address: "東京都渋谷区円山町" ,
+  Space.create!(title: "space#{i}", postal: "333-3333",address: "東京都渋谷区" ,
                 tel: "07087654321", capacity: i, picture:open("#{Rails.root}/db/data/space#{i}.jpg"),
                 content: "#{i}番目の物件です", user_id: User.first.id + 1)
 end

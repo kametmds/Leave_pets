@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_12_12_073522) do
+ActiveRecord::Schema.define(version: 2019_12_17_065400) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -49,16 +49,23 @@ ActiveRecord::Schema.define(version: 2019_12_12_073522) do
     t.index ["user_id"], name: "index_pets_on_user_id"
   end
 
+  create_table "reservation_pets", force: :cascade do |t|
+    t.bigint "reservation_id"
+    t.bigint "pet_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["pet_id"], name: "index_reservation_pets_on_pet_id"
+    t.index ["reservation_id"], name: "index_reservation_pets_on_reservation_id"
+  end
+
   create_table "reservations", force: :cascade do |t|
     t.bigint "user_id"
-    t.bigint "pet_id"
     t.bigint "space_id"
     t.datetime "start_date", null: false
     t.datetime "end_date", null: false
     t.integer "status", default: 0
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["pet_id"], name: "index_reservations_on_pet_id"
     t.index ["space_id"], name: "index_reservations_on_space_id"
     t.index ["user_id"], name: "index_reservations_on_user_id"
   end
@@ -156,7 +163,8 @@ ActiveRecord::Schema.define(version: 2019_12_12_073522) do
   add_foreign_key "messages", "rooms"
   add_foreign_key "messages", "users"
   add_foreign_key "pets", "users"
-  add_foreign_key "reservations", "pets"
+  add_foreign_key "reservation_pets", "pets"
+  add_foreign_key "reservation_pets", "reservations"
   add_foreign_key "reservations", "spaces"
   add_foreign_key "reservations", "users"
   add_foreign_key "reviews", "spaces"
