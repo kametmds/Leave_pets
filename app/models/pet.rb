@@ -6,5 +6,7 @@ class Pet < ApplicationRecord
 
   belongs_to :user
   mount_uploader :image, ImageUploader
-  has_many :reservations, dependent: :destroy
+  # has_many :reservations, dependent: :destroy
+  has_many :reservation_pets, dependent: :destroy
+  has_many :reservations, through: :reservation_pets, source: :reservation
 end
