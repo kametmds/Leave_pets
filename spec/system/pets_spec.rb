@@ -10,16 +10,10 @@ RSpec.describe 'Pets', type: :system do
     visit new_user_session_path
     fill_in 'user_email', with: 'user1@test.com'
     fill_in 'user_password', with: 'password1'
-    click_on 'Log in'
+    click_on 'ログイン'
   end
 
   describe 'ペット管理機能' do
-    it 'ペット一覧のテスト' do
-      visit pets_path
-      expect(page).to have_content "ポチ"
-      expect(page).to have_content "タマ"
-      expect(page).to have_content "ミケ"
-    end
     it 'ペット作成のテスト' do
       visit new_pet_path
       fill_in "pet_name", with: 'test'
@@ -35,6 +29,12 @@ RSpec.describe 'Pets', type: :system do
       expect(page).to have_content @pet.name
       expect(page).to have_content @pet.age
       expect(page).to have_content @pet.content
+    end
+    it 'ペット削除のテスト' do
+      visit pet_path(@pet.id)
+      click_on '削除'
+      page.driver.browser.switch_to.alert.accept
+      expect(page).to have_content 'ペット情報削除しました'
     end
   end
 

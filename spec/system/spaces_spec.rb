@@ -10,15 +10,15 @@ RSpec.describe 'spaces', type: :system do
     visit new_user_session_path
     fill_in 'user_email', with: 'user1@test.com'
     fill_in 'user_password', with: 'password1'
-    click_on 'Log in'
+    click_on 'ログイン'
   end
 
   describe 'スペース管理機能' do
     it 'スペース一覧のテスト' do
       visit spaces_path
-      expect(page).to have_content "場所は京都です"
-      expect(page).to have_content "場所は青森です"
-      expect(page).to have_content "場所は東京です"
+      expect(page).to have_content @space.title
+      expect(page).to have_content @space2.title
+      expect(page).to have_content @space3.title
     end
     it 'スペース作成のテスト' do
       visit new_space_path
@@ -38,7 +38,6 @@ RSpec.describe 'spaces', type: :system do
       expect(page).to have_content @space.title
       expect(page).to have_content @space.postal
       expect(page).to have_content @space.address
-      expect(page).to have_content @space.tel
       expect(page).to have_content @space.capacity
     end
   end

@@ -23,8 +23,8 @@ html
             = link_to image_tag(current_user.icon.url, class: "btn-bright"), users_show_path(current_user.id)
             = current_user.name
       - else
-        => link_to "新規登録", new_user_registration_path, class: "btn-s btn-bright"
-        =< link_to "ログイン", new_user_session_path, class: "btn-s btn-bright"
+        => link_to "Sign Up", new_user_registration_path, class: "btn-s btn-bright"
+        =< link_to "Log in", new_user_session_path, class: "btn-s btn-bright"
     - flash.each do |key, value|
       = content_tag(:div, value, class: "#{key}")
     = yield
