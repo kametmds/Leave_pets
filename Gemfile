@@ -30,7 +30,6 @@ gem 'unicorn'
 gem 'mini_racer', platforms: :ruby
 gem 'jquery-rails'
 gem 'jquery-ui-rails'
-gem 'letter_opener_web'
 gem 'devise-i18n'
 gem 'devise-i18n-views'
 gem 'acts-as-taggable-on', '~> 6.0'

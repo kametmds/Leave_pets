@@ -56,7 +56,6 @@ https://drive.google.com/file/d/1iWaVmq1EjSxhaA1wfSEszlNQ3fJlN7QU/view?usp=shari
 - mini_racer
 - jquery-rails
 - jquery-ui-rails
-- letter_opener_web
 - devise-i18n
 - devise-i18n-views
 - acts-as-taggable-on
