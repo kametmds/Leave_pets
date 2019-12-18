@@ -39,12 +39,6 @@ gem "geocoder"
 
 group :development, :test do
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
-  gem 'capistrano', '3.6.0'
-  gem 'capistrano-bundler'
-  gem 'capistrano-rails'
-  gem 'capistrano-rbenv'
-  gem 'capistrano3-unicorn'
-  gem 'ed25519'
   gem 'rspec-rails', '~> 3.8'
   gem 'spring-commands-rspec'
   gem 'factory_bot_rails'
@@ -60,6 +54,7 @@ group :development do
   gem 'listen', '>= 3.0.5', '< 3.2'
   gem 'spring'
   gem 'spring-watcher-listen', '~> 2.0.0'
+  gem 'rails-erd'
 end
 
 group :test do
