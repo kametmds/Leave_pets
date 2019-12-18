@@ -19,9 +19,4 @@ RSpec.describe Space, type: :model do
     expect(space).to be_valid
   end
 
-  # describe "scope" do
-  #   it "modelに記載したscopeによる絞りこみを確かめる" do
-  #     expect(Task.title_scope("title = test")).to_not include(Task.where("title = test"))
-  #   end
-  # end
 end

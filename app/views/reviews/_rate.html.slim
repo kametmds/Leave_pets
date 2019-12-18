@@ -1,7 +1,0 @@
-/ - if space.reviews.present?
-/   / - review_ave = (space.reviews.pluck(:rate).inject(:+)) / space.reviews.count.to_f
-/   / - review_ave = space.reviews.average(:rate)
-/   span = fa_icon("star", text: space.reviews.average(:rate).round(2))
-/   span = "(#{space.reviews.count})"
-
-/ = render 'reviews/rate', space: space
