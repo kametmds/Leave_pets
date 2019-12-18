@@ -25,7 +25,8 @@ p
   = @reservation.space.user.name
 p
   |お世話になる(なった)ペット:
-  = @reservation.pet.name
+  - @reservation.pets.each do |pet|
+    = pet.name
 p
   |チェックイン日:
   = @reservation.start_date.strftime("%Y年%-m月%-d日")

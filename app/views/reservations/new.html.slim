@@ -1,24 +1,23 @@
-h1 予約作成画面
-h2 = "#{@reserveSpace.title}の物件です"
-
-= form_with(model: @reservation, local: true, class: '') do |f|
-  = f.collection_select(:pet_id, current_user.pets, :id, :name)
-  .field
-    h4.textlabel = f.label :start_date
-    = date_field_tag "reservation[start_date]", Date.today, type: "date"
-  .field
-    h4.textlabel = f.label :end_date
-    = date_field_tag "reservation[end_date]", Date.today, type: "date"
-
-  .field
-    = f.hidden_field :space_id, value: @reserveSpace.id
-
-  h2 = "#{current_user.name}が預けられるペットは以下の#{@userPets.count}匹です"
-  / - @userPets.each do |pet|
-  /   .field
-  /   = f.check_box :pet_id, { multiple: true, checked: pet[:checked], disabled: pet[:disabled], include_hidden: false }, pet[:id]
-  /   = image_tag pet.image.url, class: "icon"
-  /   = pet.name
-
-  .actions = f.submit class: "btn-s btn-green"
-
+.reservation-new-field
+  .reserve-info
+    h1 = "#{@reserveSpace.title}の予約画面です"
+    = image_tag @reserveSpace.picture.url, class: "space-reserve-picture"
+  = form_with(model: @reservation, local: true, class: 'reserve-form') do |f|
+    h2 預ける日程を入力してください
+    .reserve-date-field
+      .datelabel
+        h3 = f.label :start_date
+        = date_field_tag "reservation[start_date]", Date.today, type: "date"
+      .datelabel
+        h3 = f.label :end_date
+        = date_field_tag "reservation[end_date]", Date.today, type: "date"
+    .field
+      = f.hidden_field :space_id, value: @reserveSpace.id
+    h2 預けるペットを選択してください
+    .reserve-pet-field
+      - @userPets.each do |pet|
+        .reserve-pet-area
+          .reserve-pet-tip = f.check_box :pet_ids, { multiple: true, checked: pet[:checked], disabled: pet[:disabled], include_hidden: false }, pet[:id]
+          .reserve-pet-tip = image_tag pet.image.url, class: "box-icon"
+          .reserve-pet-tip = pet.name
+    .actions = f.submit class: "btn-s btn-green"
