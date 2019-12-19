@@ -24,7 +24,7 @@ gem 'binding_of_caller'
 gem 'carrierwave'
 gem 'mini_magick'
 gem 'font-awesome-rails'
-gem 'faker'
+gem 'gimei'
 gem 'fog-aws'
 gem 'unicorn'
 gem 'mini_racer', platforms: :ruby

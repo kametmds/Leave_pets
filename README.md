@@ -50,7 +50,7 @@ https://drive.google.com/file/d/1iWaVmq1EjSxhaA1wfSEszlNQ3fJlN7QU/view?usp=shari
 - carrierwave
 - mini_magick
 - font-awesome-rails
-- faker
+- gimei
 - fog-aws
 - unicorn
 - mini_racer
