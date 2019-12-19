@@ -6,6 +6,8 @@ class Reservation < ApplicationRecord
 
   validates :start_date, presence: true
   validates :end_date, presence: true
+  validates :pet_ids, presence: true
+  validates :space_id, presence: true
 
   has_many :reservation_pets, dependent: :destroy
   has_many :pets, through: :reservation_pets

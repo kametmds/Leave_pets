@@ -31,3 +31,4 @@ ja:
         start_date: チェックイン
         end_date: チェックアウト
         status: 予約状況
+        pet_ids: ペット情報

@@ -1,5 +1,9 @@
 require 'rails_helper'
-
+# bin/rspec spec/models/room_spec.rb
 RSpec.describe Room, type: :model do
-  pending "add some examples to (or delete) #{__FILE__}"
+  it "いてくれるだけでいい" do
+    room = Room.new
+    expect(room).to be_valid
+  end
 end
+

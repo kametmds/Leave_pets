@@ -14,7 +14,6 @@ html
         navbar
           = link_to 'スペース作成', new_space_path, class: 'btn-s btn-bright'
           = link_to 'スペース検索', search_spaces_path, class: 'btn-s btn-bright'
-          / = link_to "ペット一覧", pets_path, class: "btn-s btn-bright"
           = link_to "マイページ", users_show_path(current_user.id), class: "btn-s btn-bright"
           = link_to "メッセージ", rooms_path, class: "btn-s btn-bright"
           = link_to "ログアウト", destroy_user_session_path, method: :delete, class: "btn-s btn-bright"

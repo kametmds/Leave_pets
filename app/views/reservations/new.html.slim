@@ -3,6 +3,12 @@
     h1 = "#{@reserveSpace.title}の予約画面です"
     = image_tag @reserveSpace.picture.url, class: "space-reserve-picture"
   = form_with(model: @reservation, local: true, class: 'reserve-form') do |f|
+    - if @reservation.errors.any?
+      #reservation_error_explanation
+        br
+        - @reservation.errors.full_messages.each do |message|
+          div = message
+
     h2 預ける日程を入力してください
     .reserve-date-field
       .datelabel
@@ -11,8 +17,8 @@
       .datelabel
         h3 = f.label :end_date
         = date_field_tag "reservation[end_date]", Date.today, type: "date"
-    .field
-      = f.hidden_field :space_id, value: @reserveSpace.id
+    = f.hidden_field :space_id, value: @reserveSpace.id
+
     h2 預けるペットを選択してください
     .reserve-pet-field
       - @userPets.each do |pet|

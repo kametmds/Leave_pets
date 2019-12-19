@@ -21,6 +21,8 @@ class ReservationsController < ApplicationController
       flash[:notice] = "予約申請しました"
       redirect_to spaces_path
     else
+      @userPets = current_user.pets
+      @reserveSpace = Space.find(params[:reservation][:space_id])
       render :new
     end
   end
