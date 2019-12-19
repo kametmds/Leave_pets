@@ -26,4 +26,4 @@
           .reserve-pet-tip = f.check_box :pet_ids, { multiple: true, checked: pet[:checked], disabled: pet[:disabled], include_hidden: false }, pet[:id]
           .reserve-pet-tip = image_tag pet.image.url, class: "box-icon"
           .reserve-pet-tip = pet.name
-    .actions = f.submit class: "btn-s btn-green"
+    .actions = f.submit value: "予約する", class: "btn-s btn-green"

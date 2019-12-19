@@ -43,7 +43,4 @@ FactoryBot.define do
     user { User.find_by(id: User.first.id + 1) || association(:second_user) }
   end
 
-  # trait :with_picture do
-  #   picture { File.new("#{Rails.root}/spec/fixtures/noimage2.jpg") }
-  # end
 end
