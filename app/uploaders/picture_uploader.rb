@@ -1,9 +1,11 @@
 class PictureUploader < CarrierWave::Uploader::Base
   include CarrierWave::MiniMagick
-  if Rails.env.production? || Rails.env.staging?
-    storage :fog
-  else
+  if Rails.env.development?
     storage :file
+  elsif Rails.env.test?
+    storage :file
+  else
+    storage :fog
   end
 
   def store_dir
@@ -12,7 +14,7 @@ class PictureUploader < CarrierWave::Uploader::Base
 
   def default_url(*args)
     # ActionController::Base.helpers.asset_path("fallback/" + [version_name, "default.png"].compact.join('_'))
-    "noimage2"
+    "noimage"
     # "/images/fallback/" + [version_name, "default.png"].compact.join('_')
   end
 

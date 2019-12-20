@@ -9,8 +9,8 @@ CarrierWave.configure do |config|
       provider:              'AWS',
       aws_access_key_id:     ENV["AWS_ACCESS_KEY_ID"],
       aws_secret_access_key: ENV["AWS_SECRET_ACCESS_KEY"],
-      region:                ENV["AWS_S3_REGION"],
-      path_style:            true,
+      region:                'ap-northeast-1',
+      path_style:            true
   }
 
   config.fog_public     = true

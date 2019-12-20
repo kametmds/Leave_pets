@@ -20,7 +20,7 @@
     .space-topic-container
       - @spaces.each do |space|
         = link_to space, class: "space-topic" do
-          = image_tag space.picture.url, class: 'space-index-picture'
+          = image_tag space.picture.to_s, class: 'space-index-picture'
           .space-topic-tip
             div style="color: gray;" = "ホスト名｜#{space.user.name}"
             span.review-tip
