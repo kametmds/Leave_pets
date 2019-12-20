@@ -1,5 +1,5 @@
 # -----------------------------------------user----------------------------------------------
-20.times do
+1.upto(20) do |i|
   gimei = Gimei.new
   User.create(
     name: gimei.name.kanji,
@@ -36,15 +36,23 @@ content = [
   "臭いの付かない動物のみ受け入れ可です。","ペットを離せる大きな庭があります。","お散歩の代行も行っています。"
 ]
 
-20.times do
+spot = [
+  "神奈川県横浜市青葉区美しが丘","栃木県日光市吉沢","群馬県富岡市妙義町","栃木県下都賀郡壬生町","千葉県いすみ市上布施","栃木県日光市豊田",
+  "茨城県つくばみらい市福原","神奈川県小田原市東町","埼玉県戸田市氷川町","埼玉県本庄市児玉町","神奈川県相模原市中央区","東京都稲城市矢野口",
+  "東京都東大和市蔵敷","群馬県富岡市上高尾","埼玉県入間郡毛呂山町","埼玉県日高市北平沢","神奈川県横浜市中区","神奈川県鎌倉市笛田",
+  "茨城県石岡市大塚","東京都府中市押立町","東京都新宿区市谷本村町","東京都台東区柳橋","東京都大田区大森本町","神奈川県横浜市中区南本牧",
+  "東京都足立区扇","東京都豊島区長崎"
+]
+
+1.upto(20) do |i|
   gimei = Gimei.new
   Space.create!(
     title: gimei.name.last.romaji,
     postal: "#{rand(100..999)}-#{rand(1000..9999)}",
-    address: gimei.address.kanji,
+    address: spot.sample,
     tel: "07032052235",
-    capacity: rand(1..15)
-    picture:open("#{Rails.root}/db/data/space#{i}.jpg"),
+    capacity: rand(1..15),
+    picture: open("#{Rails.root}/db/data/space#{i}.jpg"),
     content: content.sample,
     user_id: User.all.sample.id
   )
