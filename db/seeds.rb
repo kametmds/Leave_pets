@@ -4,13 +4,18 @@
   User.create(
     name: gimei.name.kanji,
     email: "user#{i}@test.com",
-    password: "user#{i}@test.com"
+    password: "user#{i}@test.com",
+    icon: open("#{Rails.root}/db/data/user.png")
   )
 end
 
-User.create!(name: "admin", email: "admin@test.com", password: "admin@test.com", admin: true)
+User.create!(name: "admin", email: "admin@test.com", password: "admin@test.com",
+  icon: open("#{Rails.root}/db/data/user.png"), admin: true
+)
 
-User.create!(name: "test", email: "test@test.com", password: "test@test.com")
+User.create!(name: "test", email: "test@test.com", password: "test@test.com",
+  icon: open("#{Rails.root}/db/data/user.png")
+)
 
 # -----------------------------------------pet----------------------------------------------
 
