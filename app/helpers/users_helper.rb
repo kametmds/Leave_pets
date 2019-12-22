@@ -16,6 +16,7 @@ module UsersHelper
     end
   end
 
+
   # ログインユーザーと編集しようとしている投稿のユーザーidが一致しない場合にアクセスを拒否
   def forbid_wrong_user(arg)
     if current_user.id != arg.user.id

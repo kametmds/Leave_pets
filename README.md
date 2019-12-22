@@ -68,3 +68,5 @@ https://drive.google.com/file/d/1iWaVmq1EjSxhaA1wfSEszlNQ3fJlN7QU/view?usp=shari
 - selenium-webdriver
 - dotenv-rails
 - rails-erd
+- aws-sdk-s3
+- letter_opener
