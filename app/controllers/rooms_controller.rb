@@ -1,5 +1,4 @@
 class RoomsController < ApplicationController
-  # before_action -> {forbid_wrong_user(@join2)}, only: [:show]
 
   def index
     @currentJoins = current_user.joins
