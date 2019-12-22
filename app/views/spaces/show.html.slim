@@ -25,8 +25,9 @@
         .review-title
           span = fa_icon("star", text: "#{@reviewsRate}", left: true)
           span = " (#{@reviews.count}件のレビュー)"
-        #review_area
-          = render partial: 'reviews/form', locals: { review: @review, space: @space, user: current_user }
+        - unless user_check(@space.user)
+          #review_area
+            = render partial: 'reviews/form', locals: { review: @review, space: @space, user: current_user }
         #comments_area
           = render partial: 'reviews/index', locals: { reviews: @reviews, space: @space, user: current_user }
     .show-space-topic
@@ -47,7 +48,6 @@
               = fields_for @join do |e|
                 = e.hidden_field :user_id, value: @space.user.id
               = f.submit "　ホストにメッセージを送る　", class:"btn-s btn-green"
-
       - else
         .space-action-tip
           .choices

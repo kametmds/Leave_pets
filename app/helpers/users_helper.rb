@@ -8,15 +8,15 @@ module UsersHelper
     end
   end
 
-  # ログインユーザーと編集しようとしている投稿のユーザーidが一致しない場合にアクセスを拒否
-  # def forbid_wrong_user
-  #   if current_user.id != @space.user.id
-  #     flash[:notice] = "編集権限がありません"
-  #     redirect_to @space
-  #   end
-  # end
+  # ログインユーザーと編集しようとしている投稿のユーザーidが一致する場合にアクセスを拒否
+  def ensure_wrong_user(arg)
+    if current_user.id == arg.user.id
+      flash[:notice] = "権限がありません"
+      redirect_to arg
+    end
+  end
 
-  # ログインユーザーと編集しようとしている投稿のユーザーidが一致しない場合にアクセスを拒否(引数指定共通版)
+  # ログインユーザーと編集しようとしている投稿のユーザーidが一致しない場合にアクセスを拒否
   def forbid_wrong_user(arg)
     if current_user.id != arg.user.id
       flash[:notice] = "権限がありません"

@@ -6,7 +6,7 @@ class Space < ApplicationRecord
   validates :tel, presence: true,
                   numericality: { only_integer: true, greater_than_or_equal_to: 0 },
                   format: { with: /\A\d{10}$|^\d{11}\z/ }
-  validates :capacity, presence: true
+  validates :capacity, presence: true, numericality: { only_integer: true, greater_than: 0 }
 
   belongs_to :user
 

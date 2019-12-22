@@ -15,6 +15,7 @@
               readOnly: true,
               score: "#{review.rate}",
             });
+            $("#rate-#{review.id}").raty( 'reload' );
       .comment_area = "コメント:#{review.comment}"
       - if review.user == current_user
         .choice = link_to fa_icon('trash lg'), space_review_path(review.space_id, review.id), method: :delete, remote: true,class: "btn-xs btn-red"
