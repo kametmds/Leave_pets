@@ -12,6 +12,7 @@ module LeavePets
     config.active_record.default_timezone = :local
     config.i18n.default_locale = :ja
     ActsAsTaggableOn.remove_unused_tags = true
+    config.assets.initialize_on_precompile = false
     config.load_defaults 5.2
     config.generators do |g|
       g.test_framework :rspec,
