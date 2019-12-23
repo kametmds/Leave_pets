@@ -1,6 +1,7 @@
 h1 予約詳細画面
 .reserve-show-field
   p.btn.btn-blue = "#{@reservation.status}です"
+  br
   = link_to image_tag(@reservation.space.picture.url, class: 'space-search-topic-picture'), space_path(@reservation.space)
   p
     |スペース名:
@@ -36,6 +37,7 @@ h1 予約詳細画面
 
   - if current_user == @reservation.space.user
     = link_to '予約状況更新', edit_reservation_path(@reservation), class: "btn-s btn-yellow"
+  br
   br
   =< link_to '戻る', user_path(current_user), class: "btn-s btn-red"
   br
