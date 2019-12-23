@@ -2,16 +2,24 @@
 
 <%= form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :post }) do |f| %>
   <%= render "devise/shared/error_messages", resource: resource %>
-
-  <div class="field">
-    <h4 class="textlabel"><%= f.label :email %></h4>
-    <%= f.email_field :email, autofocus: true, autocomplete: "email", class: "s-textinput", placeholder: " Eメールアドレス" %>
-  </div>
-  <br>
-  <div class="actions">
-    <%= f.submit "#{t('users.passwords.new.send_me_reset_password_instructions')}", class: "btn-s btn-red" %>
+  <div class="mail-resetting">
+    <div class="field">
+      <h4 class="textlabel"><%= f.label :email %></h4>
+      <%= f.email_field :email, autofocus: true, autocomplete: "email", class: "s-textinput", placeholder: " Eメールアドレス" %>
+    </div>
+    <br>
+    <div class="actions">
+      <%= f.submit "#{t('users.passwords.new.send_me_reset_password_instructions')}", class: "btn-s btn-red" %>
+    </div>
   </div>
   <br>
 <% end %>
-
+<div class="mail-advise">
+  <h4>GmailやHotmailなどのフリーメールをお使いの方はお使いのサービス設定により「迷惑メール」と認識され、メールが届かない場合があります。<br>
+  その場合は「迷惑メールフォルダー」等をご確認いただくかお使いのサービス、ソフトウェアの設定をご確認ください。</h4>
+  <%= link_to 'Gmailをご利用の方はこちらをご参照ください>>','https://support.google.com/mail/answer/6596?hl=ja&topic=1668979&ctx=topic&visit_id=637126719195548162-2303527573&rd=2'%>
+  <br>
+  <%= link_to 'Hotmailをご利用の方はこちらをご参照ください>>','https://support.office.com/ja-jp/article/outlook-com-%e3%81%ae%e3%83%98%e3%83%ab%e3%83%97%e3%82%92%e5%85%a5%e6%89%8b%e3%81%99%e3%82%8b-40676ad0-c831-45ac-a023-5be633be798d?ui=ja-JP&rs=ja-JP&ad=JP'%>
+</div>
+<br>
 <%= render "devise/shared/links" %>

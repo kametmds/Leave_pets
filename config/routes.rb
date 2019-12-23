@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
   devise_for :users
-  get 'users/show'
+  resources :users, only: [:show]
   mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
 
   resources :pets

@@ -87,7 +87,7 @@
                 .user_show_reserved_tip = "#{reservation.start_date.strftime("%Y年%-m月%-d日")}から#{reservation.end_date.strftime("%Y年%-m月%-d日")}まで"
                 .btn-xs.btn-red = reservation.status
               .user_show_reserved_info
-                .user_show_reserved_tip = link_to image_tag(reservation.user.icon.url, class: 'box-icon-s'), users_show_path(reservation.user)
+                .user_show_reserved_tip = link_to image_tag(reservation.user.icon.url, class: 'box-icon-s'), user_path(reservation.user)
               .user_show_reserved_info
                 .user_show_reserved_tip
                   - reservation.pets.each do |pet|

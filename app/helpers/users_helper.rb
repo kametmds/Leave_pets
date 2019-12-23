@@ -1,10 +1,9 @@
 module UsersHelper
-
   #ログインユーザーと編集しようとしているユーザーのidが一致しない場合にアクセスを拒否
   def ensure_correct_user
     if current_user.id != params[:id].to_i
       flash[:notice] = "権限がありません"
-      redirect_to users_path
+      redirect_to spaces_path
     end
   end
 
@@ -15,7 +14,6 @@ module UsersHelper
       redirect_to arg
     end
   end
-
 
   # ログインユーザーと編集しようとしている投稿のユーザーidが一致しない場合にアクセスを拒否
   def forbid_wrong_user(arg)
@@ -30,11 +28,6 @@ module UsersHelper
   end
 
   def connect_room
-    # if params[:format]
-    #   @user = User.find(params[:format])
-    # elsif params[:id]
-    #   @user = User.find(params[:id])
-    # end
     #現在ログインしているユーザがRoomに参加している情報
     @currentUserJoin = Join.where(user_id: current_user.id)
     #指定したユーザがRoomに参加している情報

@@ -2,9 +2,9 @@
   - if review.id.present?
     .review_content
       .review-face
-        = link_to image_tag( review.user.icon.url, class:"icon-s"), users_show_path(review.user.id)
+        = link_to image_tag( review.user.icon.url, class:"icon-s"), user_path(review.user.id)
         .reviewer
-          = link_to review.user.name, users_show_path(review.user.id), class: "review-user-name"
+          = link_to review.user.name, user_path(review.user.id), class: "review-user-name"
           = review.created_at.strftime("%Y年%m月%d日")
         .star.review_rate id="rate-#{review.id}"
           label = review.rate

@@ -37,5 +37,5 @@ p
 - if current_user == @reservation.space.user
   = link_to '予約状況更新', edit_reservation_path(@reservation), class: "btn-s btn-yellow"
 br
-=< link_to '戻る', users_show_path(current_user), class: "btn-s btn-red"
+=< link_to '戻る', user_path(current_user), class: "btn-s btn-red"
 br

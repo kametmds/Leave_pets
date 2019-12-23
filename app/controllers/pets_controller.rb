@@ -31,7 +31,7 @@ class PetsController < ApplicationController
 
   def destroy
     @pet.destroy
-    redirect_to users_show_path(current_user), notice: 'ペット情報削除しました'
+    redirect_to user_path(current_user), notice: 'ペット情報削除しました'
   end
 
   private

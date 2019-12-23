@@ -14,12 +14,12 @@ html
         navbar
           = link_to 'スペース作成', new_space_path, class: 'btn-s btn-bright'
           = link_to 'スペース検索', search_spaces_path, class: 'btn-s btn-bright'
-          = link_to "マイページ", users_show_path(current_user.id), class: "btn-s btn-bright"
+          = link_to "マイページ", user_path(current_user.id), class: "btn-s btn-bright"
           = link_to "メッセージ", rooms_path, class: "btn-s btn-bright"
           = link_to "ログアウト", destroy_user_session_path, method: :delete, class: "btn-s btn-bright"
         .header_icon
           - if current_user.icon && current_user.icon.url
-            = link_to image_tag(current_user.icon.url, class: "btn-bright"), users_show_path(current_user.id)
+            = link_to image_tag(current_user.icon.url, class: "btn-bright"), user_path(current_user.id)
             = current_user.name
       - else
         => link_to "Sign Up", new_user_registration_path, class: "btn-s btn-bright"

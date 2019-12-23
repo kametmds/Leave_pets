@@ -16,7 +16,7 @@ class SpacesController < ApplicationController
 
   def show
     @user = User.find(@space.user.id)
-    connect_room#UsersHelper
+    connect_room
     @reviews = @space.reviews.includes(:user).all
     @review = @space.reviews.build(user_id: current_user.id) if current_user
     @reviewsRate = rating_average(@space) if @reviews.present?

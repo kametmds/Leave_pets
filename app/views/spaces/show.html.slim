@@ -35,8 +35,8 @@
   .show-space-action-area
     .space-action-zone
       .space-user-tip
-        = link_to image_tag(@space.user.icon.url, class: 'icon'), users_show_path(@space.user)
-        h3 = link_to @space.user.name, users_show_path(@space.user)
+        = link_to image_tag(@space.user.icon.url, class: 'icon'), user_path(@space.user)
+        h3 = link_to @space.user.name, user_path(@space.user)
       - unless user_check(@space.user)
         .space-action-tip
           = link_to '予約する', new_reservation_path(space_id: @space.id), class: "btn-s btn-red"
