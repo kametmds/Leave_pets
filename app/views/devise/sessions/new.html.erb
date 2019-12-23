@@ -1,6 +1,4 @@
 <h2>ユーザーログイン</h2>
-<p>メールアドレス: sample1@test.com</p>
-<p>パスワード: 123123</p>
 <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
   <div class="field">
     <h4 class="textlabel"><%= f.label :email %></h4>
@@ -24,5 +22,7 @@
   </div>
   <br>
 <% end %>
+<p>メールアドレス: sample1@test.com</p>
+<p>パスワード: 123123</p>
 
 <%= render "devise/shared/links" %>

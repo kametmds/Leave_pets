@@ -1,43 +1,41 @@
-h1 予約詳細画面
 .reserve-show-field
-  p.btn.btn-blue = "#{@reservation.status}です"
-  br
-  = link_to image_tag(@reservation.space.picture.url, class: 'space-search-topic-picture'), space_path(@reservation.space)
-  p
-    |スペース名:
-    = @reservation.space.title
-  p
-    |予約した日:
-    = @reservation.created_at.strftime("%Y年%-m月%-d日")
-  p
-    |預け先住所:
-    = @reservation.space.address
-  p
-    |連絡先:
-    = format_phone(@reservation.space.tel)
-  p
-    |預け先ペットタグ:
-    = render 'spaces/tag_list', tag_list: @reservation.space.tag_list
-  p
-    |預け先の備考:
-    = @reservation.space.content
-  p
-    |ホストユーザー:
-    = @reservation.space.user.name
-  p
-    |お世話になる(なった)ペット:
-    - @reservation.pets.each do |pet|
-      = pet.name
-  p
-    |チェックイン日:
-    = @reservation.start_date.strftime("%Y年%-m月%-d日")
-  p
-    |チェックアウト日:
-    = @reservation.end_date.strftime("%Y年%-m月%-d日")
-
-  - if current_user == @reservation.space.user
-    = link_to '予約状況更新', edit_reservation_path(@reservation), class: "btn-s btn-yellow"
-  br
-  br
-  =< link_to '戻る', user_path(current_user), class: "btn-s btn-red"
-  br
+  .reserve-show-left
+    .reserve-show-topic
+      h1 = "#{@reservation.space.title}の予約詳細"
+      = link_to image_tag(@reservation.space.picture.url, class: 'space-reserve-picture'), space_path(@reservation.space)
+      p.btn.btn-blue = "#{@reservation.status}です"
+  .reserve-show-right
+    h2
+      |スペース名　
+      = @reservation.space.title
+    p
+      |ホストユーザー　
+      = @reservation.space.user.name
+    p
+      |住所　
+      = @reservation.space.address
+    p
+      |連絡先　
+      = format_phone(@reservation.space.tel)
+    p
+      |予約日　
+      = @reservation.created_at.strftime("%Y年%-m月%-d日")
+    p
+      |備考　
+      = @reservation.space.content
+    p.ppet
+      |お世話になる(なった)ペット
+      - @reservation.pets.each do |pet|
+        = link_to image_tag(pet.image.url, class: 'box-icon-s'), pet
+    p
+      |チェックイン　
+      = @reservation.start_date.strftime("%Y年%-m月%-d日")
+    p
+      |チェックアウト　
+      = @reservation.end_date.strftime("%Y年%-m月%-d日")
+    br
+    .choises
+      - if current_user == @reservation.space.user
+        = link_to '予約状況更新', edit_reservation_path(@reservation), class: "btn-s btn-yellow"
+      =< link_to '戻る', user_path(current_user), class: "btn-s btn-red"
+      br
