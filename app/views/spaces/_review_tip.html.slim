@@ -1,0 +1,5 @@
+- if space.reviews.present?
+  span = fa_icon("star", text: space.reviews.average(:rate).round(2))
+- else
+  span = fa_icon("star", text: 0.0)
+span = "(#{space.reviews.count})"

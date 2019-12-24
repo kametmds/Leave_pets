@@ -3,14 +3,19 @@ class SpacesController < ApplicationController
   before_action -> {forbid_wrong_user(@space)}, only: [:edit, :update, :destroy]
 
   def index
-    @spaces = Space.all
+    @recentSpaces = Space.all.order(created_at: :desc)[0..7]
+    @mostReviewSpaces = Space.reviewest[0..3]
     @tags = ActsAsTaggableOn::Tag.most_used(20)
   end
 
   def search
     @spaces = Space.all
     if params[:tag_name].present?
-      @spaces = @spaces.tagged_with(params[:tag_name])
+      @spaces = Space.all.tagged_with(params[:tag_name]).reviewest[0..]
+    elsif params[:sort_created]
+      @spaces = @spaces.order(created_at: :desc)
+    elsif params[:sort_popular]
+      @spaces = @spaces.reviewest[0..]
     end
   end
 

@@ -1,6 +1,6 @@
 .search-container
   .search-topic-area
-    h2.search-result = "#{@spaces.count}件の宿泊先"
+    h2.search-result = "#{@spaces.count}件の預け先"
     - if @spaces.count > 0
       .search-topic-container
         - @spaces.each_with_index do |space, i|
@@ -8,16 +8,13 @@
             = image_tag space.picture.url, class: 'space-search-topic-picture'
             .search-topic-tips
               .search-topic-tip
-                div style="color: gray;" = "ホスト名｜#{space.user.name}"
+                h1 = space.title
                 span.review-tip
-                  - if space.reviews.present?
-                    span = fa_icon("star", text: space.reviews.average(:rate).round(2))
-                  - else
-                    span = fa_icon("star", text: 0.0)
-                  span = "(#{space.reviews.count})"
-              .search-topic-tip = "スペース名｜#{space.title}"
+                  = render partial: 'review_tip', locals: { space: space, user: current_user }
               .search-topic-tip
-                h2 style="color: red;" = i + 1
+                .gray = space.user.name
+              .search-topic-tip
+                .gray = space.content
               .search-topic-tip
                 - space.tag_list.each do |tag|
                   span.label.label-primary = tag

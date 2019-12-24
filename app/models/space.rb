@@ -21,4 +21,8 @@ class Space < ApplicationRecord
 
   geocoded_by :address
   after_validation :geocode, if: :address_changed?
+
+  def self.reviewest
+    select('spaces.*', 'count(reviews.id) AS revs').left_joins(:reviews).group('spaces.id').order('revs desc')
+  end
 end

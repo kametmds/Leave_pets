@@ -7,29 +7,50 @@
       = button_tag type: 'submit', class: "search-btn" do
         = fa_icon('search lg')
   .parent
-    h2.textlabel 上位のタグ
+    h2.textlabel 該当上位のタグ
     .tag-list-container
       - @tags.each do |tag|
         = link_to "#{tag.name}(#{tag.taggings.count})", search_spaces_path(tag_name: tag.name), class: "radius-tag"
+  .parent
+    h2.textlabel よく利用されているスペース
+    .favor-space-topic-container
+      - @mostReviewSpaces.each do |space|
+        = link_to space, class: "space-topic" do
+          = image_tag space.picture.url, class: 'space-index-picture'
+          .space-topic-tip
+            h2 = space.title
+            span.review-tip = render partial: 'review_tip', locals: { space: space, user: current_user }
+          .space-topic-tip style="color: gray;"
+            = space.user.name
+          .space-topic-tip
+            - space.tag_list.each do |tag|
+              span.label.label-primary = tag
+      h3.textlabel = link_to "すべて見る 〉", search_spaces_path(sort_popular: "true")
   .parent
     .service-intro
       h1.intro-head LeavePetsの使い方
       .intro-tip = link_to 'もっと詳しく', intro_spaces_path, class: 'btn-l btn-yellow'
   .parent
-    h2.textlabel 人気のスペース
+    h2.textlabel 最近追加されたスペース
     .space-topic-container
-      - @spaces.each do |space|
+      - @recentSpaces.each do |space|
         = link_to space, class: "space-topic" do
-          = image_tag space.picture.to_s, class: 'space-index-picture'
+          = image_tag space.picture.url, class: 'space-index-picture'
           .space-topic-tip
-            div style="color: gray;" = "ホスト名｜#{space.user.name}"
-            span.review-tip
-              - if space.reviews.present?
-                span = fa_icon("star", text: space.reviews.average(:rate).round(2))
-              - else
-                span = fa_icon("star", text: 0.0)
-              span = "(#{space.reviews.count})"
-          .space-topic-tip = "スペース名｜#{space.title}"
+            = space.title
+            span.review-tip = render partial: 'review_tip', locals: { space: space, user: current_user }
+          .space-topic-tip style="color: gray;" = space.address
           .space-topic-tip
             - space.tag_list.each do |tag|
               span.label.label-primary = tag
+      h3.textlabel = link_to "すべて見る 〉", search_spaces_path(sort_created: "true")
+  .parent
+    h2.textlabel 様々なペットたち
+    .pet-space-topic-container
+      = link_to image_tag('dog-8.jpg', class:"pet-space-picture"), search_spaces_path(tag_name: 'イヌ')
+      = link_to image_tag('dog-8.jpg', class:"pet-space-picture"), search_spaces_path(tag_name: 'ネコ')
+      = link_to image_tag('dog-8.jpg', class:"pet-space-picture"), search_spaces_path(tag_name: 'インコ')
+      = link_to image_tag('dog-8.jpg', class:"pet-space-picture"), search_spaces_path(tag_name: 'ハリネズミ')
+      = link_to image_tag('dog-8.jpg', class:"pet-space-picture"), search_spaces_path(tag_name: '金魚')
+#footer
+  p © 2019-2020 LeavePets.com

@@ -47,6 +47,10 @@
 
 //------------------------------general-------------------------------------
 
+html {
+  position: relative;
+}
+
 body {
   min-height: 100vh;
   // font: 100%/1.5 'Avenir Next', 'Hiragino Sans', sans-serif;
@@ -71,29 +75,25 @@ header {
   background-color: rgb(111, 207, 58);
   color: #fff;
   position: relative;
-  // position: sticky;
-  // top: 0;
-  // z-index: 3;
   a {
     margin: 0 10px;
     &:visited {
       color: #fff;
     }
   }
-
   .header_title {
     margin-left: 26px;
     font-size: 32px;
   }
-  navbar {
-    display: flex;
-  }
-  .header_icon {
+  .navbar {
     flex-grow: 3;
     display: flex;
     justify-content: flex-end;
     align-items: center;
     margin-right: 20px;
+    a {
+      margin: 0 8px;
+    }
     img {
       @include icon;
       margin-right: 6px;
@@ -103,15 +103,7 @@ header {
   }
 }
 
-footer {
-  height: 44px;
-  width: 100%;
-  padding: 4px 0 6px ;
-  font-size: 16px;
-  margin-top: auto;
-  background-color: rgb(111, 207, 58);
-  color: #fff;
-}
+
 
 // ------------------------------btns-------------------------------------
 
