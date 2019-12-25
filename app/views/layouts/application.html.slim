@@ -3,6 +3,7 @@ html
   head
     title
       | LeavePets
+    meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0"
     = csrf_meta_tags
     = csp_meta_tag
     = stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload',  :debug => true
@@ -17,7 +18,7 @@ html
           = link_to 'スペース登録', new_space_path, class: 'btn-s btn-bright'
           / = link_to 'スペース検索', search_spaces_path, class: 'btn-s btn-bright'
           - if current_user.icon && current_user.icon.url
-            = link_to current_user.name, user_path(current_user.id)
+            = link_to current_user.name, user_path(current_user.id), class: 'btn-s btn-bright'
             = link_to image_tag(current_user.icon.url, class: "btn-bright"), user_path(current_user.id)
       - else
         => link_to "Sign Up", new_user_registration_path, class: "btn-s btn-bright"
