@@ -45,12 +45,32 @@
               span.label.label-primary = tag
       h3.textlabel = link_to "すべて見る 〉", search_spaces_path(sort_created: "true")
   .parent
-    h2.textlabel 様々なペットたち
+    h2.textlabel 　預けるペットたち
     .pet-space-topic-container
-      = link_to image_tag('dog-8.jpg', class:"pet-space-picture"), search_spaces_path(tag_name: 'イヌ')
-      = link_to image_tag('dog-8.jpg', class:"pet-space-picture"), search_spaces_path(tag_name: 'ネコ')
-      = link_to image_tag('dog-8.jpg', class:"pet-space-picture"), search_spaces_path(tag_name: 'インコ')
-      = link_to image_tag('dog-8.jpg', class:"pet-space-picture"), search_spaces_path(tag_name: 'ハリネズミ')
-      = link_to image_tag('dog-8.jpg', class:"pet-space-picture"), search_spaces_path(tag_name: '金魚')
+      .pet-space-topic
+        .p イヌ
+        .text1 言わずと知れた人気ペット
+        .text2 オーナーもホストも最もユーザ数が多く、希望にあった預け先を探せます。
+        = link_to image_tag('dog-4.jpg', class:"pet-space-picture"), search_spaces_path(tag_name: 'イヌ')
+      .pet-space-topic
+        .p ネコ
+        .text1 全人類の宝
+        .text2 犬より飼いやすく、負担になりません。猫狂いに注意してください。
+        = link_to image_tag('cat.jpg', class:"pet-space-picture"), search_spaces_path(tag_name: 'ネコ')
+      .pet-space-topic
+        .p インコ
+        .text1 飼いやすさNo.１
+        .text2 エサにさえ気を付ければ、特段大変なお世話はありません。預かっているうちに恋しくなるかも。
+        = link_to image_tag('inco.jpg', class:"pet-space-picture"), search_spaces_path(tag_name: 'インコ')
+      .pet-space-topic
+        .p ハリネズミ
+        .text1 預かってから飼いたくなる
+        .text2 一度触れ合ったが最後。Welcome to Hedgehog~♫
+        = link_to image_tag('hari.jpg', class:"pet-space-picture"), search_spaces_path(tag_name: 'ハリネズミ')
+      .pet-space-topic
+        .p 金魚
+        .text1 ニッチ需要ランク１位
+        .text2 預け先が欲しいオーナーが一番多いペットです。受け入れてくれる環境作りが大変なのが理由。
+        = link_to image_tag('fish.jpg', class:"pet-space-picture"), search_spaces_path(tag_name: '金魚')
 #footer
   p © 2019-2020 LeavePets.com
