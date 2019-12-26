@@ -1,13 +1,13 @@
 .container
   .space-head-zone
     h1.headtext LeavePetsでペットの預け先を探そう
-    p.headsentence.pnone 複数指定する場合は(,)カンマを入力してください
+    p.headsentence.none 複数指定する場合は(,)カンマを入力してください
     = form_with(method: :get, url: search_spaces_path, local: true, class: "search-form") do |f|
       = f.text_field :tag_name, placeholder: " 預けるペット", class: "search-input"
       = button_tag type: 'submit', class: "search-btn" do
         = fa_icon('search lg')
   .parent
-    h2.textlabel 該当上位のタグ
+    h2.textlabel.none 該当上位のタグ
     .tag-list-container
       - @tags.each do |tag|
         = link_to "#{tag.name}(#{tag.taggings.count})", search_spaces_path(tag_name: tag.name), class: "radius-tag"
@@ -44,8 +44,8 @@
             - space.tag_list.each do |tag|
               span.label.label-primary = tag
       h3.textlabel = link_to "すべて見る 〉", search_spaces_path(sort_created: "true")
-  .parent.pnone
-    h2.textlabel 　預けるペットたち
+  .parent
+    h2.textlabel 預けるペットたち
     .pet-space-topic-container
       .pet-space-topic
         .p イヌ

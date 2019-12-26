@@ -12,6 +12,7 @@ html
     header
       - if user_signed_in?
         = link_to fa_icon('paw',text: 'Leave Pets!'), spaces_path, class: "header_title"
+        / p.pcon#show = fa_icon("bars 2x")
         .navbar
           = link_to "メッセージ", rooms_path, class: "btn-s btn-bright"
           = link_to 'ペット登録', new_pet_path, class: 'btn-s btn-bright'
@@ -23,6 +24,11 @@ html
       - else
         => link_to "Sign Up", new_user_registration_path, class: "btn-s btn-bright"
         =< link_to "Log in", new_user_session_path, class: "btn-s btn-bright"
+    / nav.menu-container#hide
+    /   ul.menu
+    /     .menu-item = link_to "メッセージ", rooms_path
+    /     .menu-item = link_to 'ペット登録', new_pet_path
+    /     .menu-item = link_to 'スペース登録', new_space_path
     - flash.each do |key, value|
       = content_tag(:div, value, class: "#{key}")
     = yield
