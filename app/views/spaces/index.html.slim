@@ -1,6 +1,6 @@
 .container
   .space-head-zone
-    h1.headtext.pnone LeavePetsでペットの預け先を探そう
+    h1.headtext LeavePetsでペットの預け先を探そう
     p.headsentence.pnone 複数指定する場合は(,)カンマを入力してください
     = form_with(method: :get, url: search_spaces_path, local: true, class: "search-form") do |f|
       = f.text_field :tag_name, placeholder: " 預けるペット", class: "search-input"

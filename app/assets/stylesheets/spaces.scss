@@ -21,7 +21,8 @@
   margin-bottom: 14px;
   .headtext {
     margin-bottom: 78px;
-    font-size: 58px;
+    // font-size: 58px;
+    font-size: 4rem;
   }
   .headsentence {
     margin: 0 0 18px -38px;
@@ -445,5 +446,12 @@ header {
 }
 .space-head-zone {
   height: 220px;
+  .headtext {
+    font-size: 1.2em;
+    margin-bottom: 30px;
+  }
+  .search-form {
+    margin-bottom: 52px;
+  }
 }
 }
