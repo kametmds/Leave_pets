@@ -22,7 +22,7 @@
   .headtext {
     margin-bottom: 78px;
     // font-size: 58px;
-    font-size: 4rem;
+    font-size: 3rem;
   }
   .headsentence {
     margin: 0 0 18px -38px;
@@ -32,7 +32,6 @@
   width: 100vw;
   height: auto;
 }
-
 #footer {
   height: 62px;
   width: 100%;
@@ -156,7 +155,6 @@
     }
   }
 }
-
 .service-intro {
   width: 95%;
   height: 460px;
@@ -430,7 +428,7 @@
 }
 //-------------------------------phonesize--------------------------------------
 
-@media screen and (max-width:639px) {
+@media screen and (max-width:768px) {
 .none {
   display: none;
 }
@@ -455,7 +453,12 @@ header {
     margin-bottom: 52px;
   }
 }
-
+.space-topic-tip {
+  flex-wrap: wrap;
+  .label {
+    white-space: nowrap;
+  }
+}
 .parent {
   height:auto;
   .textlabel {
@@ -467,18 +470,11 @@ header {
     width: 90%;
     display: none;
   }
-
   .favor-space-topic-container {
     width: 100%;
     .space-topic {
       width: 100%;
       height: auto;
-    }
-  }
-  .space-topic-tip {
-    flex-wrap: wrap;
-    .label {
-      white-space: nowrap;
     }
   }
   .service-intro {
@@ -507,6 +503,76 @@ header {
     .pet-space-topic {
       width: 100%;
     }
+  }
+}
+.search-container {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  .search-topic-area {
+    padding: 0 ;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    .search-result {
+      text-align: center;
+      padding: 0;
+      margin: 18px 0;
+      border: none;
+    }
+    .search-topic-container {
+      .search-topic {
+        flex-direction: column;
+        padding: 0;
+        margin-bottom: 10px;
+        .space-search-topic-picture {
+          width: 100%;
+        }
+        .search-topic-tips {
+          width: 100%;
+          margin: 0px;
+        }
+      }
+    }
+    position: static;
+    width: 100%;
+  }
+  .search-map-area {
+    width: 100%;
+    height: 40px;
+    position: static;
+    .search-map-zone {
+      height: 240px;
+    }
+  }
+}
+.intro-container {
+  width: 100%;
+  h2 {
+    font-size: 18px;
+  }
+  h3 {
+    font-size: 14px;
+  }
+  .intro-topic {
+    height: 100%;
+  }
+}
+.show-container {
+  flex-direction: column-reverse;
+  .show-space-action-area {
+    width: 100%;
+    background-color: #fff;
+    margin: 0;
+    .space-action-zone {
+      border: none;
+      width: 100%;
+
+    }
+  }
+  .show-space-topic-area {
+    width: 100%;
+    text-align: center;
   }
 }
 }

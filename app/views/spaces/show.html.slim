@@ -10,7 +10,8 @@
     .show-space-topic
       h2 スペースについて
       h3 受け入れ可能なペット
-      = render 'spaces/tag_list', tag_list: @space.tag_list
+      .space-topic-tip
+        = render 'spaces/tag_list', tag_list: @space.tag_list
       h3 = "受け入れ上限：#{@space.capacity}"
       h3 スペースの内容
       p = @space.content
