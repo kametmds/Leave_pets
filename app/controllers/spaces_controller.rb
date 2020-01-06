@@ -1,5 +1,6 @@
 class SpacesController < ApplicationController
   before_action :set_space, only: [:show, :edit, :update, :destroy]
+  before_action :authenticate_user!, only: [:edit, :update, :destroy, :new, :create]
   before_action -> {forbid_wrong_user(@space)}, only: [:edit, :update, :destroy]
 
   def index
@@ -21,7 +22,7 @@ class SpacesController < ApplicationController
 
   def show
     @user = User.find(@space.user.id)
-    connect_room
+    connect_room if user_signed_in?
     @reviews = @space.reviews.includes(:user).all
     @review = @space.reviews.build(user_id: current_user.id) if current_user
     @reviewsRate = rating_average(@space) if @reviews.present?

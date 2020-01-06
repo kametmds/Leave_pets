@@ -1,6 +1,7 @@
 class ReviewsController < ApplicationController
   before_action -> {ensure_wrong_user(Space.find(params[:space_id]))}, only: [:create]
   before_action -> {forbid_wrong_user(Review.find(params[:id]))}, only: [:destroy]
+  before_action :authenticate_user!
 
   def create
     @space = Space.find(params[:space_id])

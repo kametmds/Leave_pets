@@ -1,4 +1,6 @@
 class MessagesController < ApplicationController
+  before_action :authenticate_user!
+
   def create
     #rooms/showのform_forで送られたbodyを含む全てのメッセージ情報の:messageと:room_idのキーがちゃんと入っているかということを条件で確認
     if Join.where(user_id: current_user.id, room_id: params[:message][:room_id]).present?

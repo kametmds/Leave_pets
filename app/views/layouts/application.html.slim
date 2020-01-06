@@ -10,8 +10,9 @@ html
     = javascript_include_tag 'application', 'data-turbolinks-track': 'reload'
   body
     header
+      = link_to fa_icon('paw',text: 'Leave Pets!'), spaces_path, class: "header_title"
       - if user_signed_in?
-        = link_to fa_icon('paw',text: 'Leave Pets!'), spaces_path, class: "header_title"
+        / = link_to fa_icon('paw',text: 'Leave Pets!'), spaces_path, class: "header_title"
         / p.pcon#show = fa_icon("bars 2x")
         .navbar
           = link_to "メッセージ", rooms_path, class: "btn-s btn-bright"
@@ -22,8 +23,9 @@ html
             = link_to current_user.name, user_path(current_user.id), class: 'btn-s btn-bright'
             = link_to image_tag(current_user.icon.url, class: "btn-bright"), user_path(current_user.id)
       - else
-        => link_to "Sign Up", new_user_registration_path, class: "btn-s btn-bright"
-        =< link_to "Log in", new_user_session_path, class: "btn-s btn-bright"
+        .navbar
+          => link_to "ユーザ登録", new_user_registration_path, class: "btn-s btn-bright"
+          =< link_to "ログイン", new_user_session_path, class: "btn-s btn-bright"
     / nav.menu-container#hide
     /   ul.menu
     /     .menu-item = link_to "メッセージ", rooms_path
