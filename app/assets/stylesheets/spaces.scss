@@ -449,7 +449,8 @@
 .none {
   display: none;
 }
-header {
+.header {
+  position: fixed;
   .header_title {
     width: 100%;
     text-align: center;
@@ -462,6 +463,8 @@ header {
 }
 .space-head-zone {
   height: 220px;
+  margin-top: 54px;
+  z-index: 3000;
   .headtext {
     font-size: 1.2em;
     margin-bottom: 30px;
@@ -525,12 +528,15 @@ header {
     height:auto;
     .pet-space-topic {
       width: 100%;
+      z-index: -1;
       .text2 {
         top: 75%;
+        z-index: 1;
       }
     }
     .pet-space-picture {
       height: 264px;
+      z-index: -1;
     }
   }
 }
