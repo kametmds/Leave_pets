@@ -217,6 +217,7 @@ input[type="submit" i] {
   // box-sizing: content-box !important;
   // height: auto;
   // width: auto;
+  -webkit-appearance: none;
   line-height: 115%;
   &:hover {
     cursor: pointer;
@@ -234,7 +235,8 @@ input[type="submit" i] {
 
 .textinput {
   @include textinput;
-  width: 720px;
+  // width: 720px;
+  width: 50vw;
 }
 
 .s-textinput {

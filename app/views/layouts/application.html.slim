@@ -26,16 +26,28 @@ html
           => link_to "ユーザ登録", new_user_registration_path, class: "btn-s btn-bright"
           =< link_to "ログイン", new_user_session_path, class: "btn-s btn-bright"
       .global-nav
-        ul.global-nav__list
-          li.global-nav__item = link_to "メッセージ", rooms_path
-          li.global-nav__item = link_to 'ペット登録', new_pet_path
-          li.global-nav__item = link_to 'スペース登録', new_space_path
+        - if user_signed_in?
+          - if current_user.icon && current_user.icon.url
+            .global-nav-icon
+              br
+              = link_to image_tag(current_user.icon.url, class: "icon-s"), user_path(current_user.id)
+              br
+              = link_to current_user.name, user_path(current_user.id)
+          ul.global-nav__list
+            li.global-nav__item = link_to fa_icon("home lg", text: '　マイページ　'), user_path(current_user.id)
+            li.global-nav__item = link_to fa_icon("envelope-square lg", text: '　メッセージ　'), rooms_path
+            li.global-nav__item = link_to fa_icon("paw lg", text: '　ペット登録　'), new_pet_path
+            li.global-nav__item = link_to fa_icon("home lg", text: '　スペース登録'), new_space_path
+            li.global-nav__item = link_to fa_icon("chevron-circle-left lg", text: '　ログアウト　'), destroy_user_session_path, method: :delete
+        - else
+          ul.global-nav__list
+            li.global-nav__item = link_to fa_icon("bell lg", text: '　ログイン　　'), new_user_session_path
+            li.global-nav__item = link_to fa_icon("envelope-square lg", text: '　ユーザー登録'), new_user_registration_path
       .hamburger#js-hamburger
         span.hamburger__line.hamburger__line--1
         span.hamburger__line.hamburger__line--2
         span.hamburger__line.hamburger__line--3
       .black-bg#js-black-bg
-
     - flash.each do |key, value|
       = content_tag(:div, value, class: "#{key}")
     = yield

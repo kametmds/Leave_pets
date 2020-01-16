@@ -432,6 +432,17 @@
   min-width: 108px;
   height:36px
 }
+//-------------------------------tag--------------------------------------
+.space-form {
+  .textinput {
+    @include textinput;
+    width: 50vw;
+  }
+  .textarea {
+    @include textarea;
+    width: 50vw;
+  }
+}
 //-------------------------------phonesize--------------------------------------
 
 @media screen and (max-width:768px) {
@@ -484,6 +495,9 @@ header {
     .space-topic {
       width: 100%;
       height: auto;
+      .space-index-picture {
+        height: 200px;
+      }
     }
   }
   .service-intro {
@@ -661,29 +675,46 @@ header {
   height: 260px;
   margin-bottom: 100px;
 }
+//-------------------------------phone/form--------------------------------------
+.space-form {
+  .textinput {
+    @include textinput;
+    width: 90vw;
+  }
+  .textarea {
+    @include textarea;
+    width: 90vw;
+  }
 }
-
-
+}
 // ------------------------------humberger-------------------------------------
 
 .global-nav {
   position: fixed;
-  right: -320px; /* これで隠れる */
-  top: 0;
-  width: 300px; /* スマホに収まるくらい */
-  height: 100vh;
-  padding-top: 40px;
+  top: -100vh;
+  width: 100vw;
+  height: auto;
+  // padding-top: 40px;
   background-color: rgb(111, 207, 58);
-  transition: all .6s;
+  transition: all .5s;
   z-index: 200;
   overflow-y: auto; /* メニューが多くなったらスクロールできるように */
+  padding: 48px 0;
+  border-radius: 0 0 50vw 50vw / 0 0 35vw 35vw;
+  .global-nav-icon {
+    padding-left: 14px;
+    margin-bottom: 12px;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+  }
 }
 .hamburger {
   position: absolute;
   right: 0;
   top: 0;
-  width: 40px; /* クリックしやすいようにちゃんと幅を指定する */
-  height: 40px; /* クリックしやすいようにちゃんと高さを指定する */
+  width: 40px;
+  height: 40px;
   cursor: pointer;
   width: 40px;
   z-index: 300;
@@ -692,24 +723,26 @@ header {
   margin: 0;
   padding: 0;
   list-style: none;
+  .fa-envelope {
+    color: #fff;
+  }
 }
 .global-nav__item {
   text-align: center;
+  font-size: 20px;
   padding: 0 14px;
   a {
     display: block;
-    padding: 8px 0;
-    border-bottom: 1px solid #eee;
+    padding: 14px 0;
     text-decoration: none;
     color: #111;
     &:hover {
-      background-color: #eee;
+      background-color: rgb(139, 230, 139);
     }
   }
 }
 .hamburger__line {
   position: absolute;
-  // left: 4px;
   width: 28px;
   height: 3px;
   background-color: #fff;
@@ -738,9 +771,9 @@ header {
   cursor: pointer;
 }
 
-/* 表示された時用のCSS */
+// 表示された時用のCSS
 .nav-open .global-nav {
-  right: 0;
+  top: 0;
 }
 .nav-open .black-bg {
   opacity: .8;
@@ -757,4 +790,9 @@ header {
 .nav-open .hamburger__line--3 {
   transform: rotate(-45deg);
   top: 20px;
+}
+@media screen and (min-width:768px) {
+  .hamburger,.global-nav,.black-bg {
+    display: none;
+  }
 }

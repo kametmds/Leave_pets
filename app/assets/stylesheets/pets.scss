@@ -63,6 +63,17 @@ a {
   text-decoration: none;
   color: #000;
 }
+.pet-form {
+  .textinput {
+    @include textinput;
+    width: 50vw;
+  }
+  .textarea {
+    @include textarea;
+    width: 50vw;
+  }
+}
+
 // ------------------------------others-------------------------------------
 
 #error_explanation {
@@ -75,5 +86,20 @@ a {
 #pet_error_explanation {
   div {
     margin: 4px;
+  }
+}
+
+//-------------------------------phonesize--------------------------------------
+
+@media screen and (max-width:768px) {
+  .pet-form {
+    .textinput {
+      @include textinput;
+      width: 90vw;
+    }
+    .textarea {
+      @include textarea;
+      width: 90vw;
+    }
   }
 }

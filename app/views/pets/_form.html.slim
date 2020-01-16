@@ -1,4 +1,4 @@
-= form_with(model: @pet, local: true, class: '') do |f|
+= form_with(model: @pet, local: true, class: 'pet-form') do |f|
   - if @pet.errors.any?
     #pet_error_explanation
       br
@@ -28,4 +28,3 @@
       = f.hidden_field :image_cache
   br
   .actions = f.submit class: "btn-s btn-green"
-
