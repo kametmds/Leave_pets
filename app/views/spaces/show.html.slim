@@ -46,7 +46,7 @@
           - if user_signed_in?
             .space-action-tip
               - if @isRoom == true
-                = link_to 'ホストとのメッセージ', room_path(@roomId), class: "btn-s btn-green"
+                = link_to 'メッセージ', room_path(@roomId), class: "btn-s btn-green"
               - else
                 = form_for @room do |f|
                   = fields_for @join do |e|
