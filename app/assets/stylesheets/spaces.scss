@@ -449,13 +449,7 @@
 .none {
   display: none;
 }
-.notice {
-  position: relative;
-  top: 54px;
-  z-index: -1;
-}
 .header {
-  position: fixed;
   .header_title {
     width: 88%;
     text-align: center;
@@ -468,11 +462,7 @@
   }
 }
 .space-head-zone {
-  position: relative;
   height: 220px;
-  top: 54px;
-  z-index: -1;
-  margin-bottom: 54px;
   .headtext {
     font-size: 1.2em;
     margin-bottom: 30px;
