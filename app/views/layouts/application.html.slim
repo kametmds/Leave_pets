@@ -9,7 +9,7 @@ html
     = stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload',  :debug => true
     = javascript_include_tag 'application', 'data-turbolinks-track': 'reload'
   body
-    header
+    header.header
       = link_to fa_icon('paw',text: 'Leave Pets!'), spaces_path, class: "header_title"
       - if user_signed_in?
         / = link_to fa_icon('paw',text: 'Leave Pets!'), spaces_path, class: "header_title"
@@ -18,7 +18,6 @@ html
           = link_to "メッセージ", rooms_path, class: "btn-s btn-bright"
           = link_to 'ペット登録', new_pet_path, class: 'btn-s btn-bright'
           = link_to 'スペース登録', new_space_path, class: 'btn-s btn-bright'
-          / = link_to 'スペース検索', search_spaces_path, class: 'btn-s btn-bright'
           - if current_user.icon && current_user.icon.url
             = link_to current_user.name, user_path(current_user.id), class: 'btn-s btn-bright'
             = link_to image_tag(current_user.icon.url, class: "btn-bright"), user_path(current_user.id)
@@ -26,11 +25,31 @@ html
         .navbar
           => link_to "ユーザ登録", new_user_registration_path, class: "btn-s btn-bright"
           =< link_to "ログイン", new_user_session_path, class: "btn-s btn-bright"
-    / nav.menu-container#hide
-    /   ul.menu
-    /     .menu-item = link_to "メッセージ", rooms_path
-    /     .menu-item = link_to 'ペット登録', new_pet_path
-    /     .menu-item = link_to 'スペース登録', new_space_path
+      .global-nav
+        ul.global-nav__list
+          li.global-nav__item = link_to "メッセージ", rooms_path
+          li.global-nav__item = link_to 'ペット登録', new_pet_path
+          li.global-nav__item = link_to 'スペース登録', new_space_path
+      .hamburger#js-hamburger
+        span.hamburger__line.hamburger__line--1
+        span.hamburger__line.hamburger__line--2
+        span.hamburger__line.hamburger__line--3
+      .black-bg#js-black-bg
+
     - flash.each do |key, value|
       = content_tag(:div, value, class: "#{key}")
     = yield
+javascript:
+  function toggleNav() {
+    var body = document.body;
+    var hamburger = document.getElementById('js-hamburger');
+    var blackBg = document.getElementById('js-black-bg');
+
+    hamburger.addEventListener('click', function() {
+      body.classList.toggle('nav-open');
+    });
+    blackBg.addEventListener('click', function() {
+      body.classList.remove('nav-open');
+    });
+  }
+  toggleNav();

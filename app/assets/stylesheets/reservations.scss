@@ -161,5 +161,74 @@
 		}
 	}
 }
+//-------------------------------phonesize--------------------------------------
+@media screen and (max-width:768px) {
+//-------------------------------phone/new--------------------------------------
+.reservation-new-field {
+	flex-direction: column;
+	h1 {
+		font-size: 22px;
+	}
 
-
+	.reserve-info {
+		margin-top: 0;
+		flex-direction: column-reverse;
+		width: 100%;
+		.space-reserve-picture {
+			height: 240px;
+		}
+	}
+	.reserve-form {
+		margin: 0;
+		width: 100%;
+		padding-top: 0;
+		h2 {
+			font-size: 18px;
+			margin-right: 0;
+		}
+		#reservation_start_date, #reservation_end_date {
+			border: 1px solid #d8d8d8;
+		}
+		.actions {
+			padding: 0;
+			text-align: center;
+		}
+	}
+}
+//-------------------------------phone/show--------------------------------------
+.reserve-show-field {
+	flex-direction: column;
+	width: 95vw;
+	.reserve-show-left {
+		margin-top: 0;
+		width: 95vw;
+		.reserve-show-topic {
+			position: static;
+			top: 0;
+			left: 0;
+			.space-reserve-picture {
+				height: 240px;
+				width: 100%;
+			}
+		}
+	}
+	.reserve-show-right {
+		width: 95vw;
+		margin-left: 0;
+		p {
+			margin: 6px;
+		}
+		.ppet {
+			margin: 6px;
+			padding: 0 0 0 12px;
+			flex-wrap: wrap;
+			text {
+				width: 100%;
+			}
+		}
+		.choises {
+			text-align: center;
+		}
+	}
+}
+}

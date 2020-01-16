@@ -33,7 +33,7 @@
       }
     }
   }
-  .user_show_area {
+  .user-show-area {
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -185,4 +185,106 @@
 }
 .fa-envelope {
   color: rgb(37, 175, 37);
+}
+
+//-------------------------------phonesize--------------------------------------
+
+@media screen and (max-width:768px) {
+  .user-show-container {
+    flex-direction: column;
+    width: 95vw;
+    .user-info-area {
+      width: 100%;
+      .user-info-zone {
+        position: relative;
+        top: 0;
+        left: 0;
+        width: 100%;
+        box-sizing: border-box;
+        border: none;
+        padding: 0 24px;
+        .user-info-tip {
+          p {
+            margin: 6px;
+          }
+        }
+      }
+    }
+    .user-show-area {
+      width: 100%;
+      .user_show_field {
+        .user_show_pet_field {
+          width: 33%;
+          height: auto;
+          a {
+            display: flex;
+            flex-direction: column;
+            margin: 0;
+            .user_show_pet_iamge {
+              text-align: center;
+              .box-icon-l {
+                width: 100px;
+                height: 100px;
+              }
+            }
+            .user_show_pet_info {
+              padding: 0;
+              font-size: 12px;
+              padding: 0 5%;
+              p {
+                margin: 4px 0 ;
+              }
+            }
+          }
+        }
+        .user_show_space_field {
+          // flex-direction: column;
+          .user_show_space_iamge {
+            text-align: center;
+            .space-search-topic-picture {
+              width: 160px;
+              height: 100px;
+            }
+          }
+          .user_show_space_info {
+            padding: 0 0 0 8px;
+            .user_show_space_tip {
+              margin: 8px 0;
+            }
+          }
+        }
+        .user_show_reservation_field {
+          .space-search-topic-picture {
+            width: 80px;
+            height: 80px;
+          }
+          .user_show_reservation_info {
+            padding-left: 12px;
+            .user_show_reservation_tip {
+              margin: 8px 0;
+            }
+          }
+        }
+        .user_show_reserved_field {
+          flex-wrap: wrap;
+          .box-icon {
+            width: 80px;
+            height: 80px;
+          }
+          .infosize {
+            padding-left: 6px;
+            width: 75%;
+          }
+          .reserved-user {
+            padding: 0 12px;
+            margin: 6px 0;
+            border-right: 1px solid #d8d8d8;
+          }
+          .reserved-pet {
+            margin: 6px 0;
+          }
+        }
+      }
+    }
+  }
 }

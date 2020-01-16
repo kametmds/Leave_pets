@@ -51,7 +51,7 @@
                 = form_for @room do |f|
                   = fields_for @join do |e|
                     = e.hidden_field :user_id, value: @space.user.id
-                  = f.submit "　ホストにメッセージを送る　", class:"btn-s btn-green"
+                  = f.submit "メッセージ", class:"btn-s btn-green"
         - else
           .space-action-tip
             .choices

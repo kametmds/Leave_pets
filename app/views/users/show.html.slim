@@ -25,8 +25,8 @@
           = link_to 'ユーザー情報編集', edit_user_registration_path(@user), class: "btn-s btn-green"
           br
           = link_to "ログアウト", destroy_user_session_path, method: :delete, class: "btn-s btn-red"
-  .user_show_area
-    p.caption-head = "#{@user.name}のページ"
+  .user-show-area
+    p.caption-head.none = "#{@user.name}のページ"
     h2
       span マイペット情報
       span.caption-btn = link_to '＋', new_pet_path, class: "btn-xs btn-red" if user_check(@user)
@@ -69,7 +69,7 @@
                 |預けたペット：
                 - reservation.pets.each do |pet|
                   = "　#{pet.name}"
-              p.user_show_reservation_tip = "#{reservation.start_date.strftime("%Y年%-m月%-d日")}から#{reservation.end_date.strftime("%Y年%-m月%-d日")}まで"
+              p.user_show_reservation_tip = "#{reservation.start_date.strftime("%Y/%-m/%-d")} ~ #{reservation.end_date.strftime("%Y/%-m/%-d")}"
               .btn-xs.btn-blue = reservation.status
     - if user_check(@user)
       h2
@@ -80,7 +80,7 @@
             .user_show_reserved_field
               .user_show_reserved_image
                 = link_to image_tag(reservation.space.picture.url, class: 'box-icon'), reservation
-              .user_show_reserved_info = link_to reservation do
+              .user_show_reserved_info.infosize = link_to reservation do
                 .user_show_reserved_tip = "予約申請日:#{reservation.created_at.strftime("%Y年%-m月%-d日")}"
                 .user_show_reserved_tip
                   |予約ペット：
@@ -88,9 +88,9 @@
                     = "　#{pet.name}"
                 .user_show_reserved_tip = "#{reservation.start_date.strftime("%Y年%-m月%-d日")}から#{reservation.end_date.strftime("%Y年%-m月%-d日")}まで"
                 .btn-xs.btn-red = reservation.status
-              .user_show_reserved_info
+              .user_show_reserved_info.reserved-user
                 .user_show_reserved_tip = link_to image_tag(reservation.user.icon.url, class: 'box-icon-s'), user_path(reservation.user)
-              .user_show_reserved_info
+              .user_show_reserved_info.reserved-pet
                 .user_show_reserved_tip
                   - reservation.pets.each do |pet|
                     = link_to image_tag(pet.image.url, class: 'box-icon-s'), pet

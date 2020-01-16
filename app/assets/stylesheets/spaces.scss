@@ -337,7 +337,6 @@
       border-radius: 6px;
       position: sticky;
       top: 15vh;
-      // right: 10vw;
       width: 70%;
       background-color: #fff;
       .space-user-tip {
@@ -521,6 +520,7 @@ header {
     }
   }
 }
+//-------------------------------phone/search--------------------------------------
 .search-container {
   display: flex;
   flex-direction: column;
@@ -562,6 +562,7 @@ header {
     }
   }
 }
+//-------------------------------phone/intro--------------------------------------
 .intro-container {
   width: 100%;
   h2 {
@@ -574,21 +575,186 @@ header {
     height: 100%;
   }
 }
+//-------------------------------phone/show--------------------------------------
+.show-space-picture-area {
+  height: auto;
+  border-bottom: none;
+  .main_picture {
+    height: 260px;
+  }
+}
 .show-container {
   flex-direction: column-reverse;
+  width: 95%;
+  overflow: hidden;
   .show-space-action-area {
     width: 100%;
     background-color: #fff;
     margin: 0;
     .space-action-zone {
       border: none;
-      width: 100%;
-
+      width: 100vw;
+      position: fixed;
+      top: auto;
+      bottom: 0px;
+      height: 64px;
+      display: flex;
+      border-top: 1px solid #d8d8d8;
+      z-index: 1;
+      .space-user-tip {
+        display: flex;
+        flex-direction: row;
+        width: auto;
+        padding: 10px 0 10px 22px;
+        margin-right: 6%;
+        .icon {
+          width: 50px;
+          height: 50px;
+        }
+        h3 {
+          display:none;
+        }
+      }
+      .space-action-tip {
+        display: flex;
+        justify-content: center;
+        width: auto;
+        padding: 10px 0 10px 10px;
+        .btn-s {
+          height: 22px;
+          font-size: 18px;
+          line-height: 22px;
+        }
+        input[type="submit" i] {
+          width: 108px;
+          height: 39px;
+          font-size: 18px;
+        }
+        .choices {
+          width: 70vw;
+          display: flex;
+          justify-content: center;
+        }
+      }
     }
   }
   .show-space-topic-area {
     width: 100%;
     text-align: center;
+    text-align: left;
+    // padding-left: 20px;
+    // box-sizing: border-box;
+    .show-space-topic {
+      h2 {
+        margin: 12px 0;
+        font-size: 26px;
+      }
+      .show-space-title {
+        margin: 22px;
+        text-align: center;
+      }
+    }
   }
 }
+.show-map-zone {
+  width: 95vw;
+  height: 260px;
+  margin-bottom: 100px;
+}
+}
+
+
+// ------------------------------humberger-------------------------------------
+
+.global-nav {
+  position: fixed;
+  right: -320px; /* これで隠れる */
+  top: 0;
+  width: 300px; /* スマホに収まるくらい */
+  height: 100vh;
+  padding-top: 40px;
+  background-color: rgb(111, 207, 58);
+  transition: all .6s;
+  z-index: 200;
+  overflow-y: auto; /* メニューが多くなったらスクロールできるように */
+}
+.hamburger {
+  position: absolute;
+  right: 0;
+  top: 0;
+  width: 40px; /* クリックしやすいようにちゃんと幅を指定する */
+  height: 40px; /* クリックしやすいようにちゃんと高さを指定する */
+  cursor: pointer;
+  width: 40px;
+  z-index: 300;
+}
+.global-nav__list {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+.global-nav__item {
+  text-align: center;
+  padding: 0 14px;
+  a {
+    display: block;
+    padding: 8px 0;
+    border-bottom: 1px solid #eee;
+    text-decoration: none;
+    color: #111;
+    &:hover {
+      background-color: #eee;
+    }
+  }
+}
+.hamburger__line {
+  position: absolute;
+  // left: 4px;
+  width: 28px;
+  height: 3px;
+  background-color: #fff;
+  transition: all .6s;
+}
+.hamburger__line--1 {
+  top: 18px;
+}
+.hamburger__line--2 {
+  top: 26px;
+}
+.hamburger__line--3 {
+  top: 34px;
+}
+.black-bg {
+  position: fixed;
+  left: 0;
+  top: 0;
+  width: 100vw;
+  height: 100vh;
+  z-index: 100;
+  background-color: #000;
+  opacity: 0;
+  visibility: hidden;
+  transition: all .6s;
+  cursor: pointer;
+}
+
+/* 表示された時用のCSS */
+.nav-open .global-nav {
+  right: 0;
+}
+.nav-open .black-bg {
+  opacity: .8;
+  visibility: visible;
+}
+.nav-open .hamburger__line--1 {
+  transform: rotate(45deg);
+  top: 20px;
+}
+.nav-open .hamburger__line--2 {
+  width: 0;
+  left: 50%;
+}
+.nav-open .hamburger__line--3 {
+  transform: rotate(-45deg);
+  top: 20px;
 }

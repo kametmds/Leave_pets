@@ -13,9 +13,9 @@ h2 メッセージ
           .chat-box.my-chat-box
             .my-chat-face
               div = link_to image_tag( m.user.icon.url, class:"icon-s"), user_path(m.user.id)
-              strong = link_to m.user.name, user_path(m.user.id)
-              .chat-day = m.created_at.strftime("%Y/%m/%d")
-              .chat-time = m.created_at.strftime("%H:%M:%S")
+              strong.none = link_to m.user.name, user_path(m.user.id)
+              .chat-day.none = m.created_at.strftime("%Y/%m/%d")
+              .chat-time = m.created_at.strftime("%H:%M")
             .chat-voice.my-chat-voice = m.body
             .choices-vertical
               = link_to fa_icon('trash lg'), message_path(m.id), method: :delete, class: "btn-s btn-red"
@@ -23,9 +23,9 @@ h2 メッセージ
           .chat-box
             .chat-face
               div = link_to image_tag( m.user.icon.url, class:"icon-s"), user_path(m.user.id)
-              strong = link_to m.user.name, user_path(m.user.id)
-              .chat-day = m.created_at.strftime("%Y/%m/%d")
-              .chat-time = m.created_at.strftime("%H:%M:%S")
+              strong.none = link_to m.user.name, user_path(m.user.id)
+              .chat-day.none = m.created_at.strftime("%Y/%m/%d")
+              .chat-time = m.created_at.strftime("%H:%M")
             .chat-voice = m.body
     - else
       h2 style="color: gray;" 下にメッセージが表示されます

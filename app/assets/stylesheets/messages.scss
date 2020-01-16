@@ -56,3 +56,53 @@
 .chat {
   width: 64vw;
 }
+
+//-------------------------------phonesize--------------------------------------
+@media screen and (max-width:768px) {
+//-------------------------------phone/show--------------------------------------
+.posts {
+  width: 95vw;
+  .message-textarea {
+    width: 95%;
+    border: 1px solid #d8d8d8;
+  }
+  .post-btn {
+    text-align: center;
+    padding: 6px 0;
+  }
+}
+.chat {
+  width: 95vw;
+  .chat-box {
+    padding: 4px;
+    .my-chat-face {
+      margin-left: 4px;
+      padding-left: 4px;
+    }
+    .chat-face {
+      padding-right: 4px;
+    }
+    .btn-s {
+      font-size: 12px;
+      width: 12px;
+      margin: 2px;
+      padding: 2px;
+    }
+  }
+}
+//-------------------------------phone/index--------------------------------------
+.content {
+  width: 95vw;
+  .room-topic {
+    width: 100%;
+    box-sizing: border-box;
+    .user-tip {
+      padding-right: 0;
+      .icon {
+        width: 85px;
+        height: 85px;
+      }
+    }
+  }
+}
+}

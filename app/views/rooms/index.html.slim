@@ -4,7 +4,7 @@
     .room-topic
       = link_to user_path(j.user.id), class: "user-tip green-shadow" do
         = image_tag j.user.icon.url, class:"icon"
-        = j.user.name
+        .none= j.user.name
       = link_to room_path(j.room.id), class: "room-tip green-shadow" do
         .room-tip-space
           |スペース:

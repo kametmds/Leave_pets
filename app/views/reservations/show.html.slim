@@ -24,7 +24,7 @@
       |備考　
       = @reservation.space.content
     p.ppet
-      |お世話になる(なった)ペット
+      |ペット
       - @reservation.pets.each do |pet|
         = link_to image_tag(pet.image.url, class: 'box-icon-s'), pet
     p
