@@ -131,7 +131,7 @@
     position: relative;
     .p {
       text-align: center;
-      margin-bottom: 8px;
+      margin: 8px 0;
     }
     .text1, .text2 {
       position: absolute;
@@ -459,7 +459,7 @@
   .header_title {
     width: 88%;
     text-align: center;
-    margin: 0 0 0 6px;
+    margin: 0 ;
   }
   .navbar {
     .btn-bright {
@@ -489,6 +489,7 @@
 }
 .parent {
   height:auto;
+  padding:0 5%;
   h2 {
     padding: 0;
   }
@@ -537,6 +538,7 @@
     .pet-space-topic {
       width: 100%;
       z-index: -1;
+      margin: 0;
       .text2 {
         top: 75%;
         z-index: 1;
