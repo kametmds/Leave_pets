@@ -18,11 +18,21 @@
   <% end %>
   <br>
   <div class="actions">
-    <%= f.submit "ログイン", class: "btn-s btn-blue" %>
+    <%= f.submit "ログイン", class: "btn-s btn-yellow" %>
   </div>
   <br>
 <% end %>
-<p>メールアドレス: sample1@test.com</p>
-<p>パスワード: 123123</p>
+<%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+  <div class="field">
+    <%= f.hidden_field :email ,value: "sample1@test.com" %>
+    <%= f.hidden_field :password ,value: "123123" %>
+  </div>
+  <div class="actions">
+    <%= f.submit "サンプルユーザーでログインする", class: "btn-s btn-blue" %>
+  </div>
+  <br>
+<% end %>
+<%# <p>メールアドレス: sample1@test.com</p>
+<p>パスワード: 123123</p> %>
 
 <%= render "devise/shared/links" %>
